@@ -3,47 +3,45 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Комбинат Чистоты — Клининг в Тюмени</title>
 
 <style>
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #f7f9fc;
   color: #333;
 }
 
-header {
-  background: linear-gradient(135deg, #1e3c72, #2a5298);
-  color: white;
+section {
   padding: 80px 20px;
   text-align: center;
 }
 
-header h1 {
-  font-size: 40px;
-  margin-bottom: 10px;
+h1, h2 {
+  margin-bottom: 20px;
 }
 
-header p {
-  font-size: 18px;
-  opacity: 0.9;
+.hero {
+  background: url('https://images.unsplash.com/photo-1581578731548-c64695cc6952') center/cover;
+  color: white;
+  padding: 120px 20px;
+}
+
+.overlay {
+  background: rgba(0,0,0,0.6);
+  padding: 40px;
 }
 
 .btn {
   display: inline-block;
-  margin: 15px;
   padding: 15px 25px;
-  background: white;
-  color: #2a5298;
+  margin: 10px;
+  background: #ffcc00;
+  color: black;
   text-decoration: none;
   border-radius: 6px;
   font-weight: bold;
-}
-
-.section {
-  padding: 60px 20px;
-  text-align: center;
 }
 
 .cards {
@@ -54,101 +52,156 @@ header p {
 
 .card {
   background: white;
-  padding: 25px;
   margin: 15px;
+  padding: 25px;
   width: 280px;
   border-radius: 10px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
-.card h3 {
-  margin-bottom: 10px;
-}
-
-.price {
-  font-size: 22px;
-  color: #2a5298;
-  font-weight: bold;
-}
-
-.footer {
-  background: #1e3c72;
+.dark {
+  background: #1e1e1e;
   color: white;
-  padding: 30px;
-  text-align: center;
+}
+
+.portfolio img {
+  width: 300px;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+input, select {
+  padding: 10px;
+  margin: 10px;
+  width: 200px;
+}
+
+footer {
+  background: #111;
+  color: white;
+  padding: 40px;
 }
 </style>
 
 </head>
+
 <body>
 
-<header>
-  <h1>Комбинат Чистоты</h1>
-  <p>Профессиональный клининг в Тюмени</p>
-  <p>Квартиры • Дома • Офисы</p>
+<!-- ГЛАВНЫЙ ЭКРАН -->
+<section class="hero">
+  <div class="overlay">
+    <h1>Комбинат Чистоты</h1>
+    <p>Профессиональный клининг в Тюмени</p>
+    <p>Для дома и бизнеса</p>
 
-  <a href="tel:+79999999999" class="btn">📞 Позвонить</a>
-  <a href="https://wa.me/79999999999" class="btn">💬 WhatsApp</a>
-</header>
+    <a href="tel:+79999999999" class="btn">📞 Позвонить</a>
+    <a href="https://wa.me/79999999999" class="btn">💬 WhatsApp</a>
+  </div>
+</section>
 
-<section class="section">
+<!-- УСЛУГИ -->
+<section>
   <h2>Наши услуги</h2>
 
   <div class="cards">
     <div class="card">
-      <h3>Уборка квартир</h3>
-      <p>Поддерживающая и генеральная уборка</p>
-      <p class="price">от 2000 ₽</p>
+      <h3>🏠 Для дома</h3>
+      <p>Квартиры, дома, генеральная уборка</p>
+      <p><b>от 2000 ₽</b></p>
     </div>
 
     <div class="card">
-      <h3>Уборка домов</h3>
-      <p>Полный клининг частных домов</p>
-      <p class="price">от 4000 ₽</p>
+      <h3>🏢 Для бизнеса</h3>
+      <p>Офисы, коммерческие помещения</p>
+      <p><b>от 3000 ₽</b></p>
     </div>
 
     <div class="card">
-      <h3>Уборка офисов</h3>
-      <p>Регулярная и разовая уборка</p>
-      <p class="price">от 3000 ₽</p>
+      <h3>🧼 После ремонта</h3>
+      <p>Удаление строительной пыли</p>
+      <p><b>от 5000 ₽</b></p>
     </div>
   </div>
 </section>
 
-<section class="section" style="background:#eef2f7;">
+<!-- ПОЧЕМУ МЫ -->
+<section class="dark">
   <h2>Почему выбирают нас</h2>
 
   <div class="cards">
-    <div class="card">✔ Опытные сотрудники</div>
+    <div class="card">✔ Опытные клинеры</div>
     <div class="card">✔ Профессиональная химия</div>
-    <div class="card">✔ Гарантия качества</div>
+    <div class="card">✔ Гарантия результата</div>
     <div class="card">✔ Быстрый выезд</div>
   </div>
 </section>
 
-<section class="section">
+<!-- КАК МЫ РАБОТАЕМ -->
+<section>
   <h2>Как мы работаем</h2>
 
   <div class="cards">
-    <div class="card">1. Вы оставляете заявку</div>
-    <div class="card">2. Мы рассчитываем стоимость</div>
-    <div class="card">3. Приезжаем в удобное время</div>
-    <div class="card">4. Вы принимаете чистоту</div>
+    <div class="card">1. Заявка</div>
+    <div class="card">2. Расчёт</div>
+    <div class="card">3. Уборка</div>
+    <div class="card">4. Приём работы</div>
   </div>
 </section>
 
-<section class="section" style="background:#2a5298; color:white;">
-  <h2>Получите расчёт стоимости</h2>
-  <p>Напишите нам прямо сейчас</p>
+<!-- ПОРТФОЛИО -->
+<section class="dark portfolio">
+  <h2>Наши работы</h2>
 
-  <a href="https://wa.me/79999999999" class="btn">💬 Написать в WhatsApp</a>
+  <img src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac">
+  <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511">
+  <img src="https://images.unsplash.com/photo-1560185127-6ed189bf02f4">
 </section>
 
-<footer class="footer">
+<!-- КАЛЬКУЛЯТОР -->
+<section>
+  <h2>Калькулятор стоимости</h2>
+
+  <select id="type">
+    <option value="2000">Квартира</option>
+    <option value="3000">Офис</option>
+    <option value="5000">После ремонта</option>
+  </select>
+
+  <input type="number" id="area" placeholder="Площадь м²">
+
+  <br>
+
+  <button class="btn" onclick="calc()">Рассчитать</button>
+
+  <h3 id="result"></h3>
+</section>
+
+<!-- ОБРАТНАЯ СВЯЗЬ -->
+<section class="dark">
+  <h2>Оставьте заявку</h2>
+
+  <input type="text" placeholder="Ваше имя"><br>
+  <input type="tel" placeholder="Телефон"><br>
+
+  <a href="https://wa.me/79999999999" class="btn">Отправить</a>
+</section>
+
+<footer>
   <p>Комбинат Чистоты © 2026</p>
   <p>г. Тюмень</p>
   <p>Телефон: +7 999 999 99 99</p>
 </footer>
 
-</body>
-</html>
+<script>
+function calc() {
+  let type = document.getElementById('type').value;
+  let area = document.getElementById('area').value;
+
+  if(area === "") {
+    document.getElementById('result').innerText = "Введите площадь";
+    return;
+  }
+
+  let total = type * (area / 50);
+  document.getElementById('result').innerText = "Примерная стоимость: " + Math.round(total) + " ₽";
+}
