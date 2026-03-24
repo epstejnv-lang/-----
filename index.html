@@ -1,4 +1,88 @@
-<p class="text-lg md:text-xl mb-10 max-w-2xl mx-auto opacity-90">
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Комбинат чистоты — Профессиональный клининг в Тюмени</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        
+        /* Стили для градиентов и кастомных элементов */
+        .hero-gradient {
+            background: linear-gradient(rgba(30, 58, 138, 0.7), rgba(30, 58, 138, 0.5)), 
+                        url('https://images.unsplash.com/photo-1581578731548-c64695cc6954?auto=format&fit=crop&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        /* НОВЫЙ Пастельно-красный акцентный цвет */
+        .accent-color { color: #E57373; }
+        .bg-accent { background-color: #E57373; }
+        .bg-accent:hover { background-color: #EF5350; } /* Чуть темнее при наведении */
+        .border-accent { border-color: #E57373; }
+        .focus\:border-accent:focus { border-color: #E57373; }
+        .text-accent { color: #E57373; }
+        .text-accent-hover:hover { color: #EF5350; }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Ползунок калькулятора */
+        input[type=range] { appearance: none; width: 100%; height: 8px; background: #e5e7eb; border-radius: 5px; }
+        input[type=range]::-webkit-slider-thumb { appearance: none; width: 20px; height: 20px; background: #E57373; border-radius: 50%; cursor: pointer; }
+
+        /* Стиль для текста в таблицах модальных окон */
+        .modal-table td, .modal-table th {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e5e7eb;
+            text-align: left;
+        }
+        .modal-table th {
+            background-color: #f9fafb;
+            font-weight: 600;
+            color: #1e3a8a;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-slate-800">
+
+    <header class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="w-10 h-10 bg-blue-900 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-broom text-white text-xl"></i>
+                </div>
+                <span class="text-xl font-bold tracking-tight text-blue-900">Комбинат Чистоты</span>
+            </div>
+            <div class="hidden md:flex space-x-8 font-medium text-sm uppercase tracking-wider">
+                <a href="#about" class="hover:text-accent-hover transition">О нас</a>
+                <a href="#services" class="hover:text-accent-hover transition">Услуги</a>
+                <a href="#calc" class="hover:text-accent-hover transition">Расчет</a>
+                <a href="#reviews" class="hover:text-accent-hover transition">Отзывы</a>
+                <a href="#contacts" class="hover:text-accent-hover transition">Контакты</a>
+            </div>
+            <a href="tel:+73452000000" class="hidden lg:block font-bold text-blue-900">+7 (3452) 00-00-00</a>
+        </nav>
+    </header>
+
+    <section class="hero-gradient h-screen flex items-center justify-center text-white pt-20">
+        <div class="container mx-auto px-6 text-center" data-aos="fade-up">
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
+                Безупречная чистота <br><span class="accent-color">в Тюмени</span> для дома и бизнеса
+            </h1>
+            <p class="text-lg md:text-xl mb-10 max-w-2xl mx-auto opacity-90">
                 Профессиональный клининг любой сложности: от уютных квартир до торговых центров. 
                 Вернем блеск вашему пространству за 1 визит.
             </p>
@@ -232,91 +316,7 @@
                 </div>
                 <div class="relative">
                     <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center mx-auto mb-6 font-bold text-xl">4</div>
-                    <!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Комбинат чистоты — Профессиональный клининг в Тюмени</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-    <style>
-        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-        
-        /* Стили для градиентов и кастомных элементов */
-        .hero-gradient {
-            background: linear-gradient(rgba(30, 58, 138, 0.7), rgba(30, 58, 138, 0.5)), 
-                        url('https://images.unsplash.com/photo-1581578731548-c64695cc6954?auto=format&fit=crop&q=80');
-            background-size: cover;
-            background-position: center;
-        }
-        
-        /* НОВЫЙ Пастельно-красный акцентный цвет */
-        .accent-color { color: #E57373; }
-        .bg-accent { background-color: #E57373; }
-        .bg-accent:hover { background-color: #EF5350; } /* Чуть темнее при наведении */
-        .border-accent { border-color: #E57373; }
-        .focus\:border-accent:focus { border-color: #E57373; }
-        .text-accent { color: #E57373; }
-        .text-accent-hover:hover { color: #EF5350; }
-
-        .card-hover {
-            transition: all 0.3s ease;
-        }
-
-        .card-hover:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Ползунок калькулятора */
-        input[type=range] { appearance: none; width: 100%; height: 8px; background: #e5e7eb; border-radius: 5px; }
-        input[type=range]::-webkit-slider-thumb { appearance: none; width: 20px; height: 20px; background: #E57373; border-radius: 50%; cursor: pointer; }
-
-        /* Стиль для текста в таблицах модальных окон */
-        .modal-table td, .modal-table th {
-            padding: 12px 15px;
-            border-bottom: 1px solid #e5e7eb;
-            text-align: left;
-        }
-        .modal-table th {
-            background-color: #f9fafb;
-            font-weight: 600;
-            color: #1e3a8a;
-        }
-    </style>
-</head>
-<body class="bg-gray-50 text-slate-800">
-
-    <header class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <div class="w-10 h-10 bg-blue-900 rounded-lg flex items-center justify-center">
-                    <i class="fas fa-broom text-white text-xl"></i>
-                </div>
-                <span class="text-xl font-bold tracking-tight text-blue-900">Комбинат Чистоты</span>
-            </div>
-            <div class="hidden md:flex space-x-8 font-medium text-sm uppercase tracking-wider">
-                <a href="#about" class="hover:text-accent-hover transition">О нас</a>
-                <a href="#services" class="hover:text-accent-hover transition">Услуги</a>
-                <a href="#calc" class="hover:text-accent-hover transition">Расчет</a>
-                <a href="#reviews" class="hover:text-accent-hover transition">Отзывы</a>
-                <a href="#contacts" class="hover:text-accent-hover transition">Контакты</a>
-            </div>
-            <a href="tel:+73452000000" class="hidden lg:block font-bold text-blue-900">+7 (3452) 00-00-00</a>
-        </nav>
-    </header>
-
-    <section class="hero-gradient h-screen flex items-center justify-center text-white pt-20">
-        <div class="container mx-auto px-6 text-center" data-aos="fade-up">
-            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
-                Безупречная чистота <br><span class="accent-color">в Тюмени</span> для дома и бизнеса
-            </h1>
-            <h5 class="font-bold mb-2">Оплата</h5>
+                    <h5 class="font-bold mb-2">Оплата</h5>
                     <p class="text-gray-400 text-sm">Принимаете работу и оплачиваете результат</p>
                 </div>
             </div>
@@ -394,8 +394,7 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.
-                    querySelector(this.getAttribute('href')).scrollIntoView({
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
             });
