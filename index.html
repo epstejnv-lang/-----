@@ -36,16 +36,10 @@
       color: #2B2D42;
       overflow-x: hidden;
     }
-    
-    /* Плавная прокрутка */
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     /* Микроанимации кнопок */
-    .btn-hover {
-      transition: all 0.3s ease;
-    }
+    .btn-hover { transition: all 0.3s ease; }
     .btn-hover:hover {
       transform: translateY(-2px);
       box-shadow: 0 10px 15px -3px rgba(230, 57, 70, 0.3);
@@ -58,10 +52,7 @@
       opacity: 0.05;
     }
 
-    /* Стилизация ползунка в калькуляторе */
-    input[type=range] {
-      accent-color: #E63946;
-    }
+    input[type=range] { accent-color: #E63946; }
 
     /* Паттерн для Hero секции */
     .hero-bg {
@@ -69,7 +60,7 @@
     }
   </style>
 </head>
-<body class="bg-white">
+<body class="bg-white relative">
 
   <header class="fixed w-full top-0 bg-white/90 backdrop-blur-md shadow-sm z-50 transition-all duration-300">
     <div class="container mx-auto px-4 py-4 flex justify-between items-center">
@@ -77,18 +68,29 @@
         <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white text-lg">К</div>
         Комбинат чистоты
       </div>
-      <nav class="hidden md:flex space-x-6 text-sm font-semibold">
+      
+      <nav class="hidden lg:flex space-x-6 text-sm font-semibold">
         <a href="#about" class="hover:text-primary transition">О компании</a>
         <a href="#services" class="hover:text-primary transition">Услуги</a>
         <a href="#calculator" class="hover:text-primary transition">Калькулятор</a>
         <a href="#portfolio" class="hover:text-primary transition">Работы</a>
         <a href="#contacts" class="hover:text-primary transition">Контакты</a>
       </nav>
-      <div class="hidden md:block text-right">
-        <a href="tel:+70000000000" class="block font-bold text-lg text-dark hover:text-primary transition">+7 (3452) 00-00-00</a>
-        <span class="text-xs text-gray-500">г. Тюмень</span>
+      
+      <div class="hidden md:flex items-center gap-4">
+        <div class="flex items-center gap-2 border-r border-gray-200 pr-4">
+          <a href="#" class="text-blue-500 hover:text-blue-600 transition" target="_blank" title="Написать в Telegram">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.223-.548.223l.188-2.85 5.18-4.686c.223-.2.045-.31-.142-.18l-6.42 4.04-2.796-.9c-.61-.19-.623-.61.128-.9l10.9-4.2c.5-.19.954.12.81 1.481z"/></svg>
+          </a>
+          <a href="#" class="text-green-500 hover:text-green-600 transition" target="_blank" title="Написать в WhatsApp">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 0C5.385 0 .012 5.373.012 12.019c0 2.126.552 4.159 1.6 5.968L0 24l6.195-1.624c1.745.955 3.714 1.458 5.836 1.458 6.645 0 12.019-5.374 12.019-12.019C24.05 5.373 18.676 0 12.031 0zm0 21.84c-1.801 0-3.565-.483-5.115-1.401l-.367-.218-3.793.996.996-3.793-.218-.367c-.918-1.55-1.401-3.314-1.401-5.115 0-5.566 4.529-10.095 10.095-10.095 5.566 0 10.095 4.529 10.095 10.095s-4.529 10.095-10.095 10.095zm5.536-7.56c-.303-.151-1.796-.886-2.074-.988-.278-.101-.48-.151-.682.151-.202.303-.783.988-.959 1.19-.177.202-.353.227-.656.076-1.884-.946-3.235-2.584-3.628-3.262-.101-.177-.01-.274.066-.35.071-.069.151-.177.227-.266.076-.088.101-.151.151-.252.05-.101.025-.189-.013-.265-.038-.076-.682-1.643-.934-2.25-.245-.591-.494-.511-.682-.52-.177-.008-.378-.01-.58-.01-.202 0-.53.076-.808.378-.278.303-1.06 1.036-1.06 2.525 0 1.489 1.085 2.928 1.237 3.13.151.202 2.133 3.255 5.169 4.563 2.056.886 2.76.745 3.265.658.58-.101 1.796-.733 2.049-1.44.252-.707.252-1.313.177-1.44-.076-.126-.278-.202-.58-.353z"/></svg>
+          </a>
+        </div>
+        <div class="text-right">
+          <a href="tel:+70000000000" class="block font-bold text-lg text-dark hover:text-primary transition">+7 (3452) 00-00-00</a>
+        </div>
       </div>
-      <button class="md:hidden text-primary text-2xl">☰</button>
+      <button class="lg:hidden text-primary text-2xl">☰</button>
     </div>
   </header>
 
@@ -104,9 +106,9 @@
         <a href="#calculator" class="bg-primary text-white font-semibold py-4 px-8 rounded-full btn-hover text-lg">
           Рассчитать стоимость
         </a>
-        <a href="#contacts" class="bg-white text-dark font-semibold py-4 px-8 rounded-full btn-hover text-lg border-2 border-transparent hover:border-primary">
+        <button onclick="openModal('Консультация')" class="bg-white text-dark font-semibold py-4 px-8 rounded-full btn-hover text-lg border-2 border-transparent hover:border-primary">
           Получить консультацию
-        </a>
+        </button>
       </div>
     </div>
   </section>
@@ -122,7 +124,7 @@
           <h2 class="text-sm text-primary font-bold uppercase tracking-wider mb-2">О нас</h2>
           <h3 class="text-3xl font-bold mb-6">«Комбинат чистоты» — ваш надежный партнер</h3>
           <p class="text-gray-600 mb-6 leading-relaxed">
-            Мы работаем на рынке Тюмени более 5 лет. Наша миссия — создавать комфортную и здоровую среду для жизни и работы. Мы тщательно отбираем персонал, регулярно проводим обучение и используем только сертифицированную химию и профессиональную технику (Kärcher, Dyson).
+            Мы работаем на рынке Тюмени более 5 лет. Наша миссия — создавать комфортную и здоровую среду для жизни и работы. Мы тщательно отбираем персонал, регулярно проводим обучение и используем только сертифицированную химию и профессиональную технику.
           </p>
           <ul class="space-y-3 font-semibold text-dark">
             <li class="flex items-center gap-3"><span class="text-primary text-xl">✓</span> Более 5000 убранных объектов</li>
@@ -142,33 +144,33 @@
       </div>
       
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <a href="#contacts" class="block bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 group" data-aos="fade-up" data-aos-delay="100">
+        <button onclick="openModal('Уборка квартир и домов')" class="block w-full text-left bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 group" data-aos="fade-up" data-aos-delay="100">
           <div class="w-14 h-14 bg-pastel rounded-full flex items-center justify-center text-primary text-2xl mb-6 group-hover:scale-110 transition">🏠</div>
           <h3 class="text-xl font-bold mb-3">Уборка квартир и домов</h3>
           <p class="text-gray-500 mb-4 text-sm">Поддерживающая, генеральная, после ремонта.</p>
           <div class="text-primary font-semibold">от 2 500 ₽</div>
-        </a>
+        </button>
         
-        <a href="#contacts" class="block bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 group" data-aos="fade-up" data-aos-delay="200">
+        <button onclick="openModal('Химчистка мебели')" class="block w-full text-left bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 group" data-aos="fade-up" data-aos-delay="200">
           <div class="w-14 h-14 bg-pastel rounded-full flex items-center justify-center text-primary text-2xl mb-6 group-hover:scale-110 transition">🛋️</div>
           <h3 class="text-xl font-bold mb-3">Химчистка мебели</h3>
           <p class="text-gray-500 mb-4 text-sm">Выведение пятен с диванов, ковров, матрасов.</p>
           <div class="text-primary font-semibold">от 1 200 ₽</div>
-        </a>
+        </button>
 
-        <a href="#contacts" class="block bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 group" data-aos="fade-up" data-aos-delay="300">
+        <button onclick="openModal('Производственные помещения')" class="block w-full text-left bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 group" data-aos="fade-up" data-aos-delay="300">
           <div class="w-14 h-14 bg-pastel rounded-full flex items-center justify-center text-primary text-2xl mb-6 group-hover:scale-110 transition">🏭</div>
           <h3 class="text-xl font-bold mb-3">Производственные помещения</h3>
           <p class="text-gray-500 mb-4 text-sm">Обеспыливание цехов, складов, спецтехника.</p>
           <div class="text-primary font-semibold">Индивидуально</div>
-        </a>
+        </button>
 
-        <a href="#contacts" class="block bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 group" data-aos="fade-up" data-aos-delay="400">
+        <button onclick="openModal('Офисы, ТЦ, ЖК')" class="block w-full text-left bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 group" data-aos="fade-up" data-aos-delay="400">
           <div class="w-14 h-14 bg-pastel rounded-full flex items-center justify-center text-primary text-2xl mb-6 group-hover:scale-110 transition">🏢</div>
           <h3 class="text-xl font-bold mb-3">Офисы, ТЦ, ЖК</h3>
           <p class="text-gray-500 mb-4 text-sm">Регулярное обслуживание юридических лиц.</p>
           <div class="text-primary font-semibold">от 50 ₽ / м²</div>
-        </a>
+        </button>
       </div>
     </div>
   </section>
@@ -198,13 +200,13 @@
               <input type="range" id="area-range" min="10" max="500" value="50" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
             </div>
 
-            <div class="pt-6 border-t border-gray-100 flex justify-between items-center">
-              <div>
+            <div class="pt-6 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
+              <div class="text-center sm:text-left">
                 <span class="text-gray-500 block text-sm">Примерная стоимость:</span>
                 <span class="text-3xl font-bold text-dark" id="total-price">3 000 ₽</span>
               </div>
-              <button type="button" class="bg-primary text-white font-semibold py-3 px-6 rounded-xl btn-hover">
-                Заказать
+              <button type="button" onclick="openModal('Заказ из калькулятора')" class="w-full sm:w-auto bg-primary text-white font-semibold py-3 px-8 rounded-xl btn-hover">
+                Заказать уборку
               </button>
             </div>
           </form>
@@ -213,95 +215,42 @@
     </div>
   </section>
 
-  <section class="py-20 bg-dark text-white relative overflow-hidden" id="advantages">
-    <div class="absolute top-0 right-0 w-96 h-96 bg-primary opacity-20 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2"></div>
-    
-    <div class="container mx-auto px-4 relative z-10">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-        <div data-aos="fade-up" data-aos-delay="100">
-          <div class="w-16 h-16 mx-auto bg-white/10 rounded-2xl flex items-center justify-center text-3xl mb-4 text-pastel">🛡️</div>
-          <h4 class="font-bold text-lg mb-2">Гарантия качества</h4>
-          <p class="text-gray-400 text-sm">Если вам не понравится результат, мы переделаем работу бесплатно.</p>
-        </div>
-        <div data-aos="fade-up" data-aos-delay="200">
-          <div class="w-16 h-16 mx-auto bg-white/10 rounded-2xl flex items-center justify-center text-3xl mb-4 text-pastel">🌿</div>
-          <h4 class="font-bold text-lg mb-2">Эко-средства</h4>
-          <p class="text-gray-400 text-sm">Используем гипоаллергенную химию, безопасную для детей и животных.</p>
-        </div>
-        <div data-aos="fade-up" data-aos-delay="300">
-          <div class="w-16 h-16 mx-auto bg-white/10 rounded-2xl flex items-center justify-center text-3xl mb-4 text-pastel">⏱️</div>
-          <h4 class="font-bold text-lg mb-2">Пунктуальность</h4>
-          <p class="text-gray-400 text-sm">Приезжаем точно в назначенное время со всем необходимым инвентарем.</p>
-        </div>
-        <div data-aos="fade-up" data-aos-delay="400">
-          <div class="w-16 h-16 mx-auto bg-white/10 rounded-2xl flex items-center justify-center text-3xl mb-4 text-pastel">💼</div>
-          <h4 class="font-bold text-lg mb-2">Опытный персонал</h4>
-          <p class="text-gray-400 text-sm">Все сотрудники проходят проверку СБ и строгую стажировку.</p>
-        </div>
+  <section class="py-20 bg-white" id="portfolio">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12" data-aos="fade-up">
+        <h2 class="text-3xl font-bold mb-4">Наши работы</h2>
+        <p class="text-gray-600">Результат, который говорит сам за себя</p>
       </div>
-    </div>
-  </section>
 
-  <section class="py-20 bg-light" id="how-it-works">
-    <div class="container mx-auto px-4 text-center">
-      <h2 class="text-3xl font-bold mb-16" data-aos="fade-up">Как мы работаем</h2>
-      
-      <div class="flex flex-col md:flex-row justify-between items-center relative max-w-5xl mx-auto">
-        <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-pastel -translate-y-1/2 z-0"></div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         
-        <div class="relative z-10 bg-light p-4 mb-8 md:mb-0" data-aos="zoom-in" data-aos-delay="100">
-          <div class="w-20 h-20 mx-auto bg-white border-4 border-primary rounded-full flex items-center justify-center text-2xl font-bold text-primary mb-4 shadow-lg">1</div>
-          <h4 class="font-bold">Заявка</h4>
-          <p class="text-sm text-gray-500 mt-2 max-w-[200px]">Вы оставляете заявку на сайте или по телефону</p>
+        <div class="group relative overflow-hidden rounded-2xl shadow-md cursor-pointer" data-aos="zoom-in" data-aos-delay="100">
+          <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80" alt="Уборка ванной" class="w-full h-72 object-cover transition duration-500 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/20 to-transparent opacity-80 transition-opacity"></div>
+          <div class="absolute bottom-0 left-0 w-full p-6 text-white translate-y-4 group-hover:translate-y-0 transition-transform">
+            <h4 class="font-bold text-lg mb-1">Генеральная уборка дома</h4>
+            <p class="text-sm text-pastel">Удалили сложные загрязнения</p>
+          </div>
         </div>
-        
-        <div class="relative z-10 bg-light p-4 mb-8 md:mb-0" data-aos="zoom-in" data-aos-delay="200">
-          <div class="w-20 h-20 mx-auto bg-white border-4 border-primary rounded-full flex items-center justify-center text-2xl font-bold text-primary mb-4 shadow-lg">2</div>
-          <h4 class="font-bold">Оценка</h4>
-          <p class="text-sm text-gray-500 mt-2 max-w-[200px]">Мы фиксируем стоимость и детали заказа</p>
-        </div>
-        
-        <div class="relative z-10 bg-light p-4 mb-8 md:mb-0" data-aos="zoom-in" data-aos-delay="300">
-          <div class="w-20 h-20 mx-auto bg-white border-4 border-primary rounded-full flex items-center justify-center text-2xl font-bold text-primary mb-4 shadow-lg">3</div>
-          <h4 class="font-bold">Уборка</h4>
-          <p class="text-sm text-gray-500 mt-2 max-w-[200px]">Команда приезжает и наводит порядок</p>
-        </div>
-        
-        <div class="relative z-10 bg-light p-4" data-aos="zoom-in" data-aos-delay="400">
-          <div class="w-20 h-20 mx-auto bg-white border-4 border-primary rounded-full flex items-center justify-center text-2xl font-bold text-primary mb-4 shadow-lg">4</div>
-          <h4 class="font-bold">Оплата</h4>
-          <p class="text-sm text-gray-500 mt-2 max-w-[200px]">Вы принимаете работу и оплачиваете результат</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <section class="py-20" id="testimonials">
-    <div class="container mx-auto px-4" data-aos="fade-up">
-      <h2 class="text-3xl font-bold text-center mb-12">Отзывы клиентов</h2>
-      
-      <div class="swiper mySwiper max-w-4xl mx-auto pb-12">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide bg-gray-50 p-8 rounded-2xl border border-gray-100">
-            <div class="text-primary mb-4">★★★★★</div>
-            <p class="text-gray-700 italic mb-6">«Заказывали генеральную уборку после ремонта. Девочки отмыли все окна, убрали строительную пыль с каждого шкафчика. Квартира сияет! Огромное спасибо!»</p>
-            <div class="font-bold">Елена В.</div>
-            <div class="text-sm text-gray-500">Частный клиент</div>
-          </div>
-          <div class="swiper-slide bg-gray-50 p-8 rounded-2xl border border-gray-100">
-            <div class="text-primary mb-4">★★★★★</div>
-            <p class="text-gray-700 italic mb-6">«Сотрудничаем с Комбинатом чистоты по уборке нашего офиса (300 м2) уже полгода. Всегда вовремя, чистота на уровне, нареканий нет. Рекомендую как надежного подрядчика.»</p>
-            <div class="font-bold">ООО "Вектор-Т"</div>
-            <div class="text-sm text-gray-500">Корпоративный клиент</div>
-          </div>
-          <div class="swiper-slide bg-gray-50 p-8 rounded-2xl border border-gray-100">
-            <div class="text-primary mb-4">★★★★★</div>
-            <p class="text-gray-700 italic mb-6">«Спасли мой светлый диван от пятен кофе! Химчистка заняла около часа, диван высох к вечеру и выглядит как новый. Отличный сервис.»</p>
-            <div class="font-bold">Михаил С.</div>
-            <div class="text-sm text-gray-500">Частный клиент</div>
+        <div class="group relative overflow-hidden rounded-2xl shadow-md cursor-pointer" data-aos="zoom-in" data-aos-delay="200">
+          <img src="https://images.unsplash.com/photo-1563453392212-326f5e854473?auto=format&fit=crop&q=80" alt="Химчистка мебели" class="w-full h-72 object-cover transition duration-500 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/20 to-transparent opacity-80 transition-opacity"></div>
+          <div class="absolute bottom-0 left-0 w-full p-6 text-white translate-y-4 group-hover:translate-y-0 transition-transform">
+            <h4 class="font-bold text-lg mb-1">Химчистка дивана</h4>
+            <p class="text-sm text-pastel">Вернули первозданный вид</p>
           </div>
         </div>
-        <div class="swiper-pagination"></div>
+
+        <div class="group relative overflow-hidden rounded-2xl shadow-md cursor-pointer" data-aos="zoom-in" data-aos-delay="300">
+          <img src="https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&q=80" alt="Уборка после ремонта" class="w-full h-72 object-cover transition duration-500 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/20 to-transparent opacity-80 transition-opacity"></div>
+          <div class="absolute bottom-0 left-0 w-full p-6 text-white translate-y-4 group-hover:translate-y-0 transition-transform">
+            <h4 class="font-bold text-lg mb-1">Уборка после ремонта</h4>
+            <p class="text-sm text-pastel">Обеспылили 120 м² за 1 день</p>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -327,19 +276,26 @@
                 <p class="text-gray-600">+7 (3452) 00-00-00</p>
               </div>
             </div>
-            <div class="flex items-start gap-4">
-              <div class="w-10 h-10 bg-pastel rounded-full flex items-center justify-center text-primary shrink-0">✉️</div>
-              <div>
-                <h4 class="font-bold">Email</h4>
-                <p class="text-gray-600">info@kombinat-chistoty.ru</p>
-              </div>
+          </div>
+
+          <div class="mb-8">
+            <h4 class="font-bold mb-3">Написать в мессенджеры:</h4>
+            <div class="flex items-center gap-4">
+              <a href="#" class="flex items-center gap-2 bg-blue-50 text-blue-600 px-4 py-2 rounded-lg hover:bg-blue-600 hover:text-white transition" target="_blank">
+                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.223-.548.223l.188-2.85 5.18-4.686c.223-.2.045-.31-.142-.18l-6.42 4.04-2.796-.9c-.61-.19-.623-.61.128-.9l10.9-4.2c.5-.19.954.12.81 1.481z"/></svg>
+                 Telegram
+              </a>
+              <a href="#" class="flex items-center gap-2 bg-green-50 text-green-600 px-4 py-2 rounded-lg hover:bg-green-600 hover:text-white transition" target="_blank">
+                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 0C5.385 0 .012 5.373.012 12.019c0 2.126.552 4.159 1.6 5.968L0 24l6.195-1.624c1.745.955 3.714 1.458 5.836 1.458 6.645 0 12.019-5.374 12.019-12.019C24.05 5.373 18.676 0 12.031 0zm0 21.84c-1.801 0-3.565-.483-5.115-1.401l-.367-.218-3.793.996.996-3.793-.218-.367c-.918-1.55-1.401-3.314-1.401-5.115 0-5.566 4.529-10.095 10.095-10.095 5.566 0 10.095 4.529 10.095 10.095s-4.529 10.095-10.095 10.095zm5.536-7.56c-.303-.151-1.796-.886-2.074-.988-.278-.101-.48-.151-.682.151-.202.303-.783.988-.959 1.19-.177.202-.353.227-.656.076-1.884-.946-3.235-2.584-3.628-3.262-.101-.177-.01-.274.066-.35.071-.069.151-.177.227-.266.076-.088.101-.151.151-.252.05-.101.025-.189-.013-.265-.038-.076-.682-1.643-.934-2.25-.245-.591-.494-.511-.682-.52-.177-.008-.378-.01-.58-.01-.202 0-.53.076-.808.378-.278.303-1.06 1.036-1.06 2.525 0 1.489 1.085 2.928 1.237 3.13.151.202 2.133 3.255 5.169 4.563 2.056.886 2.76.745 3.265.658.58-.101 1.796-.733 2.049-1.44.252-.707.252-1.313.177-1.44-.076-.126-.278-.202-.58-.353z"/></svg>
+                 WhatsApp
+              </a>
             </div>
           </div>
           
-          <form class="space-y-4">
-            <input type="text" placeholder="Ваше имя" class="w-full p-4 bg-gray-50 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary border border-transparent">
-            <input type="tel" placeholder="Номер телефона" class="w-full p-4 bg-gray-50 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary border border-transparent">
-            <button class="w-full bg-primary text-white font-bold py-4 rounded-xl btn-hover">Отправить заявку</button>
+          <form id="contactPageForm" class="space-y-4">
+            <input type="text" id="pageName" required placeholder="Ваше имя" class="w-full p-4 bg-gray-50 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary border border-transparent">
+            <input type="tel" id="pagePhone" required placeholder="Номер телефона" class="w-full p-4 bg-gray-50 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary border border-transparent">
+            <button type="submit" class="w-full bg-primary text-white font-bold py-4 rounded-xl btn-hover">Отправить заявку</button>
             <p class="text-xs text-gray-400 text-center mt-2">Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности</p>
           </form>
         </div>
@@ -351,46 +307,40 @@
     </div>
   </section>
 
+  <div id="orderModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-dark/70 backdrop-blur-sm transition-opacity">
+    <div class="bg-white rounded-3xl p-8 max-w-md w-full mx-4 relative shadow-2xl scale-100 transition-transform">
+      <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary text-3xl leading-none">&times;</button>
+      
+      <h3 class="text-2xl font-bold mb-2">Оставить заявку</h3>
+      <p id="modalSubtitle" class="text-gray-500 mb-6 text-sm">Мы перезвоним вам в течение 15 минут.</p>
+      
+      <form id="modalForm" class="space-y-4">
+        <input type="hidden" id="modalSource" value="">
+        
+        <input type="text" id="modalName" required placeholder="Ваше имя" class="w-full p-4 bg-gray-50 rounded-xl border border-gray-200 focus:outline-none focus:border-primary">
+        <input type="tel" id="modalPhone" required placeholder="Номер телефона" class="w-full p-4 bg-gray-50 rounded-xl border border-gray-200 focus:outline-none focus:border-primary">
+        
+        <button type="submit" class="w-full bg-primary text-white font-bold py-4 rounded-xl btn-hover mt-4">Отправить</button>
+        <p class="text-xs text-gray-400 text-center mt-2">Ваши данные надежно защищены</p>
+      </form>
+    </div>
+  </div>
+
   <footer class="bg-dark text-gray-400 py-8 border-t border-gray-800">
     <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-sm">
       <div class="mb-4 md:mb-0">
         © 2024 «Комбинат чистоты». Все права защищены.
       </div>
-      <div class="space-x-4">
-        <a href="#" class="hover:text-white transition">Политика конфиденциальности</a>
-        <a href="#" class="hover:text-white transition">Договор оферты</a>
-      </div>
     </div>
   </footer>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
   
   <script>
-    // 1. Инициализация анимаций при скролле (AOS)
-    AOS.init({
-      once: true, // Анимация проигрывается только один раз
-      offset: 100, // Смещение в пикселях
-      duration: 800, // Длительность
-    });
+    // 1. Инициализация анимаций при скролле
+    AOS.init({ once: true, offset: 100, duration: 800 });
 
-    // 2. Инициализация слайдера (Swiper)
-    const swiper = new Swiper('.mySwiper', {
-      slidesPerView: 1,
-      spaceBetween: 30,
-      loop: true,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      breakpoints: {
-        768: {
-          slidesPerView: 2,
-        }
-      }
-    });
-
-    // 3. Логика калькулятора стоимости
+    // 2. Логика калькулятора стоимости
     const areaRange = document.getElementById('area-range');
     const areaVal = document.getElementById('area-val');
     const serviceType = document.getElementById('service-type');
@@ -399,19 +349,50 @@
     function calculatePrice() {
       const area = parseInt(areaRange.value);
       const pricePerSqm = parseInt(serviceType.value);
-      
       areaVal.textContent = area;
-      
-      // Форматирование числа с пробелами
       const total = (area * pricePerSqm).toLocaleString('ru-RU');
       totalPrice.textContent = `${total} ₽`;
     }
-
-    // Слушатели событий для пересчета при изменении
     areaRange.addEventListener('input', calculatePrice);
     serviceType.addEventListener('change', calculatePrice);
 
-    // 4. Простой скрипт для фона шапки при скролле
+    // 3. Логика всплывающего окна (Модалки)
+    const modal = document.getElementById('orderModal');
+    const modalSourceInput = document.getElementById('modalSource');
+
+    function openModal(sourceText) {
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      modalSourceInput.value = sourceText; // Записываем, откуда нажали кнопку
+      document.body.style.overflow = 'hidden'; // Блокируем скролл страницы
+    }
+
+    function closeModal() {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = 'auto'; // Возвращаем скролл
+    }
+
+    // Закрытие модалки по клику на темный фон
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) { closeModal(); }
+    });
+
+    // 4. Обработка отправки форм (Заглушка для демонстрации)
+    document.getElementById('modalForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Спасибо! Ваша заявка ("' + modalSourceInput.value + '") успешно отправлена. Мы скоро свяжемся с вами.');
+      closeModal();
+      this.reset();
+    });
+
+    document.getElementById('contactPageForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Спасибо! Ваше сообщение отправлено.');
+      this.reset();
+    });
+
+    // 5. Фон шапки при скролле
     const header = document.querySelector('header');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 50) {
