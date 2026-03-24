@@ -1,207 +1,316 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Комбинат чистоты — Профессиональный клининг в Тюмени</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-<title>Комбинат Чистоты — Клининг в Тюмени</title>
+    <style>
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        
+        /* Стили для градиентов и кастомных элементов */
+        .hero-gradient {
+            background: linear-gradient(rgba(30, 58, 138, 0.7), rgba(30, 58, 138, 0.5)), 
+                        url('https://images.unsplash.com/photo-1581578731548-c64695cc6954?auto=format&fit=crop&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .accent-color { color: #06b6d4; }
+        .bg-accent { background-color: #06b6d4; }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
 
-<style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  color: #333;
-}
-
-section {
-  padding: 80px 20px;
-  text-align: center;
-}
-
-h1, h2 {
-  margin-bottom: 20px;
-}
-
-.hero {
-  background: url('https://images.unsplash.com/photo-1581578731548-c64695cc6952') center/cover;
-  color: white;
-  padding: 120px 20px;
-}
-
-.overlay {
-  background: rgba(0,0,0,0.6);
-  padding: 40px;
-}
-
-.btn {
-  display: inline-block;
-  padding: 15px 25px;
-  margin: 10px;
-  background: #ffcc00;
-  color: black;
-  text-decoration: none;
-  border-radius: 6px;
-  font-weight: bold;
-}
-
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.card {
-  background: white;
-  margin: 15px;
-  padding: 25px;
-  width: 280px;
-  border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
-
-.dark {
-  background: #1e1e1e;
-  color: white;
-}
-
-.portfolio img {
-  width: 300px;
-  margin: 10px;
-  border-radius: 10px;
-}
-
-input, select {
-  padding: 10px;
-  margin: 10px;
-  width: 200px;
-}
-
-footer {
-  background: #111;
-  color: white;
-  padding: 40px;
-}
-</style>
-
+        /* Ползунок калькулятора */
+        input[type=range] { appearance: none; width: 100%; height: 8px; background: #e5e7eb; border-radius: 5px; }
+        input[type=range]::-webkit-slider-thumb { appearance: none; width: 20px; height: 20px; background: #06b6d4; border-radius: 50%; cursor: pointer; }
+    </style>
 </head>
+<body class="bg-gray-50 text-slate-800">
 
-<body>
+    <header class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="w-10 h-10 bg-blue-900 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-broom text-white text-xl"></i>
+                </div>
+                <span class="text-xl font-bold tracking-tight text-blue-900">Комбинат Чистоты</span>
+            </div>
+            <div class="hidden md:flex space-x-8 font-medium text-sm uppercase tracking-wider">
+                <a href="#about" class="hover:text-cyan-600 transition">О нас</a>
+                <a href="#services" class="hover:text-cyan-600 transition">Услуги</a>
+                <a href="#calc" class="hover:text-cyan-600 transition">Расчет</a>
+                <a href="#reviews" class="hover:text-cyan-600 transition">Отзывы</a>
+                <a href="#contacts" class="hover:text-cyan-600 transition">Контакты</a>
+            </div>
+            <a href="tel:+73452000000" class="hidden lg:block font-bold text-blue-900">+7 (3452) 00-00-00</a>
+        </nav>
+    </header>
 
-<!-- ГЛАВНЫЙ ЭКРАН -->
-<section class="hero">
-  <div class="overlay">
-    <h1>Комбинат Чистоты</h1>
-    <p>Профессиональный клининг в Тюмени</p>
-    <p>Для дома и бизнеса</p>
+    <section class="hero-gradient h-screen flex items-center justify-center text-white pt-20">
+        <div class="container mx-auto px-6 text-center" data-aos="fade-up">
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
+                Безупречная чистота <br><span class="accent-color">в Тюмени</span> для дома и бизнеса
+            </h1>
+            <p class="text-lg md:text-xl mb-10 max-w-2xl mx-auto opacity-90">
+                Профессиональный клининг любой сложности: от уютных квартир до торговых центров. 
+                Вернем блеск вашему пространству за 1 визит.
+            </p>
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <a href="#calc" class="bg-accent hover:bg-cyan-500 text-white px-8 py-4 rounded-full font-bold transition transform hover:scale-105">
+                    Рассчитать стоимость
+                </a>
+                <a href="#services" class="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white px-8 py-4 rounded-full font-bold transition">
+                    Наши услуги
+                </a>
+            </div>
+        </div>
+    </section>
+  <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2" data-aos="fade-right">
+                    <img src="https://images.unsplash.com/photo-1550963295-019d8a8a61c5?auto=format&fit=crop&q=80" alt="Команда за работой" class="rounded-2xl shadow-2xl">
+                </div>
+                <div class="md:w-1/2" data-aos="fade-left">
+                    <h2 class="text-3xl font-bold mb-6 text-blue-900">«Комбинат чистоты» — ваш эксперт по порядку</h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Мы работаем в Тюмени более 7 лет. Наша миссия — освободить ваше время для действительно важных дел, взяв на себя заботу о чистоте. Мы используем только сертифицированные гипоаллергенные средства и профессиональное оборудование.
+                    </p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-check-circle text-cyan-500"></i>
+                            <span>Более 1500 довольных клиентов</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-check-circle text-cyan-500"></i>
+                            <span>Штат опытных клинеров со стажем от 3-х лет</span>
+                        </li>
+                    </ul>
+                    <div class="grid grid-cols-3 gap-4 text-center">
+                        <div class="p-4 bg-gray-50 rounded-lg">
+                            <div class="text-2xl font-bold text-blue-900">7+</div>
+                            <div class="text-xs text-gray-500 uppercase">Лет опыта</div>
+                        </div>
+                        <div class="p-4 bg-gray-50 rounded-lg">
+                            <div class="text-2xl font-bold text-blue-900">100%</div>
+                            <div class="text-xs text-gray-500 uppercase">Гарантия</div>
+                        </div>
+                        <div class="p-4 bg-gray-50 rounded-lg">
+                            <div class="text-2xl font-bold text-blue-900">24/7</div>
+                            <div class="text-xs text-gray-500 uppercase">Прием заявок</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <a href="tel:+79999999999" class="btn">📞 Позвонить</a>
-    <a href="https://wa.me/79999999999" class="btn">💬 WhatsApp</a>
-  </div>
-</section>
+    <section id="services" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-blue-900 mb-4">Наши услуги</h2>
+                <div class="h-1 w-20 bg-accent mx-auto"></div>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white p-8 rounded-2xl card-hover text-center" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="w-16 h-16 bg-blue-50 text-blue-900 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3 class="font-bold mb-3">Уборка квартир</h3>
+                    <p class="text-sm text-gray-500 mb-6">Поддерживающая, генеральная или после ремонта.</p>
+                    <button class="text-cyan-600 font-semibold hover:underline">Подробнее</button>
+                </div>
+                <div class="bg-white p-8 rounded-2xl card-hover text-center" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="w-16 h-16 bg-blue-50 text-blue-900 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl">
+                        <i class="fas fa-couch"></i>
+                    </div>
+                    <h3 class="font-bold mb-3">Химчистка</h3>
+                    <p class="text-sm text-gray-500 mb-6">Бережная чистка мебели, ковров и матрасов на дому.</p>
+                  <button class="text-cyan-600 font-semibold hover:underline">Подробнее</button>
+                </div>
+                <div class="bg-white p-8 rounded-2xl card-hover text-center" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="w-16 h-16 bg-blue-50 text-blue-900 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3 class="font-bold mb-3">Офисы и ТЦ</h3>
+                    <p class="text-sm text-gray-500 mb-6">Профессиональный уход за бизнес-пространствами.</p>
+                    <button class="text-cyan-600 font-semibold hover:underline">Подробнее</button>
+                </div>
+                <div class="bg-white p-8 rounded-2xl card-hover text-center" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="w-16 h-16 bg-blue-50 text-blue-900 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3 class="font-bold mb-3">Производства</h3>
+                    <p class="text-sm text-gray-500 mb-6">Специфическая уборка цехов и складов.</p>
+                    <button class="text-cyan-600 font-semibold hover:underline">Подробнее</button>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- УСЛУГИ -->
-<section>
-  <h2>Наши услуги</h2>
+    <section id="calc" class="py-20 bg-blue-900 text-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto bg-white text-slate-800 rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row">
+                <div class="p-10 md:w-2/3">
+                    <h2 class="text-2xl font-bold mb-8">Рассчитайте стоимость</h2>
+                    <div class="space-y-8">
+                        <div>
+                            <label class="block mb-4 font-medium">Тип уборки</label>
+                            <select id="cleaning-type" class="w-full p-3 border rounded-xl bg-gray-50 outline-none focus:border-cyan-500 transition">
+                                <option value="100">Поддерживающая (от 100 ₽/м²)</option>
+                                <option value="180">Генеральная (от 180 ₽/м²)</option>
+                                <option value="250">После ремонта (от 250 ₽/м²)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block mb-4 font-medium">Площадь: <span id="area-val" class="text-cyan-600 font-bold">50</span> м²</label>
+                            <input type="range" id="area-range" min="20" max="300" value="50">
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 p-10 md:w-1/3 flex flex-col justify-center text-center border-l">
+                    <p class="text-gray-500 uppercase text-xs font-bold mb-2">Предварительная цена</p>
+                    <div class="text-4xl font-extrabold text-blue-900 mb-6"><span id="total-price">5000</span> ₽</div>
+                    <button class="bg-accent text-white py-4 px-6 rounded-xl font-bold hover:bg-cyan-500 transition shadow-lg">Заказать сейчас</button>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <div class="cards">
-    <div class="card">
-      <h3>🏠 Для дома</h3>
-      <p>Квартиры, дома, генеральная уборка</p>
-      <p><b>от 2000 ₽</b></p>
-    </div>
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-12 text-center">
+                <div data-aos="fade-up">
+                    <i class="fas fa-leaf text-4xl text-green-500 mb-6"></i>
+                    <h4 class="font-bold mb-4 text-xl">Эко-средства</h4>
+                    <p class="text-gray-500">Используем безопасную химию, которая не вредит детям и животным.</p>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-shield-alt text-4xl text-blue-600 mb-6"></i>
+                    <h4 class="font-bold mb-4 text-xl">Страхование</h4>
+                  <p class="text-gray-500">Несем полную материальную ответственность за ваше имущество.</p>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-clock text-4xl text-cyan-500 mb-6"></i>
+                    <h4 class="font-bold mb-4 text-xl">Пунктуальность</h4>
+                    <p class="text-gray-500">Приезжаем точно в назначенное время. Без опозданий.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div class="card">
-      <h3>🏢 Для бизнеса</h3>
-      <p>Офисы, коммерческие помещения</p>
-      <p><b>от 3000 ₽</b></p>
-    </div>
+    <section class="py-20 bg-gray-900 text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-16">Всего 4 шага к чистоте</h2>
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="relative">
+                    <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center mx-auto mb-6 font-bold text-xl">1</div>
+                    <h5 class="font-bold mb-2">Заявка</h5>
+                    <p class="text-gray-400 text-sm">Оставляете запрос на сайте или по телефону</p>
+                </div>
+                <div class="relative">
+                    <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center mx-auto mb-6 font-bold text-xl">2</div>
+                    <h5 class="font-bold mb-2">Оценка</h5>
+                    <p class="text-gray-400 text-sm">Рассчитываем точную стоимость и время</p>
+                </div>
+                <div class="relative">
+                    <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center mx-auto mb-6 font-bold text-xl">3</div>
+                    <h5 class="font-bold mb-2">Уборка</h5>
+                    <p class="text-gray-400 text-sm">Наша команда творит магию чистоты</p>
+                </div>
+                <div class="relative">
+                    <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center mx-auto mb-6 font-bold text-xl">4</div>
+                    <h5 class="font-bold mb-2">Оплата</h5>
+                    <p class="text-gray-400 text-sm">Принимаете работу и оплачиваете результат</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div class="card">
-      <h3>🧼 После ремонта</h3>
-      <p>Удаление строительной пыли</p>
-      <p><b>от 5000 ₽</b></p>
-    </div>
-  </div>
-</section>
+    <section id="contacts" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row gap-12">
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-bold text-blue-900 mb-8">Свяжитесь с нами</h2>
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <i class="fas fa-map-marker-alt text-cyan-600 mt-1"></i>
+                            <p>г. Тюмень, ул. Республики, 142, офис 305</p>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <i class="fas fa-phone text-cyan-600 mt-1"></i>
+                            <p>+7 (3452) 00-00-00</p>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <i class="fas fa-envelope text-cyan-600 mt-1"></i>
+                            <p>info@kombinat-chistoty.ru</p>
+                        </div>
+                    </div>
+                    <div class="flex space-x-4 mt-8">
+                        <a href="#" class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-900 hover:bg-blue-900 hover:text-white transition"><i class="fab fa-vk"></i></a>
+                        <a href="#" class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-900 hover:bg-blue-900 hover:text-white transition"><i class="fab fa-telegram-plane"></i></a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 rounded-3xl overflow-hidden shadow-lg h-64 md:h-auto min-h-[300px]">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2175.761044434255!2d65.5700!3d57.1500!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x43bbe269668d9047%3A0x64364020c6a382c2!2z0KLRjtC80LXQvdGMLCDQotGO0LzQtdC90YHQutCw0Y8g0L7QsdC7Lg!5e0!3m2!1sru!2sru!4v1620000000000!5m2!1sru!2sru" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- ПОЧЕМУ МЫ -->
-<section class="dark">
-  <h2>Почему выбирают нас</h2>
+    <footer class="bg-gray-100 py-10 border-t border-gray-200">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-gray-500 text-sm mb-4">© 2026 «Комбинат чистоты». Все права защищены. Тюмень.</p>
+            <div class="flex justify-center space-x-6 text-xs text-gray-400">
+                <a href="#" class="hover:text-blue-900">Политика конфиденциальности</a>
+                <a href="#" class="hover:text-blue-900">Публичная оферта</a>
+            </div>
+        </div>
+    </footer>
 
-  <div class="cards">
-    <div class="card">✔ Опытные клинеры</div>
-    <div class="card">✔ Профессиональная химия</div>
-    <div class="card">✔ Гарантия результата</div>
-    <div class="card">✔ Быстрый выезд</div>
-  </div>
-</section>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Инициализация анимаций
+        AOS.init({
+            duration: 800,
+            once: true
+        });
 
-<!-- КАК МЫ РАБОТАЕМ -->
-<section>
-  <h2>Как мы работаем</h2>
+        // Логика Калькулятора
+        const areaRange = document.getElementById('area-range');
+        const areaVal = document.getElementById('area-val');
+        const typeSelect = document.getElementById('cleaning-type');
+        const totalPrice = document.getElementById('total-price');
 
-  <div class="cards">
-    <div class="card">1. Заявка</div>
-    <div class="card">2. Расчёт</div>
-    <div class="card">3. Уборка</div>
-    <div class="card">4. Приём работы</div>
-  </div>
-</section>
+        function calculate() {
+            const pricePerMeter = parseInt(typeSelect.value);
+            const area = parseInt(areaRange.value);
+            areaVal.innerText = area;
+            totalPrice.innerText = (pricePerMeter * area).toLocaleString();
+        }
 
-<!-- ПОРТФОЛИО -->
-<section class="dark portfolio">
-  <h2>Наши работы</h2>
+        areaRange.addEventListener('input', calculate);
+        typeSelect.addEventListener('change', calculate);
 
-  <img src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac">
-  <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511">
-  <img src="https://images.unsplash.com/photo-1560185127-6ed189bf02f4">
-</section>
-
-<!-- КАЛЬКУЛЯТОР -->
-<section>
-  <h2>Калькулятор стоимости</h2>
-
-  <select id="type">
-    <option value="2000">Квартира</option>
-    <option value="3000">Офис</option>
-    <option value="5000">После ремонта</option>
-  </select>
-
-  <input type="number" id="area" placeholder="Площадь м²">
-
-  <br>
-
-  <button class="btn" onclick="calc()">Рассчитать</button>
-
-  <h3 id="result"></h3>
-</section>
-
-<!-- ОБРАТНАЯ СВЯЗЬ -->
-<section class="dark">
-  <h2>Оставьте заявку</h2>
-
-  <input type="text" placeholder="Ваше имя"><br>
-  <input type="tel" placeholder="Телефон"><br>
-
-  <a href="https://wa.me/79999999999" class="btn">Отправить</a>
-</section>
-
-<footer>
-  <p>Комбинат Чистоты © 2026</p>
-  <p>г. Тюмень</p>
-  <p>Телефон: +7 999 999 99 99</p>
-</footer>
-
-<script>
-function calc() {
-  let type = document.getElementById('type').value;
-  let area = document.getElementById('area').value;
-
-  if(area === "") {
-    document.getElementById('result').innerText = "Введите площадь";
-    return;
-  }
-
-  let total = type * (area / 50);
-  document.getElementById('result').innerText = "Примерная стоимость: " + Math.round(total) + " ₽";
-}
+        // Плавный скролл для ссылок
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
