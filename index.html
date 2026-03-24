@@ -1,72 +1,9 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Комбинат чистоты — Профессиональный клининг в Тюмени</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-    <style>
-        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-        
-        /* Стили для градиентов и кастомных элементов */
-        .hero-gradient {
-            background: linear-gradient(rgba(30, 58, 138, 0.7), rgba(30, 58, 138, 0.5)), 
-                        url('https://images.unsplash.com/photo-1581578731548-c64695cc6954?auto=format&fit=crop&q=80');
-            background-size: cover;
-            background-position: center;
-        }
-        
-        .accent-color { color: #06b6d4; }
-        .bg-accent { background-color: #06b6d4; }
-        
-        .card-hover:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        /* Ползунок калькулятора */
-        input[type=range] { appearance: none; width: 100%; height: 8px; background: #e5e7eb; border-radius: 5px; }
-        input[type=range]::-webkit-slider-thumb { appearance: none; width: 20px; height: 20px; background: #06b6d4; border-radius: 50%; cursor: pointer; }
-    </style>
-</head>
-<body class="bg-gray-50 text-slate-800">
-
-    <header class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <div class="w-10 h-10 bg-blue-900 rounded-lg flex items-center justify-center">
-                    <i class="fas fa-broom text-white text-xl"></i>
-                </div>
-                <span class="text-xl font-bold tracking-tight text-blue-900">Комбинат Чистоты</span>
-            </div>
-            <div class="hidden md:flex space-x-8 font-medium text-sm uppercase tracking-wider">
-                <a href="#about" class="hover:text-cyan-600 transition">О нас</a>
-                <a href="#services" class="hover:text-cyan-600 transition">Услуги</a>
-                <a href="#calc" class="hover:text-cyan-600 transition">Расчет</a>
-                <a href="#reviews" class="hover:text-cyan-600 transition">Отзывы</a>
-                <a href="#contacts" class="hover:text-cyan-600 transition">Контакты</a>
-            </div>
-            <a href="tel:+73452000000" class="hidden lg:block font-bold text-blue-900">+7 (3452) 00-00-00</a>
-        </nav>
-    </header>
-
-    <section class="hero-gradient h-screen flex items-center justify-center text-white pt-20">
-        <div class="container mx-auto px-6 text-center" data-aos="fade-up">
-            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
-                Безупречная чистота <br><span class="accent-color">в Тюмени</span> для дома и бизнеса
-            </h1>
-            <p class="text-lg md:text-xl mb-10 max-w-2xl mx-auto opacity-90">
+<p class="text-lg md:text-xl mb-10 max-w-2xl mx-auto opacity-90">
                 Профессиональный клининг любой сложности: от уютных квартир до торговых центров. 
                 Вернем блеск вашему пространству за 1 визит.
             </p>
             <div class="flex flex-col md:flex-row justify-center gap-4">
-                <a href="#calc" class="bg-accent hover:bg-cyan-500 text-white px-8 py-4 rounded-full font-bold transition transform hover:scale-105">
+                <a href="#calc" class="bg-accent text-white px-8 py-4 rounded-full font-bold transition transform hover:scale-105">
                     Рассчитать стоимость
                 </a>
                 <a href="#services" class="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white px-8 py-4 rounded-full font-bold transition">
@@ -75,7 +12,8 @@
             </div>
         </div>
     </section>
-  <section id="about" class="py-20 bg-white">
+
+    <section id="about" class="py-20 bg-white">
         <div class="container mx-auto px-6">
             <div class="flex flex-col md:flex-row items-center gap-12">
                 <div class="md:w-1/2" data-aos="fade-right">
@@ -88,11 +26,11 @@
                     </p>
                     <ul class="space-y-4 mb-8">
                         <li class="flex items-center space-x-3">
-                            <i class="fas fa-check-circle text-cyan-500"></i>
+                            <i class="fas fa-check-circle text-accent"></i>
                             <span>Более 1500 довольных клиентов</span>
                         </li>
                         <li class="flex items-center space-x-3">
-                            <i class="fas fa-check-circle text-cyan-500"></i>
+                            <i class="fas fa-check-circle text-accent"></i>
                             <span>Штат опытных клинеров со стажем от 3-х лет</span>
                         </li>
                     </ul>
@@ -122,41 +60,105 @@
                 <div class="h-1 w-20 bg-accent mx-auto"></div>
             </div>
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="bg-white p-8 rounded-2xl card-hover text-center" data-aos="zoom-in" data-aos-delay="100">
+                <div class="bg-white p-8 rounded-2xl card-hover text-center flex flex-col" data-aos="zoom-in" data-aos-delay="100">
                     <div class="w-16 h-16 bg-blue-50 text-blue-900 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl">
                         <i class="fas fa-home"></i>
                     </div>
                     <h3 class="font-bold mb-3">Уборка квартир</h3>
-                    <p class="text-sm text-gray-500 mb-6">Поддерживающая, генеральная или после ремонта.</p>
-                    <button class="text-cyan-600 font-semibold hover:underline">Подробнее</button>
+                    <p class="text-sm text-gray-500 mb-6 flex-grow">Поддерживающая, генеральная или после ремонта.</p>
+                    <button class="text-accent font-semibold hover:underline modal-open" data-modal="modal-flat">Подробнее</button>
                 </div>
-                <div class="bg-white p-8 rounded-2xl card-hover text-center" data-aos="zoom-in" data-aos-delay="200">
+                <div class="bg-white p-8 rounded-2xl card-hover text-center flex flex-col" data-aos="zoom-in" data-aos-delay="200">
                     <div class="w-16 h-16 bg-blue-50 text-blue-900 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl">
                         <i class="fas fa-couch"></i>
                     </div>
                     <h3 class="font-bold mb-3">Химчистка</h3>
-                    <p class="text-sm text-gray-500 mb-6">Бережная чистка мебели, ковров и матрасов на дому.</p>
-                  <button class="text-cyan-600 font-semibold hover:underline">Подробнее</button>
+                    <p class="text-sm text-gray-500 mb-6 flex-grow">Бережная чистка мебели, ковров и матрасов на дому.</p>
+                    <button class="text-accent font-semibold hover:underline modal-open" data-modal="modal-chem">Подробнее</button>
                 </div>
-                <div class="bg-white p-8 rounded-2xl card-hover text-center" data-aos="zoom-in" data-aos-delay="300">
+                <div class="bg-white p-8 rounded-2xl card-hover text-center flex flex-col" data-aos="zoom-in" data-aos-delay="300">
                     <div class="w-16 h-16 bg-blue-50 text-blue-900 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl">
                         <i class="fas fa-building"></i>
                     </div>
                     <h3 class="font-bold mb-3">Офисы и ТЦ</h3>
-                    <p class="text-sm text-gray-500 mb-6">Профессиональный уход за бизнес-пространствами.</p>
-                    <button class="text-cyan-600 font-semibold hover:underline">Подробнее</button>
+                    <p class="text-sm text-gray-500 mb-6 flex-grow">Профессиональный уход за бизнес-пространствами.</p>
+                    <button class="text-accent font-semibold hover:underline modal-open" data-modal="modal-office">Подробнее</button>
                 </div>
-                <div class="bg-white p-8 rounded-2xl card-hover text-center" data-aos="zoom-in" data-aos-delay="400">
+                <div class="bg-white p-8 rounded-2xl card-hover text-center flex flex-col" data-aos="zoom-in" data-aos-delay="400">
                     <div class="w-16 h-16 bg-blue-50 text-blue-900 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl">
                         <i class="fas fa-industry"></i>
                     </div>
                     <h3 class="font-bold mb-3">Производства</h3>
-                    <p class="text-sm text-gray-500 mb-6">Специфическая уборка цехов и складов.</p>
-                    <button class="text-cyan-600 font-semibold hover:underline">Подробнее</button>
+                    <p class="text-sm text-gray-500 mb-6 flex-grow">Специфическая уборка цехов и складов.</p>
+                    <button class="text-accent font-semibold hover:underline modal-open" data-modal="modal-ind">Подробнее</button>
                 </div>
             </div>
         </div>
     </section>
+
+    <div id="modal-flat" class="fixed inset-0 bg-black/50 z-[100] hidden items-center justify-center p-4 modal-container">
+        <div class="bg-white rounded-2xl max-w-2xl w-full p-8 shadow-2xl relative overflow-y-auto max-h-[90vh]">
+            <button class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 modal-close"><i class="fas fa-times text-xl"></i></button>
+            <h3 class="text-2xl font-bold text-blue-900 mb-6">Уборка квартир и домов в Тюмени</h3>
+            <p class="text-gray-600 mb-8">Мы предлагаем полный спектр услуг по уборке жилых помещений. Наши специалисты используют профессиональное оборудование и гипоаллергенные средства.</p>
+            <table class="w-full modal-table text-sm">
+                <thead><tr><th>Вид уборки</th><th>Что входит (примеры)</th><th>Цена (от)</th></tr></thead>
+                <tbody>
+                    <tr><td>Поддерживающая</td><td>Пыль, полы, сантехника</td><td>100 ₽/м²</td></tr>
+                    <tr><td>Генеральная</td><td>Влажная уборка всех поверхностей, окна, жир на кухне</td><td>180 ₽/м²</td></tr>
+                    <tr><td>После ремонта</td><td>Удаление строительной пыли, следов плиточного клея, краски</td><td>250 ₽/м²</td></tr>
+                    <tr><td>Мытьё окон</td><td>Стеклопакеты, рамы, подоконники</td><td>350 ₽/створка</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="modal-chem" class="fixed inset-0 bg-black/50 z-[100] hidden items-center justify-center p-4 modal-container">
+        <div class="bg-white rounded-2xl max-w-2xl w-full p-8 shadow-2xl relative overflow-y-auto max-h-[90vh]">
+            <button class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 modal-close"><i class="fas fa-times text-xl"></i></button>
+            <h3 class="text-2xl font-bold text-blue-900 mb-6">Химчистка мягкой мебели и ковров</h3>
+            <p class="text-gray-600 mb-8">Возвращаем первозданный вид вашей мебели и коврам. Удаляем пятна, запахи и пылевых клещей.</p>
+            <table class="w-full modal-table text-sm">
+                <thead><tr><th>Объект</th><th>Метод</th><th>Цена (от)</th></tr></thead>
+                <tbody>
+                    <tr><td>Диван (2-х местный)</td><td>Экстракторная чистка</td><td>1500 ₽</td></tr>
+                    <tr><td>Кресло</td><td>Экстракторная чистка</td><td>800 ₽</td></tr>
+                    <tr><td>Ковёр/Ковролин</td><td>Глубокая чистка</td><td>200 ₽/м²</td></tr>
+                    <tr><td>Стул (с мягкой спинкой)</td><td>Экстракторная чистка</td><td>300 ₽</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="modal-office" class="fixed inset-0 bg-black/50 z-[100] hidden items-center justify-center p-4 modal-container">
+        <div class="bg-white rounded-2xl max-w-2xl w-full p-8 shadow-2xl relative overflow-y-auto max-h-[90vh]">
+            <button class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 modal-close"><i class="fas fa-times text-xl"></i></button>
+            <h3 class="text-2xl font-bold text-blue-900 mb-6">Уборка офисов и торговых центров</h3>
+            <p class="text-gray-600 mb-8">Обеспечиваем чистоту и порядок в ваших бизнес-пространствах. Гибкий график работы, не мешающий рабочему процессу.</p>
+            <table class="w-full modal-table text-sm">
+                <thead><tr><th>Тип помещения</th><th>Периодичность</th><th>Цена (от)</th></tr></thead>
+                <tbody>
+                    <tr><td>Офис (до 100 м²)</td><td>Ежедневная/Поддерживающая</td><td>120 ₽/м²</td></tr>
+                    <tr><td>Офис (более 100 м²)</td><td>Генеральная</td><td>По договору</td></tr>
+                    <tr><td>Торговый центр</td><td>Поддерживающая/Ночная</td><td>По договору</td></tr>
+                    <tr><td>Уборка после мероприятий</td><td>Единоразовая</td><td>от 5000 ₽</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="modal-ind" class="fixed inset-0 bg-black/50 z-[100] hidden items-center justify-center p-4 modal-container">
+        <div class="bg-white rounded-2xl max-w-2xl w-full p-8 shadow-2xl relative overflow-y-auto max-h-[90vh]">
+            <button class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 modal-close"><i class="fas fa-times text-xl"></i></button>
+            <h3 class="text-2xl font-bold text-blue-900 mb-6">Уборка производственных помещений</h3>
+            <p class="text-gray-600 mb-8">Специализированная уборка цехов, складов и промышленных зон. Опыт работы с технологическим оборудованием.</p>
+            <table class="w-full modal-table text-sm">
+                <thead><tr><th>Тип помещения</th><th>Специфика</th><th>Цена (от)</th></tr></thead>
+                <tbody>
+                    <tr><td>Производственный цех</td><td>Удаление ГСМ, пыли, мытье полов</td><td>По договору</td></tr>
+                    <tr><td>Склад</td><td>Уборка стеллажей, полов</td><td>По договору</td></tr>
+                    <tr><td>Технические помещения</td><td>Генеральная уборка</td><td>По договору</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
     <section id="calc" class="py-20 bg-blue-900 text-white">
         <div class="container mx-auto px-6">
@@ -166,14 +168,14 @@
                     <div class="space-y-8">
                         <div>
                             <label class="block mb-4 font-medium">Тип уборки</label>
-                            <select id="cleaning-type" class="w-full p-3 border rounded-xl bg-gray-50 outline-none focus:border-cyan-500 transition">
+                            <select id="cleaning-type" class="w-full p-3 border rounded-xl bg-gray-50 outline-none focus:border-accent transition">
                                 <option value="100">Поддерживающая (от 100 ₽/м²)</option>
                                 <option value="180">Генеральная (от 180 ₽/м²)</option>
                                 <option value="250">После ремонта (от 250 ₽/м²)</option>
                             </select>
                         </div>
                         <div>
-                            <label class="block mb-4 font-medium">Площадь: <span id="area-val" class="text-cyan-600 font-bold">50</span> м²</label>
+                            <label class="block mb-4 font-medium">Площадь: <span id="area-val" class="text-accent font-bold">50</span> м²</label>
                             <input type="range" id="area-range" min="20" max="300" value="50">
                         </div>
                     </div>
@@ -181,7 +183,7 @@
                 <div class="bg-gray-50 p-10 md:w-1/3 flex flex-col justify-center text-center border-l">
                     <p class="text-gray-500 uppercase text-xs font-bold mb-2">Предварительная цена</p>
                     <div class="text-4xl font-extrabold text-blue-900 mb-6"><span id="total-price">5000</span> ₽</div>
-                    <button class="bg-accent text-white py-4 px-6 rounded-xl font-bold hover:bg-cyan-500 transition shadow-lg">Заказать сейчас</button>
+                    <button class="bg-accent text-white py-4 px-6 rounded-xl font-bold transition shadow-lg">Заказать сейчас</button>
                 </div>
             </div>
         </div>
@@ -198,10 +200,10 @@
                 <div data-aos="fade-up" data-aos-delay="100">
                     <i class="fas fa-shield-alt text-4xl text-blue-600 mb-6"></i>
                     <h4 class="font-bold mb-4 text-xl">Страхование</h4>
-                  <p class="text-gray-500">Несем полную материальную ответственность за ваше имущество.</p>
+                    <p class="text-gray-500">Несем полную материальную ответственность за ваше имущество.</p>
                 </div>
                 <div data-aos="fade-up" data-aos-delay="200">
-                    <i class="fas fa-clock text-4xl text-cyan-500 mb-6"></i>
+                    <i class="fas fa-clock text-4xl text-accent mb-6"></i>
                     <h4 class="font-bold mb-4 text-xl">Пунктуальность</h4>
                     <p class="text-gray-500">Приезжаем точно в назначенное время. Без опозданий.</p>
                 </div>
@@ -230,7 +232,91 @@
                 </div>
                 <div class="relative">
                     <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center mx-auto mb-6 font-bold text-xl">4</div>
-                    <h5 class="font-bold mb-2">Оплата</h5>
+                    <!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Комбинат чистоты — Профессиональный клининг в Тюмени</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        
+        /* Стили для градиентов и кастомных элементов */
+        .hero-gradient {
+            background: linear-gradient(rgba(30, 58, 138, 0.7), rgba(30, 58, 138, 0.5)), 
+                        url('https://images.unsplash.com/photo-1581578731548-c64695cc6954?auto=format&fit=crop&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        /* НОВЫЙ Пастельно-красный акцентный цвет */
+        .accent-color { color: #E57373; }
+        .bg-accent { background-color: #E57373; }
+        .bg-accent:hover { background-color: #EF5350; } /* Чуть темнее при наведении */
+        .border-accent { border-color: #E57373; }
+        .focus\:border-accent:focus { border-color: #E57373; }
+        .text-accent { color: #E57373; }
+        .text-accent-hover:hover { color: #EF5350; }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Ползунок калькулятора */
+        input[type=range] { appearance: none; width: 100%; height: 8px; background: #e5e7eb; border-radius: 5px; }
+        input[type=range]::-webkit-slider-thumb { appearance: none; width: 20px; height: 20px; background: #E57373; border-radius: 50%; cursor: pointer; }
+
+        /* Стиль для текста в таблицах модальных окон */
+        .modal-table td, .modal-table th {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e5e7eb;
+            text-align: left;
+        }
+        .modal-table th {
+            background-color: #f9fafb;
+            font-weight: 600;
+            color: #1e3a8a;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-slate-800">
+
+    <header class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="w-10 h-10 bg-blue-900 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-broom text-white text-xl"></i>
+                </div>
+                <span class="text-xl font-bold tracking-tight text-blue-900">Комбинат Чистоты</span>
+            </div>
+            <div class="hidden md:flex space-x-8 font-medium text-sm uppercase tracking-wider">
+                <a href="#about" class="hover:text-accent-hover transition">О нас</a>
+                <a href="#services" class="hover:text-accent-hover transition">Услуги</a>
+                <a href="#calc" class="hover:text-accent-hover transition">Расчет</a>
+                <a href="#reviews" class="hover:text-accent-hover transition">Отзывы</a>
+                <a href="#contacts" class="hover:text-accent-hover transition">Контакты</a>
+            </div>
+            <a href="tel:+73452000000" class="hidden lg:block font-bold text-blue-900">+7 (3452) 00-00-00</a>
+        </nav>
+    </header>
+
+    <section class="hero-gradient h-screen flex items-center justify-center text-white pt-20">
+        <div class="container mx-auto px-6 text-center" data-aos="fade-up">
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
+                Безупречная чистота <br><span class="accent-color">в Тюмени</span> для дома и бизнеса
+            </h1>
+            <h5 class="font-bold mb-2">Оплата</h5>
                     <p class="text-gray-400 text-sm">Принимаете работу и оплачиваете результат</p>
                 </div>
             </div>
@@ -244,15 +330,15 @@
                     <h2 class="text-3xl font-bold text-blue-900 mb-8">Свяжитесь с нами</h2>
                     <div class="space-y-6">
                         <div class="flex items-start space-x-4">
-                            <i class="fas fa-map-marker-alt text-cyan-600 mt-1"></i>
+                            <i class="fas fa-map-marker-alt text-accent mt-1"></i>
                             <p>г. Тюмень, ул. Республики, 142, офис 305</p>
                         </div>
                         <div class="flex items-start space-x-4">
-                            <i class="fas fa-phone text-cyan-600 mt-1"></i>
+                            <i class="fas fa-phone text-accent mt-1"></i>
                             <p>+7 (3452) 00-00-00</p>
                         </div>
                         <div class="flex items-start space-x-4">
-                            <i class="fas fa-envelope text-cyan-600 mt-1"></i>
+                            <i class="fas fa-envelope text-accent mt-1"></i>
                             <p>info@kombinat-chistoty.ru</p>
                         </div>
                     </div>
@@ -299,16 +385,58 @@
             totalPrice.innerText = (pricePerMeter * area).toLocaleString();
         }
 
-        areaRange.addEventListener('input', calculate);
-        typeSelect.addEventListener('change', calculate);
+        if (areaRange && typeSelect) {
+            areaRange.addEventListener('input', calculate);
+            typeSelect.addEventListener('change', calculate);
+        }
 
         // Плавный скролл для ссылок
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                document.
+                    querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
+            });
+        });
+
+        // Логика Модальных окон
+        const modalOpens = document.querySelectorAll('.modal-open');
+        const modalCloses = document.querySelectorAll('.modal-close');
+        const modals = document.querySelectorAll('.modal-container');
+
+        modalOpens.forEach(button => {
+            button.addEventListener('click', function() {
+                const modalId = this.getAttribute('data-modal');
+                const modal = document.getElementById(modalId);
+                if (modal) {
+                    modal.classList.remove('hidden');
+                    modal.classList.add('flex');
+                    document.body.classList.add('overflow-hidden'); // Запрет скролла фона
+                }
+            });
+        });
+
+        modalCloses.forEach(button => {
+            button.addEventListener('click', function() {
+                const modal = this.closest('.modal-container');
+                if (modal) {
+                    modal.classList.add('hidden');
+                    modal.classList.remove('flex');
+                    document.body.classList.remove('overflow-hidden'); // Разрешение скролла
+                }
+            });
+        });
+
+        // Закрытие по клику вне окна
+        modals.forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.add('hidden');
+                    this.classList.remove('flex');
+                    document.body.classList.remove('overflow-hidden');
+                }
             });
         });
     </script>
