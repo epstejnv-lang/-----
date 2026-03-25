@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -12,7 +13,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <!-- Подключаем стили анимаций AOS-like (плавное появление) реализуем кастомно через CSS + Intersection Observer -->
   
   <style>
     /* ---------- ГЛОБАЛЬНЫЕ СТИЛИ + ГЕОМЕТРИЧЕСКИЙ ДИЗАЙН ---------- */
@@ -316,7 +316,7 @@
   </div>
 </section>
 
-<!-- ==================== УСЛУГИ ==================== -->
+<!-- ==================== УСЛУГИ (исправлены иконки) ==================== -->
 <section id="services" class="py-5 bg-light">
   <div class="container">
     <div class="text-center mb-5 fade-up">
@@ -324,7 +324,7 @@
       <p class="lead text-secondary">Выберите идеальный вариант для вашего объекта</p>
     </div>
     <div class="row g-4">
-      <!-- услуга 1 -->
+      <!-- услуга 1: уборка квартир и домов -->
       <div class="col-md-6 col-lg-3 fade-up">
         <div class="service-card card p-4 text-center h-100">
           <div class="service-icon"><i class="bi bi-house-door-fill"></i></div>
@@ -333,14 +333,16 @@
           <button class="btn btn-sm btn-outline-red mt-auto w-100" data-bs-toggle="modal" data-bs-target="#callbackModal">Заказать</button>
         </div>
       </div>
+      <!-- услуга 2: химчистка (исправлена иконка на bi-droplet-fill) -->
       <div class="col-md-6 col-lg-3 fade-up">
         <div class="service-card card p-4 text-center h-100">
-          <div class="service-icon"><i class="bi bi-sofa-fill"></i></div>
+          <div class="service-icon"><i class="bi bi-droplet-fill"></i></div>
           <h5 class="fw-bold mt-3">Химчистка</h5>
           <p class="small">Ковры, диваны, кресла, шторы. Выведение пятен. От 2200₽.</p>
           <button class="btn btn-sm btn-outline-red mt-auto w-100" data-bs-toggle="modal" data-bs-target="#callbackModal">Заказать</button>
         </div>
       </div>
+      <!-- услуга 3: уборка ЖК, офисов, ТЦ -->
       <div class="col-md-6 col-lg-3 fade-up">
         <div class="service-card card p-4 text-center h-100">
           <div class="service-icon"><i class="bi bi-building"></i></div>
@@ -349,9 +351,10 @@
           <button class="btn btn-sm btn-outline-red mt-auto w-100" data-bs-toggle="modal" data-bs-target="#callbackModal">Рассчитать</button>
         </div>
       </div>
+      <!-- услуга 4: производственные помещения (исправлена иконка на bi-building-gear) -->
       <div class="col-md-6 col-lg-3 fade-up">
         <div class="service-card card p-4 text-center h-100">
-          <div class="service-icon"><i class="bi bi-factory"></i></div>
+          <div class="service-icon"><i class="bi bi-building-gear"></i></div>
           <h5 class="fw-bold mt-3">Производственные помещения</h5>
           <p class="small">Складские цеха, промзоны. Профессиональное оборудование. Договорная цена.</p>
           <button class="btn btn-sm btn-outline-red mt-auto w-100" data-bs-toggle="modal" data-bs-target="#callbackModal">Заявка</button>
@@ -434,7 +437,7 @@
   </div>
 </section>
 
-<!-- ==================== СЛАЙДЕР ОТЗЫВОВ ==================== -->
+<!-- ==================== СЛАЙДЕР ОТЗЫВОВ (добавлено больше слайдов) ==================== -->
 <section id="reviews" class="py-5 bg-light">
   <div class="container">
     <h2 class="fw-bold text-center mb-4">Клиенты о нас</h2>
@@ -462,6 +465,31 @@
             <p class="mt-2 fs-5">«Убирают офис раз в неделю. Всегда вовремя, качественно, приятные цены для юр. лиц».</p>
             <h6 class="fw-bold mt-3">ООО «Технолайн»</h6>
             <span class="badge bg-secondary">бизнес</span>
+          </div>
+        </div>
+        <!-- Дополнительные отзывы (4) -->
+        <div class="carousel-item">
+          <div class="review-card mx-auto" style="max-width: 700px;">
+            <i class="bi bi-chat-quote fs-1 text-danger opacity-50"></i>
+            <p class="mt-2 fs-5">«Заказывали уборку коттеджа после стройки — справились за 4 часа. Результат безупречный! Очень довольны.»</p>
+            <h6 class="fw-bold mt-3">Елена К., частный дом</h6>
+            <span class="badge bg-secondary">частный клиент</span>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="review-card mx-auto" style="max-width: 700px;">
+            <i class="bi bi-chat-quote fs-1 text-danger opacity-50"></i>
+            <p class="mt-2 fs-5">«Профессиональный подход к уборке ТЦ. График соблюдается, персонал вежливый. Рекомендуем как надёжного партнёра.»</p>
+            <h6 class="fw-bold mt-3">УК «Гранд-Молл»</h6>
+            <span class="badge bg-secondary">корпоративный клиент</span>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="review-card mx-auto" style="max-width: 700px;">
+            <i class="bi bi-chat-quote fs-1 text-danger opacity-50"></i>
+            <p class="mt-2 fs-5">«Быстро, качественно, использовали экосредства — для нашей аллергика дочки это важно. Спасибо!»</p>
+            <h6 class="fw-bold mt-3">Алексей П.</h6>
+            <span class="badge bg-secondary">частный клиент</span>
           </div>
         </div>
       </div>
@@ -593,7 +621,7 @@
     });
   }
 
-  // лёгкий параллакс для hero (движение фона при скролле - легкий эффект)
+  // лёгкий параллакс для hero (движение фона при скролле)
   window.addEventListener('scroll', () => {
     const hero = document.querySelector('.hero-bg');
     if(hero) {
@@ -603,7 +631,6 @@
   });
 </script>
 
-<!-- Вспомогательные стартовые классы для fade-up -->
 <style>
   .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.6s ease; }
   .fade-up.visible { opacity: 1; transform: translateY(0); }
@@ -617,3 +644,4 @@
 </style>
 </body>
 </html>
+```
