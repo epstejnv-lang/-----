@@ -1,16 +1,18 @@
-```html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>Комбинат чистоты — клининг в Тюмени | Уборка квартир, офисов, производств</title>
-  <!-- Meta SEO -->
   <meta name="description" content="Профессиональная уборка в Тюмени от «Комбинат чистоты». Химчистка, клининг квартир, домов, офисов, ЖК и производств. Рассчитайте стоимость онлайн. Гарантия чистоты!">
-  <meta name="keywords" content="клининг Тюмень, уборка квартир, химчистка, уборка офисов, клининговая компания">
-
-  <!-- Google Fonts + Bootstrap 5 + Bootstrap Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  
+  <!-- Preconnect для быстрой загрузки внешних ресурсов -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  
+  <!-- Предзагрузка критического CSS (шрифты) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   
@@ -58,11 +60,6 @@
       height: 34.64px;
       background: rgba(224, 58, 58, 0.1);
       clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-    }
-    .line-burst {
-      background: repeating-linear-gradient(45deg, rgba(224,58,58,0.15) 0px, rgba(224,58,58,0.15) 2px, transparent 2px, transparent 8px);
-      width: 100%;
-      height: 100%;
     }
 
     /* Общие стили */
@@ -127,7 +124,7 @@
       transform: translateY(0);
     }
 
-    /* Слайдер отзывов кастом */
+    /* Слайдер отзывов */
     .review-carousel .carousel-item {
       padding: 2rem;
     }
@@ -168,14 +165,30 @@
       color: transparent;
     }
 
-    /* hero background */
+    /* hero background - быстрый цвет-заполнитель */
     .hero-bg {
-      background: linear-gradient(107deg, rgba(255,255,255,0.92) 0%, rgba(255,245,245,0.85) 100%), url('https://images.pexels.com/photos/4107283/pexels-photo-4107283.jpeg?auto=compress&cs=tinysrgb&w=1600');
+      background: linear-gradient(107deg, rgba(255,255,255,0.92) 0%, rgba(255,245,245,0.85) 100%), #f5f0f0;
       background-size: cover;
       background-position: center;
+      transition: background-image 0.2s;
+    }
+    /* Фоновое изображение загружается через отдельный элемент, чтобы не блокировать рендеринг */
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('https://images.pexels.com/photos/4107283/pexels-photo-4107283.jpeg?auto=compress&cs=tinysrgb&w=1200&fit=crop');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.3;
+      z-index: -1;
+      pointer-events: none;
     }
 
-    /* кнопки мессенджеров в шапке */
+    /* кнопки мессенджеров */
     .messenger-btn {
       display: inline-flex;
       align-items: center;
@@ -254,7 +267,6 @@
         <li class="nav-item"><a class="nav-link" href="#contacts">Контакты</a></li>
       </ul>
       <div class="d-flex gap-2 align-items-center">
-        <!-- Кнопки мессенджеров (видимые и кликабельные) -->
         <a href="#" class="messenger-btn tg" target="_blank"><i class="bi bi-telegram fs-5"></i><span>Telegram</span></a>
         <a href="#" class="messenger-btn max" target="_blank"><i class="bi bi-chat-dots fs-5"></i><span>MAX</span></a>
         <button class="btn btn-sm btn-red rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#callbackModal">Заявка</button>
@@ -269,7 +281,7 @@
   <div class="geo-shape bottom-0 start-0 mb-5 ms-5"><div class="hexagon"></div></div>
   <div class="container py-5">
     <div class="row align-items-center g-5">
-      <div class="col-lg-7" data-aos="fade-up">
+      <div class="col-lg-7 fade-up">
         <h1 class="display-3 fw-bold mb-3 hero-title">Чистота, которая <span class="text-danger">вдохновляет</span></h1>
         <p class="lead fs-4 text-secondary">Уборка квартир, офисов, ЖК и производств в Тюмени. Гарантия идеального результата — 100%.</p>
         <div class="d-flex flex-wrap gap-3 mt-4">
@@ -282,9 +294,9 @@
           <span><i class="bi bi-check-circle-fill text-danger"></i> 100% гарантия</span>
         </div>
       </div>
-      <div class="col-lg-5 d-none d-lg-block">
+      <div class="col-lg-5 d-none d-lg-block fade-up">
         <div class="bg-white p-3 rounded-4 shadow-lg">
-          <img src="https://images.pexels.com/photos/4198294/pexels-photo-4198294.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Команда клининга" class="img-fluid rounded-4" loading="lazy">
+          <img src="https://images.pexels.com/photos/4198294/pexels-photo-4198294.jpeg?auto=compress&cs=tinysrgb&w=800&fit=crop" alt="Команда клининга" class="img-fluid rounded-4" loading="lazy" width="600" height="400">
         </div>
       </div>
     </div>
@@ -308,7 +320,7 @@
       </div>
       <div class="col-md-6 fade-up">
         <div class="position-relative">
-          <img src="https://images.pexels.com/photos/4239032/pexels-photo-4239032.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Сертификаты" class="img-fluid rounded-4 shadow" loading="lazy">
+          <img src="https://images.pexels.com/photos/4239032/pexels-photo-4239032.jpeg?auto=compress&cs=tinysrgb&w=800&fit=crop" alt="Сертификаты" class="img-fluid rounded-4 shadow" loading="lazy" width="600" height="400">
           <div class="geo-shape" style="bottom: -20px; right: -20px;"><div class="hexagon"></div></div>
         </div>
       </div>
@@ -316,7 +328,7 @@
   </div>
 </section>
 
-<!-- ==================== УСЛУГИ (исправлены иконки) ==================== -->
+<!-- ==================== УСЛУГИ ==================== -->
 <section id="services" class="py-5 bg-light">
   <div class="container">
     <div class="text-center mb-5 fade-up">
@@ -324,7 +336,6 @@
       <p class="lead text-secondary">Выберите идеальный вариант для вашего объекта</p>
     </div>
     <div class="row g-4">
-      <!-- услуга 1: уборка квартир и домов -->
       <div class="col-md-6 col-lg-3 fade-up">
         <div class="service-card card p-4 text-center h-100">
           <div class="service-icon"><i class="bi bi-house-door-fill"></i></div>
@@ -333,7 +344,6 @@
           <button class="btn btn-sm btn-outline-red mt-auto w-100" data-bs-toggle="modal" data-bs-target="#callbackModal">Заказать</button>
         </div>
       </div>
-      <!-- услуга 2: химчистка (исправлена иконка на bi-droplet-fill) -->
       <div class="col-md-6 col-lg-3 fade-up">
         <div class="service-card card p-4 text-center h-100">
           <div class="service-icon"><i class="bi bi-droplet-fill"></i></div>
@@ -342,7 +352,6 @@
           <button class="btn btn-sm btn-outline-red mt-auto w-100" data-bs-toggle="modal" data-bs-target="#callbackModal">Заказать</button>
         </div>
       </div>
-      <!-- услуга 3: уборка ЖК, офисов, ТЦ -->
       <div class="col-md-6 col-lg-3 fade-up">
         <div class="service-card card p-4 text-center h-100">
           <div class="service-icon"><i class="bi bi-building"></i></div>
@@ -351,7 +360,6 @@
           <button class="btn btn-sm btn-outline-red mt-auto w-100" data-bs-toggle="modal" data-bs-target="#callbackModal">Рассчитать</button>
         </div>
       </div>
-      <!-- услуга 4: производственные помещения (исправлена иконка на bi-building-gear) -->
       <div class="col-md-6 col-lg-3 fade-up">
         <div class="service-card card p-4 text-center h-100">
           <div class="service-icon"><i class="bi bi-building-gear"></i></div>
@@ -418,8 +426,8 @@
       <div class="col-md-6 fade-up">
         <div class="portfolio-item bg-light rounded-4 p-3">
           <div class="row g-2">
-            <div class="col-6"><img src="https://images.pexels.com/photos/4107285/pexels-photo-4107285.jpeg?auto=compress&cs=tinysrgb&w=400" class="img-fluid rounded-3" loading="lazy" alt="до"></div>
-            <div class="col-6"><img src="https://images.pexels.com/photos/4107306/pexels-photo-4107306.jpeg?auto=compress&cs=tinysrgb&w=400" class="img-fluid rounded-3" loading="lazy" alt="после"></div>
+            <div class="col-6"><img src="https://images.pexels.com/photos/4107285/pexels-photo-4107285.jpeg?auto=compress&cs=tinysrgb&w=600&fit=crop" class="img-fluid rounded-3" loading="lazy" alt="до" width="300" height="200"></div>
+            <div class="col-6"><img src="https://images.pexels.com/photos/4107306/pexels-photo-4107306.jpeg?auto=compress&cs=tinysrgb&w=600&fit=crop" class="img-fluid rounded-3" loading="lazy" alt="после" width="300" height="200"></div>
           </div>
           <p class="mt-3 fw-semibold">Уборка квартиры после ремонта</p>
         </div>
@@ -427,8 +435,8 @@
       <div class="col-md-6 fade-up">
         <div class="portfolio-item bg-light rounded-4 p-3">
           <div class="row g-2">
-            <div class="col-6"><img src="https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg?auto=compress&cs=tinysrgb&w=400" class="img-fluid rounded-3" loading="lazy" alt="до"></div>
-            <div class="col-6"><img src="https://images.pexels.com/photos/1350789/pexels-photo-1350789.jpeg?auto=compress&cs=tinysrgb&w=400" class="img-fluid rounded-3" loading="lazy" alt="после"></div>
+            <div class="col-6"><img src="https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg?auto=compress&cs=tinysrgb&w=600&fit=crop" class="img-fluid rounded-3" loading="lazy" alt="до" width="300" height="200"></div>
+            <div class="col-6"><img src="https://images.pexels.com/photos/1350789/pexels-photo-1350789.jpeg?auto=compress&cs=tinysrgb&w=600&fit=crop" class="img-fluid rounded-3" loading="lazy" alt="после" width="300" height="200"></div>
           </div>
           <p class="mt-3 fw-semibold">Химчистка офисного ковролина</p>
         </div>
@@ -437,7 +445,7 @@
   </div>
 </section>
 
-<!-- ==================== СЛАЙДЕР ОТЗЫВОВ (добавлено больше слайдов) ==================== -->
+<!-- ==================== СЛАЙДЕР ОТЗЫВОВ (расширен) ==================== -->
 <section id="reviews" class="py-5 bg-light">
   <div class="container">
     <h2 class="fw-bold text-center mb-4">Клиенты о нас</h2>
@@ -467,7 +475,6 @@
             <span class="badge bg-secondary">бизнес</span>
           </div>
         </div>
-        <!-- Дополнительные отзывы (4) -->
         <div class="carousel-item">
           <div class="review-card mx-auto" style="max-width: 700px;">
             <i class="bi bi-chat-quote fs-1 text-danger opacity-50"></i>
@@ -572,7 +579,7 @@
   </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" defer></script>
 <script>
   // Анимация появления при скролле (Intersection Observer)
   const fadeElements = document.querySelectorAll('.fade-up');
@@ -609,7 +616,7 @@
   calcBtn.addEventListener('click', calcPrice);
   calcPrice();
 
-  // Обработка формы обратной связи (имитация)
+  // Обработка формы обратной связи
   const formModal = document.getElementById('callbackForm');
   if(formModal) {
     formModal.addEventListener('submit', (e) => {
@@ -620,15 +627,6 @@
       formModal.reset();
     });
   }
-
-  // лёгкий параллакс для hero (движение фона при скролле)
-  window.addEventListener('scroll', () => {
-    const hero = document.querySelector('.hero-bg');
-    if(hero) {
-      let scrolled = window.scrollY;
-      hero.style.backgroundPositionY = `${scrolled * 0.2}px`;
-    }
-  });
 </script>
 
 <style>
@@ -644,4 +642,3 @@
 </style>
 </body>
 </html>
-```
