@@ -124,18 +124,77 @@
       transform: translateY(0);
     }
 
-    /* Слайдер отзывов */
-    .review-carousel .carousel-item {
-      padding: 2rem;
-    }
-    .review-card {
-      background: var(--gray-light);
-      border-radius: 32px;
-      padding: 2rem;
-      box-shadow: var(--shadow-sm);
-      border-left: 5px solid var(--red-main);
-    }
-
+    /* Стили для слайдера портфолио */
+.portfolio-slider {
+  max-width: 1200px;
+  margin: 0 auto;
+  border-radius: 32px;
+  overflow: hidden;
+  box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.15);
+  background: #fff;
+  position: relative;
+}
+.portfolio-image-wrapper {
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.portfolio-image-wrapper img {
+  width: 100%;
+  height: auto;
+  max-height: 620px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.carousel-item:hover .portfolio-image-wrapper img {
+  transform: scale(1.02);
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: var(--red-main);
+  border-radius: 50%;
+  padding: 1.2rem;
+  background-size: 50%;
+  transition: all 0.2s ease;
+  opacity: 0.9;
+}
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover {
+  background-color: var(--red-deep);
+  transform: scale(1.05);
+  opacity: 1;
+}
+.carousel-indicators {
+  bottom: 20px;
+}
+.carousel-indicators button {
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.6);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin: 0 6px;
+  border: none;
+  transition: all 0.2s;
+}
+.carousel-indicators .active {
+  background-color: var(--red-main);
+  transform: scale(1.2);
+}
+@media (max-width: 768px) {
+  .portfolio-image-wrapper img {
+    max-height: 400px;
+  }
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    padding: 0.8rem;
+  }
+  .carousel-indicators button {
+    width: 8px;
+    height: 8px;
+  }
+}
     /* портфолио */
     .portfolio-item {
       overflow: hidden;
@@ -419,17 +478,25 @@
 </section>
 
 <!-- ==================== ПОРТФОЛИО — СЛАЙДЕР С ФОТОГРАФИЯМИ КОМАНДЫ ==================== -->
-<section id="portfolio" class="py-5 bg-white">
+<section id="portfolio" class="py-5 position-relative overflow-hidden">
+  <!-- Декоративные геометрические элементы (в стиле сайта) -->
+  <div class="geo-shape top-0 start-0 mt-5 ms-5 opacity-25">
+    <div class="hexagon"></div>
+  </div>
+  <div class="geo-shape bottom-0 end-0 mb-5 me-5 opacity-25">
+    <div class="triangle" style="transform: rotate(180deg);"></div>
+  </div>
+
   <div class="container">
     <div class="text-center mb-5 fade-up">
       <h2 class="fw-bold">Наша <span class="text-danger">команда в работе</span></h2>
-      <p class="lead text-secondary">Реальные кадры с объектов — профессионализм в действии</p>
+      <p class="lead text-secondary">Профессионализм и внимание к каждой детали</p>
     </div>
 
     <div id="teamSlider" class="carousel slide portfolio-slider" data-bs-ride="carousel">
       <!-- Индикаторы (точки) для 10 слайдов -->
       <div class="carousel-indicators">
-        <button type="button" data-bs-target="#teamSlider" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Слайд 1"></button>
+        <button type="button" data-bs-target="#teamSlider" data-bs-slide-to="0" class="active" aria-label="Слайд 1"></button>
         <button type="button" data-bs-target="#teamSlider" data-bs-slide-to="1" aria-label="Слайд 2"></button>
         <button type="button" data-bs-target="#teamSlider" data-bs-slide-to="2" aria-label="Слайд 3"></button>
         <button type="button" data-bs-target="#teamSlider" data-bs-slide-to="3" aria-label="Слайд 4"></button>
@@ -441,56 +508,56 @@
         <button type="button" data-bs-target="#teamSlider" data-bs-slide-to="9" aria-label="Слайд 10"></button>
       </div>
 
-      <!-- Слайды (10 фото) -->
+      <!-- Слайды (только фото, без подписей) -->
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <div class="portfolio-card-wrapper">
-            <img src="https://epstejnv-lang.github.io/-----/images/1.паркинг.jpg" alt="Команда клининга" loading="lazy">
+          <div class="portfolio-image-wrapper">
+            <img src="https://images.pexels.com/photos/4198294/pexels-photo-4198294.jpeg?auto=compress&cs=tinysrgb&w=1600&fit=crop" class="d-block w-100" alt="Команда клининга" loading="lazy">
           </div>
         </div>
         <div class="carousel-item">
-          <div class="portfolio-card-wrapper">
-            <img src="https://epstejnv-lang.github.io/-----/images/parking2.jpeg" class="d-block w-100" alt="Уборка квартиры" loading="lazy">
+          <div class="portfolio-image-wrapper">
+            <img src="https://images.pexels.com/photos/4107285/pexels-photo-4107285.jpeg?auto=compress&cs=tinysrgb&w=1600&fit=crop" class="d-block w-100" alt="Уборка квартиры" loading="lazy">
           </div>
         </div>
         <div class="carousel-item">
-          <div class="portfolio-card-wrapper">
-            <img src="https://epstejnv-lang.github.io/-----/images/тц.jpg" alt="Чистота в деталях" loading="lazy">
+          <div class="portfolio-image-wrapper">
+            <img src="https://images.pexels.com/photos/4107306/pexels-photo-4107306.jpeg?auto=compress&cs=tinysrgb&w=1600&fit=crop" class="d-block w-100" alt="Чистота в деталях" loading="lazy">
           </div>
         </div>
         <div class="carousel-item">
-          <div class="portfolio-card-wrapper">
-            <img src="https://epstejnv-lang.github.io/-----/images/яхта.jpg" class="d-block w-100" alt="Химчистка ковров" loading="lazy">
+          <div class="portfolio-image-wrapper">
+            <img src="https://images.pexels.com/photos/1350789/pexels-photo-1350789.jpeg?auto=compress&cs=tinysrgb&w=1600&fit=crop" class="d-block w-100" alt="Химчистка ковров" loading="lazy">
           </div>
         </div>
         <div class="carousel-item">
-          <div class="portfolio-card-wrapper">
-            <img src="https://epstejnv-lang.github.io/-----/images/дезинсекция.png" class="d-block w-100" alt="Уборка офиса" loading="lazy">
+          <div class="portfolio-image-wrapper">
+            <img src="https://images.pexels.com/photos/4491458/pexels-photo-4491458.jpeg?auto=compress&cs=tinysrgb&w=1600&fit=crop" class="d-block w-100" alt="Уборка офиса" loading="lazy">
           </div>
         </div>
         <div class="carousel-item">
-          <div class="portfolio-card-wrapper">
-            <img src="https://epstejnv-lang.github.io/-----/images/kover.jpg" class="d-block w-100" alt="Чистый диван" loading="lazy">
+          <div class="portfolio-image-wrapper">
+            <img src="https://images.pexels.com/photos/4107305/pexels-photo-4107305.jpeg?auto=compress&cs=tinysrgb&w=1600&fit=crop" class="d-block w-100" alt="Чистый диван" loading="lazy">
           </div>
         </div>
         <div class="carousel-item">
-          <div class="portfolio-card-wrapper">
-            <img src="https://epstejnv-lang.github.io/-----/images/снег.jpg" class="d-block w-100" alt="Профессиональное оборудование" loading="lazy">
+          <div class="portfolio-image-wrapper">
+            <img src="https://images.pexels.com/photos/4107296/pexels-photo-4107296.jpeg?auto=compress&cs=tinysrgb&w=1600&fit=crop" class="d-block w-100" alt="Профессиональное оборудование" loading="lazy">
           </div>
         </div>
         <div class="carousel-item">
-          <div class="portfolio-card-wrapper">
-            <img src="https://epstejnv-lang.github.io/-----/images/okna.jpeg" class="d-block w-100" alt="Сертифицированные средства" loading="lazy">
+          <div class="portfolio-image-wrapper">
+            <img src="https://images.pexels.com/photos/4239032/pexels-photo-4239032.jpeg?auto=compress&cs=tinysrgb&w=1600&fit=crop" class="d-block w-100" alt="Сертифицированные средства" loading="lazy">
           </div>
         </div>
         <div class="carousel-item">
-          <div class="portfolio-card-wrapper">
-            <img src="https://epstejnv-lang.github.io/-----/images/косилка.png" class="d-block w-100" alt="Команда профессионалов" loading="lazy">
+          <div class="portfolio-image-wrapper">
+            <img src="https://images.pexels.com/photos/4107283/pexels-photo-4107283.jpeg?auto=compress&cs=tinysrgb&w=1600&fit=crop" class="d-block w-100" alt="Команда профессионалов" loading="lazy">
           </div>
         </div>
         <div class="carousel-item">
-          <div class="portfolio-card-wrapper">
-            <img src="https://epstejnv-lang.github.io/-----/images/ремонт.png" class="d-block w-100" alt="Результат работы" loading="lazy">
+          <div class="portfolio-image-wrapper">
+            <img src="https://images.pexels.com/photos/4107287/pexels-photo-4107287.jpeg?auto=compress&cs=tinysrgb&w=1600&fit=crop" class="d-block w-100" alt="Результат работы" loading="lazy">
           </div>
         </div>
       </div>
