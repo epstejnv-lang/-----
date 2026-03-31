@@ -627,19 +627,27 @@
   </div>
 </footer>
 
-<!-- Модальное окно обратной связи -->
-<div class="modal fade" id="callbackModal" tabindex="-1">
+<!-- Модальное окно обратной связи (рабочая форма с Formspree) -->
+<div class="modal fade" id="callbackModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content rounded-4 border-0 shadow-lg">
       <div class="modal-header border-0 bg-danger text-white rounded-top-4">
         <h5 class="modal-title">Оставить заявку</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Закрыть"></button>
       </div>
       <div class="modal-body">
-        <form id="callbackForm" action="https://formspree.io/f/maqljyaj" method="POST" target="_blank">
-          <input type="text" class="form-control mb-3" placeholder="Ваше имя" required>
-          <input type="tel" class="form-control mb-3" placeholder="Номер телефона" required>
-          <textarea class="form-control mb-3" rows="2" placeholder="Комментарий / услуга"></textarea>
+        <!-- В action вставлена ваша ссылка Formspree -->
+        <form id="callbackForm" action="https://formspree.io/f/maqljyaj" method="POST">
+          <!-- Поле для имени (обязательное) -->
+          <input type="text" class="form-control mb-3" name="name" placeholder="Ваше имя" required>
+          <!-- Поле для телефона (обязательное) -->
+          <input type="tel" class="form-control mb-3" name="phone" placeholder="Номер телефона" required>
+          <!-- Комментарий -->
+          <textarea class="form-control mb-3" name="message" rows="2" placeholder="Комментарий / услуга"></textarea>
+          <!-- Скрытое поле для темы письма (чтобы в почте было понятно) -->
+          <input type="hidden" name="_subject" value="Новая заявка с сайта Комбинат чистоты">
+          <!-- Скрытое поле для отключения капчи (можно оставить) -->
+          <input type="hidden" name="_captcha" value="false">
           <button type="submit" class="btn btn-red w-100 rounded-pill">Отправить заявку</button>
           <p class="small text-muted mt-2">Наш менеджер свяжется с вами в течение 15 минут</p>
         </form>
@@ -647,40 +655,6 @@
     </div>
   </div>
 </div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" defer></script>
-<script> 
-  // Обработка формы обратной связи через Formspree
-const formModal = document.getElementById('callbackForm');
-if(formModal) {
-    formModal.addEventListener('submit', async (e) => {
-        e.preventDefault(); // Отменяем стандартную отправку
-
-        const formData = new FormData(formModal);
-
-        try {
-            const response = await fetch(formModal.action, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            });
-
-            if (response.ok) {
-                alert('Спасибо! Наш специалист свяжется с вами в ближайшее время.');
-                const modal = bootstrap.Modal.getInstance(document.getElementById('callbackModal'));
-                modal.hide();
-                formModal.reset();
-            } else {
-                alert('Произошла ошибка при отправке. Пожалуйста, попробуйте позже.');
-            }
-        } catch (error) {
-            alert('Ошибка сети. Пожалуйста, проверьте соединение и попробуйте снова.');
-            console.error('Ошибка:', error);
-        }
-    });
-}
   // Анимация появления при скролле (Intersection Observer)
   const fadeElements = document.querySelectorAll('.fade-up');
   const observer = new IntersectionObserver((entries) => {
@@ -716,18 +690,49 @@ if(formModal) {
   calcBtn.addEventListener('click', calcPrice);
   calcPrice();
 
-  // Обработка формы обратной связи
-  const formModal = document.getElementById('callbackForm');
-  if(formModal) {
-    formModal.addEventListener('submit', (e) => {
-      e.preventDefault();
-      alert('Спасибо! Наш специалист свяжется с вами в ближайшее время.');
-      const modal = bootstrap.Modal.getInstance(document.getElementById('callbackModal'));
-      modal.hide();
-      formModal.reset();
-    });
-  }
-</script>
+ // Обработка формы обратной связи через Formspree (асинхронно, без перезагрузки)
+const formModal = document.getElementById('callbackForm');
+if (formModal) {
+  formModal.addEventListener('submit', async (e) => {
+    e.preventDefault(); // Отменяем стандартную отправку
+
+    const formData = new FormData(formModal);
+    const submitButton = formModal.querySelector('button[type="submit"]');
+    const originalButtonText = submitButton.innerHTML;
+
+    // Показываем состояние загрузки
+    submitButton.innerHTML = 'Отправка...';
+    submitButton.disabled = true;
+
+    try {
+      const response = await fetch(formModal.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        // Успешно
+        alert('Спасибо! Наш специалист свяжется с вами в ближайшее время.');
+        const modal = bootstrap.Modal.getInstance(document.getElementById('callbackModal'));
+        modal.hide();
+        formModal.reset(); // очищаем форму
+      } else {
+        // Ошибка от сервера
+        const errorData = await response.json();
+        alert('Ошибка при отправке: ' + (errorData.error || 'попробуйте позже.'));
+      }
+    } catch (error) {
+      console.error('Ошибка сети:', error);
+      alert('Не удалось отправить заявку. Проверьте соединение с интернетом и попробуйте ещё раз.');
+    } finally {
+      submitButton.innerHTML = originalButtonText;
+      submitButton.disabled = false;
+    }
+  });
+}
 
 <style>
   .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.6s ease; }
