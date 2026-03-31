@@ -11,7 +11,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
   
-  <!-- Предзагрузка критического CSS (шрифты) -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -31,7 +30,6 @@
       overflow-x: hidden;
     }
 
-    /* Красная палитра */
     :root {
       --red-deep: #c42a2a;
       --red-main: #e03a3a;
@@ -42,7 +40,6 @@
       --shadow-sm: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
     }
 
-    /* геометрические декоративные элементы */
     .geo-shape {
       position: absolute;
       z-index: 0;
@@ -62,7 +59,6 @@
       clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
     }
 
-    /* Общие стили */
     section {
       position: relative;
       overflow: hidden;
@@ -95,7 +91,6 @@
       transform: scale(1.02);
     }
 
-    /* Карточки услуг */
     .service-card {
       border: none;
       border-radius: 24px;
@@ -113,7 +108,6 @@
       color: var(--red-main);
     }
 
-    /* Эффект появления */
     .fade-up {
       opacity: 0;
       transform: translateY(30px);
@@ -125,91 +119,77 @@
     }
 
     /* Стили для слайдера портфолио */
-.portfolio-slider {
-  max-width: 1200px;
-  margin: 0 auto;
-  border-radius: 32px;
-  overflow: hidden;
-  box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.15);
-  background: #fff;
-  position: relative;
-}
-.portfolio-image-wrapper {
-  background: #f5f5f5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.portfolio-image-wrapper img {
-  width: 100%;
-  height: auto;
-  max-height: 620px;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-.carousel-item:hover .portfolio-image-wrapper img {
-  transform: scale(1.02);
-}
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  background-color: var(--red-main);
-  border-radius: 50%;
-  padding: 1.2rem;
-  background-size: 50%;
-  transition: all 0.2s ease;
-  opacity: 0.9;
-}
-.carousel-control-prev-icon:hover,
-.carousel-control-next-icon:hover {
-  background-color: var(--red-deep);
-  transform: scale(1.05);
-  opacity: 1;
-}
-.carousel-indicators {
-  bottom: 20px;
-}
-.carousel-indicators button {
-  background-color: #fff;
-  background-color: rgba(255, 255, 255, 0.6);
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  margin: 0 6px;
-  border: none;
-  transition: all 0.2s;
-}
-.carousel-indicators .active {
-  background-color: var(--red-main);
-  transform: scale(1.2);
-}
-@media (max-width: 768px) {
-  .portfolio-image-wrapper img {
-    max-height: 400px;
-  }
-  .carousel-control-prev-icon,
-  .carousel-control-next-icon {
-    padding: 0.8rem;
-  }
-  .carousel-indicators button {
-    width: 8px;
-    height: 8px;
-  }
-}
-    /* портфолио */
-    .portfolio-item {
+    .portfolio-slider {
+      max-width: 1200px;
+      margin: 0 auto;
+      border-radius: 32px;
       overflow: hidden;
-      border-radius: 28px;
-      transition: all 0.3s;
-      cursor: pointer;
+      box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.15);
+      background: #fff;
+      position: relative;
     }
-    .portfolio-item img {
+    .portfolio-image-wrapper {
+      background: #f5f5f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .portfolio-image-wrapper img {
+      width: 100%;
+      height: auto;
+      max-height: 620px;
+      object-fit: cover;
       transition: transform 0.5s ease;
     }
-    .portfolio-item:hover img {
-      transform: scale(1.03);
+    .carousel-item:hover .portfolio-image-wrapper img {
+      transform: scale(1.02);
+    }
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      background-color: var(--red-main);
+      border-radius: 50%;
+      padding: 1.2rem;
+      background-size: 50%;
+      transition: all 0.2s ease;
+      opacity: 0.9;
+    }
+    .carousel-control-prev-icon:hover,
+    .carousel-control-next-icon:hover {
+      background-color: var(--red-deep);
+      transform: scale(1.05);
+      opacity: 1;
+    }
+    .carousel-indicators {
+      bottom: 20px;
+    }
+    .carousel-indicators button {
+      background-color: #fff;
+      background-color: rgba(255, 255, 255, 0.6);
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin: 0 6px;
+      border: none;
+      transition: all 0.2s;
+    }
+    .carousel-indicators .active {
+      background-color: var(--red-main);
+      transform: scale(1.2);
+    }
+    @media (max-width: 768px) {
+      .portfolio-image-wrapper img {
+        max-height: 400px;
+      }
+      .carousel-control-prev-icon,
+      .carousel-control-next-icon {
+        padding: 0.8rem;
+      }
+      .carousel-indicators button {
+        width: 8px;
+        height: 8px;
+      }
     }
 
-    /* шапка и навигация */
     .navbar {
       background: rgba(255,255,255,0.96);
       backdrop-filter: blur(4px);
@@ -224,14 +204,11 @@
       color: transparent;
     }
 
-    /* hero background - быстрый цвет-заполнитель */
     .hero-bg {
       background: linear-gradient(107deg, rgba(255,255,255,0.92) 0%, rgba(255,245,245,0.85) 100%), #f5f0f0;
       background-size: cover;
       background-position: center;
-      transition: background-image 0.2s;
     }
-    /* Фоновое изображение загружается через отдельный элемент, чтобы не блокировать рендеринг */
     .hero-bg::after {
       content: '';
       position: absolute;
@@ -247,7 +224,6 @@
       pointer-events: none;
     }
 
-    /* кнопки мессенджеров */
     .messenger-btn {
       display: inline-flex;
       align-items: center;
@@ -260,18 +236,13 @@
       text-decoration: none;
       color: #1e1e2a;
     }
-    .messenger-btn.tg {
-      background: #e6f0ff;
-    }
-    .messenger-btn.max {
-      background: #fff0e6;
-    }
+    .messenger-btn.tg { background: #e6f0ff; }
+    .messenger-btn.max { background: #fff0e6; }
     .messenger-btn:hover {
       transform: translateY(-2px);
       filter: brightness(0.96);
     }
 
-    /* калькулятор */
     .calc-card {
       background: white;
       border-radius: 32px;
@@ -283,24 +254,13 @@
       text-decoration: none;
       color: #5a5a6e;
     }
-    footer a:hover {
-      color: var(--red-main);
-    }
+    footer a:hover { color: var(--red-main); }
 
-    /* адаптивность */
     @media (max-width: 768px) {
-      .hero-title {
-        font-size: 2.2rem;
-      }
-      .service-card {
-        margin-bottom: 1rem;
-      }
-      .messenger-btn span {
-        display: none;
-      }
-      .messenger-btn {
-        padding: 8px 12px;
-      }
+      .hero-title { font-size: 2.2rem; }
+      .service-card { margin-bottom: 1rem; }
+      .messenger-btn span { display: none; }
+      .messenger-btn { padding: 8px 12px; }
     }
   </style>
 </head>
@@ -479,7 +439,6 @@
 
 <!-- ==================== ПОРТФОЛИО — СЛАЙДЕР С ФОТОГРАФИЯМИ КОМАНДЫ ==================== -->
 <section id="portfolio" class="py-5 position-relative overflow-hidden">
-  <!-- Декоративные геометрические элементы (в стиле сайта) -->
   <div class="geo-shape top-0 start-0 mt-5 ms-5 opacity-25">
     <div class="hexagon"></div>
   </div>
@@ -494,7 +453,6 @@
     </div>
 
     <div id="teamSlider" class="carousel slide portfolio-slider" data-bs-ride="carousel">
-      <!-- Индикаторы (точки) для 10 слайдов -->
       <div class="carousel-indicators">
         <button type="button" data-bs-target="#teamSlider" data-bs-slide-to="0" class="active" aria-label="Слайд 1"></button>
         <button type="button" data-bs-target="#teamSlider" data-bs-slide-to="1" aria-label="Слайд 2"></button>
@@ -508,7 +466,6 @@
         <button type="button" data-bs-target="#teamSlider" data-bs-slide-to="9" aria-label="Слайд 10"></button>
       </div>
 
-      <!-- Слайды (только фото, без подписей) -->
       <div class="carousel-inner">
         <div class="carousel-item active">
           <div class="portfolio-image-wrapper">
@@ -562,7 +519,6 @@
         </div>
       </div>
 
-      <!-- Кнопки навигации -->
       <button class="carousel-control-prev" type="button" data-bs-target="#teamSlider" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Предыдущий</span>
@@ -573,12 +529,12 @@
       </button>
     </div>
 
-    <!-- Кнопка призыва под слайдером -->
     <div class="text-center mt-5 fade-up">
       <button class="btn btn-red rounded-pill px-5 py-3" data-bs-toggle="modal" data-bs-target="#callbackModal">Доверьте чистоту профессионалам →</button>
     </div>
   </div>
 </section>
+
 <!-- ==================== КАК МЫ РАБОТАЕМ ==================== -->
 <section class="py-5 bg-white">
   <div class="container">
@@ -588,6 +544,71 @@
       <div class="col-md-3 fade-up"><div class="bg-danger bg-opacity-10 rounded-circle p-3 d-inline-block mb-3"><i class="bi bi-rulers fs-1 text-danger"></i></div><h5>2. Оценка</h5><p>Выезд оценщика, замер, согласование цены</p></div>
       <div class="col-md-3 fade-up"><div class="bg-danger bg-opacity-10 rounded-circle p-3 d-inline-block mb-3"><i class="bi bi-brush fs-1 text-danger"></i></div><h5>3. Уборка</h5><p>Приезд бригады, работа по чек-листу</p></div>
       <div class="col-md-3 fade-up"><div class="bg-danger bg-opacity-10 rounded-circle p-3 d-inline-block mb-3"><i class="bi bi-credit-card fs-1 text-danger"></i></div><h5>4. Оплата</h5><p>По факту после приёмки результата</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== ОТЗЫВЫ ==================== -->
+<section id="reviews" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="fw-bold text-center mb-4">Клиенты о нас</h2>
+    <div id="reviewCarousel" class="carousel slide review-carousel" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="review-card mx-auto" style="max-width: 700px;">
+            <i class="bi bi-chat-quote fs-1 text-danger opacity-50"></i>
+            <p class="mt-2 fs-5">«Заказали уборку ЖК — все чисто, без запаха, оперативно. Отдельное спасибо за вежливость!»</p>
+            <h6 class="fw-bold mt-3">Анна С., УК «Центральный»</h6>
+            <span class="badge bg-secondary">корпоративный клиент</span>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="review-card mx-auto" style="max-width: 700px;">
+            <i class="bi bi-chat-quote fs-1 text-danger opacity-50"></i>
+            <p class="mt-2 fs-5">«Химчистка дивана — как новый! Пятна вывели идеально. Рекомендую комбинат чистоты».</p>
+            <h6 class="fw-bold mt-3">Дмитрий В.</h6>
+            <span class="badge bg-secondary">частный клиент</span>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="review-card mx-auto" style="max-width: 700px;">
+            <i class="bi bi-chat-quote fs-1 text-danger opacity-50"></i>
+            <p class="mt-2 fs-5">«Убирают офис раз в неделю. Всегда вовремя, качественно, приятные цены для юр. лиц».</p>
+            <h6 class="fw-bold mt-3">ООО «Технолайн»</h6>
+            <span class="badge bg-secondary">бизнес</span>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="review-card mx-auto" style="max-width: 700px;">
+            <i class="bi bi-chat-quote fs-1 text-danger opacity-50"></i>
+            <p class="mt-2 fs-5">«Заказывали уборку коттеджа после стройки — справились за 4 часа. Результат безупречный!»</p>
+            <h6 class="fw-bold mt-3">Елена К., частный дом</h6>
+            <span class="badge bg-secondary">частный клиент</span>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="review-card mx-auto" style="max-width: 700px;">
+            <i class="bi bi-chat-quote fs-1 text-danger opacity-50"></i>
+            <p class="mt-2 fs-5">«Профессиональный подход к уборке ТЦ. График соблюдается, персонал вежливый. Рекомендуем как надёжного партнёра.»</p>
+            <h6 class="fw-bold mt-3">УК «Гранд-Молл»</h6>
+            <span class="badge bg-secondary">корпоративный клиент</span>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="review-card mx-auto" style="max-width: 700px;">
+            <i class="bi bi-chat-quote fs-1 text-danger opacity-50"></i>
+            <p class="mt-2 fs-5">«Быстро, качественно, использовали экосредства — для нашей аллергика дочки это важно. Спасибо!»</p>
+            <h6 class="fw-bold mt-3">Алексей П.</h6>
+            <span class="badge bg-secondary">частный клиент</span>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#reviewCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bg-danger rounded-circle p-3" aria-hidden="true"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#reviewCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon bg-danger rounded-circle p-3" aria-hidden="true"></span>
+      </button>
     </div>
   </div>
 </section>
@@ -636,17 +657,11 @@
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Закрыть"></button>
       </div>
       <div class="modal-body">
-        <!-- В action вставлена ваша ссылка Formspree -->
         <form id="callbackForm" action="https://formspree.io/f/maqljyaj" method="POST">
-          <!-- Поле для имени (обязательное) -->
           <input type="text" class="form-control mb-3" name="name" placeholder="Ваше имя" required>
-          <!-- Поле для телефона (обязательное) -->
           <input type="tel" class="form-control mb-3" name="phone" placeholder="Номер телефона" required>
-          <!-- Комментарий -->
           <textarea class="form-control mb-3" name="message" rows="2" placeholder="Комментарий / услуга"></textarea>
-          <!-- Скрытое поле для темы письма (чтобы в почте было понятно) -->
           <input type="hidden" name="_subject" value="Новая заявка с сайта Комбинат чистоты">
-          <!-- Скрытое поле для отключения капчи (можно оставить) -->
           <input type="hidden" name="_captcha" value="false">
           <button type="submit" class="btn btn-red w-100 rounded-pill">Отправить заявку</button>
           <p class="small text-muted mt-2">Наш менеджер свяжется с вами в течение 15 минут</p>
@@ -655,6 +670,9 @@
     </div>
   </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" defer></script>
+<script>
   // Анимация появления при скролле (Intersection Observer)
   const fadeElements = document.querySelectorAll('.fade-up');
   const observer = new IntersectionObserver((entries) => {
@@ -690,49 +708,41 @@
   calcBtn.addEventListener('click', calcPrice);
   calcPrice();
 
-  // Обработка формы обратной связи через Formspree (асинхронно, без перезагрузки)
-const formModal = document.getElementById('callbackForm');
-if (formModal) {
-  formModal.addEventListener('submit', async (e) => {
-    e.preventDefault(); // Отменяем стандартную отправку
-
-    const formData = new FormData(formModal);
-    const submitButton = formModal.querySelector('button[type="submit"]');
-    const originalButtonText = submitButton.innerHTML;
-
-    // Показываем состояние загрузки
-    submitButton.innerHTML = 'Отправка...';
-    submitButton.disabled = true;
-
-    try {
-      const response = await fetch(formModal.action, {
-        method: 'POST',
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
+  // Обработка формы обратной связи через Formspree (асинхронно)
+  const formModal = document.getElementById('callbackForm');
+  if (formModal) {
+    formModal.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(formModal);
+      const submitButton = formModal.querySelector('button[type="submit"]');
+      const originalText = submitButton.innerHTML;
+      submitButton.innerHTML = 'Отправка...';
+      submitButton.disabled = true;
+      try {
+        const response = await fetch(formModal.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (response.ok) {
+          alert('Спасибо! Наш специалист свяжется с вами в ближайшее время.');
+          const modal = bootstrap.Modal.getInstance(document.getElementById('callbackModal'));
+          modal.hide();
+          formModal.reset();
+        } else {
+          const errorData = await response.json();
+          alert('Ошибка при отправке: ' + (errorData.error || 'попробуйте позже.'));
         }
-      });
-
-      if (response.ok) {
-        // Успешно
-        alert('Спасибо! Наш специалист свяжется с вами в ближайшее время.');
-        const modal = bootstrap.Modal.getInstance(document.getElementById('callbackModal'));
-        modal.hide();
-        formModal.reset(); // очищаем форму
-      } else {
-        // Ошибка от сервера
-        const errorData = await response.json();
-        alert('Ошибка при отправке: ' + (errorData.error || 'попробуйте позже.'));
+      } catch (error) {
+        console.error('Ошибка сети:', error);
+        alert('Не удалось отправить заявку. Проверьте соединение с интернетом и попробуйте ещё раз.');
+      } finally {
+        submitButton.innerHTML = originalText;
+        submitButton.disabled = false;
       }
-    } catch (error) {
-      console.error('Ошибка сети:', error);
-      alert('Не удалось отправить заявку. Проверьте соединение с интернетом и попробуйте ещё раз.');
-    } finally {
-      submitButton.innerHTML = originalButtonText;
-      submitButton.disabled = false;
-    }
-  });
-}
+    });
+  }
+</script>
 
 <style>
   .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.6s ease; }
@@ -742,8 +752,14 @@ if (formModal) {
   @media (max-width: 768px) {
     .carousel-control-prev, .carousel-control-next { width: 10%; }
   }
-  .portfolio-item img { width: 100%; height: 200px; object-fit: cover; }
   .service-card .btn-outline-red { border-radius: 40px; }
+  .review-card {
+    background: var(--gray-light);
+    border-radius: 32px;
+    padding: 2rem;
+    box-shadow: var(--shadow-sm);
+    border-left: 5px solid var(--red-main);
+  }
 </style>
 </body>
 </html>
