@@ -98,6 +98,7 @@
       transition: all 0.3s ease;
       box-shadow: var(--shadow-sm);
       height: 100%;
+      cursor: pointer;
     }
     .service-card:hover {
       transform: translateY(-8px);
@@ -262,6 +263,75 @@
       .messenger-btn span { display: none; }
       .messenger-btn { padding: 8px 12px; }
     }
+
+    /* Стили для модальных окон (таблицы, адаптация под красный акцент) */
+    .modal-content {
+      border-radius: 28px;
+      border: none;
+    }
+    .modal-header {
+      border-bottom: none;
+      border-radius: 28px 28px 0 0;
+    }
+    .modal-header.bg-red {
+      background-color: var(--red-main);
+    }
+    .modal-title {
+      font-weight: 700;
+    }
+    .modal-body {
+      padding: 1.8rem;
+      max-height: 70vh;
+      overflow-y: auto;
+    }
+    .service-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    .service-table th,
+    .service-table td {
+      padding: 12px 10px;
+      border-bottom: 1px solid #e5e7eb;
+      text-align: left;
+    }
+    .service-table th {
+      background-color: #fef2f2;
+      font-weight: 600;
+      color: var(--red-deep);
+    }
+    .service-table tr:last-child td {
+      border-bottom: none;
+    }
+    .modal-body .btn-red {
+      padding: 10px 20px;
+      font-size: 0.9rem;
+    }
+    .modal-body .btn-red i {
+      margin-right: 6px;
+    }
+    .close-modal-btn {
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      line-height: 1;
+      color: #fff;
+      opacity: 0.8;
+      transition: opacity 0.2s;
+    }
+    .close-modal-btn:hover {
+      opacity: 1;
+    }
+    @media (max-width: 576px) {
+      .modal-body {
+        padding: 1.2rem;
+      }
+      .service-table th,
+      .service-table td {
+        padding: 8px 6px;
+        font-size: 0.8rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -347,7 +417,7 @@
   </div>
 </section>
 
-<!-- ==================== УСЛУГИ ==================== -->
+<!-- ==================== УСЛУГИ (продающие карточки с модалками) ==================== -->
 <section id="services" class="py-5 bg-light">
   <div class="container">
     <div class="text-center mb-5 fade-up">
@@ -355,36 +425,49 @@
       <p class="lead text-secondary">Выберите идеальный вариант для вашего объекта</p>
     </div>
     <div class="row g-4">
-      <div class="col-md-6 col-lg-3 fade-up">
-        <div class="service-card card p-4 text-center h-100">
+      <!-- Услуга 1: Уборка квартир и домов -->
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="service-card card p-4 text-center h-100" data-bs-toggle="modal" data-bs-target="#modalFlat">
           <div class="service-icon"><i class="bi bi-house-door-fill"></i></div>
           <h5 class="fw-bold mt-3">Уборка квартир и домов</h5>
-          <p class="small">Генеральная, поддерживающая, после ремонта. От 1800₽.</p>
-          <button class="btn btn-sm btn-outline-red mt-auto w-100" data-bs-toggle="modal" data-bs-target="#callbackModal">Заказать</button>
+          <p class="small">Генеральная, поддерживающая, после ремонта. Идеальный порядок.</p>
+          <button class="btn btn-sm btn-outline-red mt-auto w-100">Подробнее →</button>
         </div>
       </div>
-      <div class="col-md-6 col-lg-3 fade-up">
-        <div class="service-card card p-4 text-center h-100">
+      <!-- Услуга 2: Химчистка -->
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="service-card card p-4 text-center h-100" data-bs-toggle="modal" data-bs-target="#modalChem">
           <div class="service-icon"><i class="bi bi-droplet-fill"></i></div>
           <h5 class="fw-bold mt-3">Химчистка</h5>
-          <p class="small">Ковры, диваны, кресла, шторы. Выведение пятен. От 2200₽.</p>
-          <button class="btn btn-sm btn-outline-red mt-auto w-100" data-bs-toggle="modal" data-bs-target="#callbackModal">Заказать</button>
+          <p class="small">Ковры, диваны, кресла, шторы. Выведение пятен, освежение цвета.</p>
+          <button class="btn btn-sm btn-outline-red mt-auto w-100">Подробнее →</button>
         </div>
       </div>
-      <div class="col-md-6 col-lg-3 fade-up">
-        <div class="service-card card p-4 text-center h-100">
+      <!-- Услуга 3: Дезинсекция -->
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="service-card card p-4 text-center h-100" data-bs-toggle="modal" data-bs-target="#modalDisinsection">
+          <div class="service-icon"><i class="bi bi-bug-fill"></i></div>
+          <h5 class="fw-bold mt-3">Дезинсекция</h5>
+          <p class="small">Уничтожение насекомых (тараканы, клопы, муравьи). Безопасно для людей и животных.</p>
+          <button class="btn btn-sm btn-outline-red mt-auto w-100">Подробнее →</button>
+        </div>
+      </div>
+      <!-- Услуга 4: Уборка ЖК, офисов, ТЦ -->
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="service-card card p-4 text-center h-100" data-bs-toggle="modal" data-bs-target="#modalOffice">
           <div class="service-icon"><i class="bi bi-building"></i></div>
           <h5 class="fw-bold mt-3">Уборка ЖК, офисов, ТЦ</h5>
           <p class="small">Регулярное обслуживание коммерческих объектов. Индивидуальный прайс.</p>
-          <button class="btn btn-sm btn-outline-red mt-auto w-100" data-bs-toggle="modal" data-bs-target="#callbackModal">Рассчитать</button>
+          <button class="btn btn-sm btn-outline-red mt-auto w-100">Подробнее →</button>
         </div>
       </div>
-      <div class="col-md-6 col-lg-3 fade-up">
-        <div class="service-card card p-4 text-center h-100">
+      <!-- Услуга 5: Производственные помещения -->
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="service-card card p-4 text-center h-100" data-bs-toggle="modal" data-bs-target="#modalIndustry">
           <div class="service-icon"><i class="bi bi-building-gear"></i></div>
           <h5 class="fw-bold mt-3">Производственные помещения</h5>
           <p class="small">Складские цеха, промзоны. Профессиональное оборудование. Договорная цена.</p>
-          <button class="btn btn-sm btn-outline-red mt-auto w-100" data-bs-toggle="modal" data-bs-target="#callbackModal">Заявка</button>
+          <button class="btn btn-sm btn-outline-red mt-auto w-100">Подробнее →</button>
         </div>
       </div>
     </div>
@@ -439,19 +522,13 @@
 
 <!-- ==================== ПОРТФОЛИО — СЛАЙДЕР С ФОТОГРАФИЯМИ КОМАНДЫ ==================== -->
 <section id="portfolio" class="py-5 position-relative overflow-hidden">
-  <div class="geo-shape top-0 start-0 mt-5 ms-5 opacity-25">
-    <div class="hexagon"></div>
-  </div>
-  <div class="geo-shape bottom-0 end-0 mb-5 me-5 opacity-25">
-    <div class="triangle" style="transform: rotate(180deg);"></div>
-  </div>
-
+  <div class="geo-shape top-0 start-0 mt-5 ms-5 opacity-25"><div class="hexagon"></div></div>
+  <div class="geo-shape bottom-0 end-0 mb-5 me-5 opacity-25"><div class="triangle" style="transform: rotate(180deg);"></div></div>
   <div class="container">
     <div class="text-center mb-5 fade-up">
       <h2 class="fw-bold">Наша <span class="text-danger">команда в работе</span></h2>
       <p class="lead text-secondary">Профессионализм и внимание к каждой детали</p>
     </div>
-
     <div id="teamSlider" class="carousel slide portfolio-slider" data-bs-ride="carousel">
       <div class="carousel-indicators">
         <button type="button" data-bs-target="#teamSlider" data-bs-slide-to="0" class="active" aria-label="Слайд 1"></button>
@@ -465,73 +542,22 @@
         <button type="button" data-bs-target="#teamSlider" data-bs-slide-to="8" aria-label="Слайд 9"></button>
         <button type="button" data-bs-target="#teamSlider" data-bs-slide-to="9" aria-label="Слайд 10"></button>
       </div>
-
       <div class="carousel-inner">
-        <div class="carousel-item active">
-          <div class="portfolio-image-wrapper">
-            <img src="https://epstejnv-lang.github.io/-----/images/1.паркинг.jpg" class="d-block w-100" alt="Команда клининга" loading="lazy">
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="portfolio-image-wrapper">
-            <img src="https://epstejnv-lang.github.io/-----/images/0Hn-WVN4Z52dW6w9XX-HQc7lCVhLrHJ6cDqYOoDMv-hpDtunnZgg4icDkI2RGBCVvtIFeBqsOACUox8wF5qeViG6.jpg" class="d-block w-100" alt="Уборка квартиры" loading="lazy">
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="portfolio-image-wrapper">
-            <img src="https://epstejnv-lang.github.io/-----/images/снег.jpg" class="d-block w-100" alt="Чистота в деталях" loading="lazy">
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="portfolio-image-wrapper">
-            <img src="https://epstejnv-lang.github.io/-----/images/косилка.png" class="d-block w-100" alt="Химчистка ковров" loading="lazy">
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="portfolio-image-wrapper">
-            <img src="https://epstejnv-lang.github.io/-----/images/ремонт.png" class="d-block w-100" alt="Уборка офиса" loading="lazy">
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="portfolio-image-wrapper">
-            <img src="https://epstejnv-lang.github.io/-----/images/яхта.jpg" class="d-block w-100" alt="Чистый диван" loading="lazy">
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="portfolio-image-wrapper">
-            <img src="https://epstejnv-lang.github.io/-----/images/тц.jpg" class="d-block w-100" alt="Профессиональное оборудование" loading="lazy">
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="portfolio-image-wrapper">
-            <img src="https://epstejnv-lang.github.io/-----/images/okna.jpeg" class="d-block w-100" alt="Сертифицированные средства" loading="lazy">
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="portfolio-image-wrapper">
-            <img src="https://epstejnv-lang.github.io/-----/images/kover.jpg" class="d-block w-100" alt="Команда профессионалов" loading="lazy">
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="portfolio-image-wrapper">
-            <img src="https://epstejnv-lang.github.io/-----/images/дезинсекция.png" class="d-block w-100" alt="Результат работы" loading="lazy">
-          </div>
-        </div>
+        <div class="carousel-item active"><div class="portfolio-image-wrapper"><img src="https://epstejnv-lang.github.io/-----/images/1.паркинг.jpg" class="d-block w-100" alt="Команда клининга" loading="lazy"></div></div>
+        <div class="carousel-item"><div class="portfolio-image-wrapper"><img src="https://epstejnv-lang.github.io/-----/images/0Hn-WVN4Z52dW6w9XX-HQc7lCVhLrHJ6cDqYOoDMv-hpDtunnZgg4icDkI2RGBCVvtIFeBqsOACUox8wF5qeViG6.jpg" class="d-block w-100" alt="Уборка квартиры" loading="lazy"></div></div>
+        <div class="carousel-item"><div class="portfolio-image-wrapper"><img src="https://epstejnv-lang.github.io/-----/images/снег.jpg" class="d-block w-100" alt="Чистота в деталях" loading="lazy"></div></div>
+        <div class="carousel-item"><div class="portfolio-image-wrapper"><img src="https://epstejnv-lang.github.io/-----/images/косилка.png" class="d-block w-100" alt="Химчистка ковров" loading="lazy"></div></div>
+        <div class="carousel-item"><div class="portfolio-image-wrapper"><img src="https://epstejnv-lang.github.io/-----/images/ремонт.png" class="d-block w-100" alt="Уборка офиса" loading="lazy"></div></div>
+        <div class="carousel-item"><div class="portfolio-image-wrapper"><img src="https://epstejnv-lang.github.io/-----/images/яхта.jpg" class="d-block w-100" alt="Чистый диван" loading="lazy"></div></div>
+        <div class="carousel-item"><div class="portfolio-image-wrapper"><img src="https://epstejnv-lang.github.io/-----/images/тц.jpg" class="d-block w-100" alt="Профессиональное оборудование" loading="lazy"></div></div>
+        <div class="carousel-item"><div class="portfolio-image-wrapper"><img src="https://epstejnv-lang.github.io/-----/images/okna.jpeg" class="d-block w-100" alt="Сертифицированные средства" loading="lazy"></div></div>
+        <div class="carousel-item"><div class="portfolio-image-wrapper"><img src="https://epstejnv-lang.github.io/-----/images/kover.jpg" class="d-block w-100" alt="Команда профессионалов" loading="lazy"></div></div>
+        <div class="carousel-item"><div class="portfolio-image-wrapper"><img src="https://epstejnv-lang.github.io/-----/images/дезинсекция.png" class="d-block w-100" alt="Результат работы" loading="lazy"></div></div>
       </div>
-
-      <button class="carousel-control-prev" type="button" data-bs-target="#teamSlider" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Предыдущий</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#teamSlider" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Следующий</span>
-      </button>
+      <button class="carousel-control-prev" type="button" data-bs-target="#teamSlider" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Предыдущий</span></button>
+      <button class="carousel-control-next" type="button" data-bs-target="#teamSlider" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Следующий</span></button>
     </div>
-
-    <div class="text-center mt-5 fade-up">
-      <button class="btn btn-red rounded-pill px-5 py-3" data-bs-toggle="modal" data-bs-target="#callbackModal">Доверьте чистоту профессионалам →</button>
-    </div>
+    <div class="text-center mt-5 fade-up"><button class="btn btn-red rounded-pill px-5 py-3" data-bs-toggle="modal" data-bs-target="#callbackModal">Доверьте чистоту профессионалам →</button></div>
   </div>
 </section>
 
@@ -554,61 +580,15 @@
     <h2 class="fw-bold text-center mb-4">Клиенты о нас</h2>
     <div id="reviewCarousel" class="carousel slide review-carousel" data-bs-ride="carousel">
       <div class="carousel-inner">
-        <div class="carousel-item active">
-          <div class="review-card mx-auto" style="max-width: 700px;">
-            <i class="bi bi-chat-quote fs-1 text-danger opacity-50"></i>
-            <p class="mt-2 fs-5">«Заказали уборку ЖК — все чисто, без запаха, оперативно. Отдельное спасибо за вежливость!»</p>
-            <h6 class="fw-bold mt-3">Анна С., УК «Центральный»</h6>
-            <span class="badge bg-secondary">корпоративный клиент</span>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="review-card mx-auto" style="max-width: 700px;">
-            <i class="bi bi-chat-quote fs-1 text-danger opacity-50"></i>
-            <p class="mt-2 fs-5">«Химчистка дивана — как новый! Пятна вывели идеально. Рекомендую комбинат чистоты».</p>
-            <h6 class="fw-bold mt-3">Дмитрий В.</h6>
-            <span class="badge bg-secondary">частный клиент</span>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="review-card mx-auto" style="max-width: 700px;">
-            <i class="bi bi-chat-quote fs-1 text-danger opacity-50"></i>
-            <p class="mt-2 fs-5">«Убирают офис раз в неделю. Всегда вовремя, качественно, приятные цены для юр. лиц».</p>
-            <h6 class="fw-bold mt-3">ООО «Технолайн»</h6>
-            <span class="badge bg-secondary">бизнес</span>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="review-card mx-auto" style="max-width: 700px;">
-            <i class="bi bi-chat-quote fs-1 text-danger opacity-50"></i>
-            <p class="mt-2 fs-5">«Заказывали уборку коттеджа после стройки — справились за 4 часа. Результат безупречный!»</p>
-            <h6 class="fw-bold mt-3">Елена К., частный дом</h6>
-            <span class="badge bg-secondary">частный клиент</span>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="review-card mx-auto" style="max-width: 700px;">
-            <i class="bi bi-chat-quote fs-1 text-danger opacity-50"></i>
-            <p class="mt-2 fs-5">«Профессиональный подход к уборке ТЦ. График соблюдается, персонал вежливый. Рекомендуем как надёжного партнёра.»</p>
-            <h6 class="fw-bold mt-3">УК «Гранд-Молл»</h6>
-            <span class="badge bg-secondary">корпоративный клиент</span>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="review-card mx-auto" style="max-width: 700px;">
-            <i class="bi bi-chat-quote fs-1 text-danger opacity-50"></i>
-            <p class="mt-2 fs-5">«Быстро, качественно, использовали экосредства — для нашей аллергика дочки это важно. Спасибо!»</p>
-            <h6 class="fw-bold mt-3">Алексей П.</h6>
-            <span class="badge bg-secondary">частный клиент</span>
-          </div>
-        </div>
+        <div class="carousel-item active"><div class="review-card mx-auto" style="max-width: 700px;"><i class="bi bi-chat-quote fs-1 text-danger opacity-50"></i><p class="mt-2 fs-5">«Заказали уборку ЖК — все чисто, без запаха, оперативно. Отдельное спасибо за вежливость!»</p><h6 class="fw-bold mt-3">Анна С., УК «Центральный»</h6><span class="badge bg-secondary">корпоративный клиент</span></div></div>
+        <div class="carousel-item"><div class="review-card mx-auto" style="max-width: 700px;"><i class="bi bi-chat-quote fs-1 text-danger opacity-50"></i><p class="mt-2 fs-5">«Химчистка дивана — как новый! Пятна вывели идеально. Рекомендую комбинат чистоты».</p><h6 class="fw-bold mt-3">Дмитрий В.</h6><span class="badge bg-secondary">частный клиент</span></div></div>
+        <div class="carousel-item"><div class="review-card mx-auto" style="max-width: 700px;"><i class="bi bi-chat-quote fs-1 text-danger opacity-50"></i><p class="mt-2 fs-5">«Убирают офис раз в неделю. Всегда вовремя, качественно, приятные цены для юр. лиц».</p><h6 class="fw-bold mt-3">ООО «Технолайн»</h6><span class="badge bg-secondary">бизнес</span></div></div>
+        <div class="carousel-item"><div class="review-card mx-auto" style="max-width: 700px;"><i class="bi bi-chat-quote fs-1 text-danger opacity-50"></i><p class="mt-2 fs-5">«Заказывали уборку коттеджа после стройки — справились за 4 часа. Результат безупречный!»</p><h6 class="fw-bold mt-3">Елена К., частный дом</h6><span class="badge bg-secondary">частный клиент</span></div></div>
+        <div class="carousel-item"><div class="review-card mx-auto" style="max-width: 700px;"><i class="bi bi-chat-quote fs-1 text-danger opacity-50"></i><p class="mt-2 fs-5">«Профессиональный подход к уборке ТЦ. График соблюдается, персонал вежливый. Рекомендуем как надёжного партнёра.»</p><h6 class="fw-bold mt-3">УК «Гранд-Молл»</h6><span class="badge bg-secondary">корпоративный клиент</span></div></div>
+        <div class="carousel-item"><div class="review-card mx-auto" style="max-width: 700px;"><i class="bi bi-chat-quote fs-1 text-danger opacity-50"></i><p class="mt-2 fs-5">«Быстро, качественно, использовали экосредства — для нашей аллергика дочки это важно. Спасибо!»</p><h6 class="fw-bold mt-3">Алексей П.</h6><span class="badge bg-secondary">частный клиент</span></div></div>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#reviewCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon bg-danger rounded-circle p-3" aria-hidden="true"></span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#reviewCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon bg-danger rounded-circle p-3" aria-hidden="true"></span>
-      </button>
+      <button class="carousel-control-prev" type="button" data-bs-target="#reviewCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon bg-danger rounded-circle p-3" aria-hidden="true"></span></button>
+      <button class="carousel-control-next" type="button" data-bs-target="#reviewCarousel" data-bs-slide="next"><span class="carousel-control-next-icon bg-danger rounded-circle p-3" aria-hidden="true"></span></button>
     </div>
   </div>
 </section>
@@ -648,7 +628,137 @@
   </div>
 </footer>
 
-<!-- Модальное окно обратной связи (рабочая форма с Formspree) -->
+<!-- ==================== МОДАЛЬНЫЕ ОКНА УСЛУГ (стилизованные под красный акцент) ==================== -->
+<div class="modal fade" id="modalFlat" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-red text-white">
+        <h5 class="modal-title">Уборка квартир и домов</h5>
+        <button type="button" class="close-modal-btn" data-bs-dismiss="modal" aria-label="Закрыть"><i class="bi bi-x-lg"></i></button>
+      </div>
+      <div class="modal-body">
+        <p class="mb-4">Мы предлагаем полный спектр услуг по уборке жилых помещений. Используем профессиональное оборудование и гипоаллергенные средства.</p>
+        <table class="service-table">
+          <thead><tr><th>Вид уборки</th><th>Что входит</th><th>Цена (от)</th></tr></thead>
+          <tbody>
+            <tr><td>Поддерживающая</td><td>Пыль, полы, сантехника</td><td>100 ₽/м²</td></tr>
+            <tr><td>Генеральная</td><td>Влажная уборка всех поверхностей, окна, жир на кухне</td><td>180 ₽/м²</td></tr>
+            <tr><td>После ремонта</td><td>Удаление строительной пыли, следов плиточного клея, краски</td><td>250 ₽/м²</td></tr>
+            <tr><td>Мытьё окон</td><td>Стеклопакеты, рамы, подоконники</td><td>350 ₽/створка</td></tr>
+          </tbody>
+        </table>
+        <div class="text-center mt-4">
+          <button class="btn btn-red rounded-pill" data-bs-toggle="modal" data-bs-target="#callbackModal" data-bs-dismiss="modal"><i class="bi bi-calendar-check"></i> Заказать уборку</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalChem" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-red text-white">
+        <h5 class="modal-title">Химчистка мягкой мебели и ковров</h5>
+        <button type="button" class="close-modal-btn" data-bs-dismiss="modal"><i class="bi bi-x-lg"></i></button>
+      </div>
+      <div class="modal-body">
+        <p class="mb-4">Возвращаем первозданный вид вашей мебели и коврам. Удаляем пятна, запахи и пылевых клещей.</p>
+        <table class="service-table">
+          <thead><tr><th>Объект</th><th>Метод</th><th>Цена (от)</th></tr></thead>
+          <tbody>
+            <tr><td>Диван (2-х местный)</td><td>Экстракторная чистка</td><td>1500 ₽</td></tr>
+            <tr><td>Кресло</td><td>Экстракторная чистка</td><td>800 ₽</td></tr>
+            <tr><td>Ковёр/Ковролин</td><td>Глубокая чистка</td><td>200 ₽/м²</td></tr>
+            <tr><td>Стул (мягкая спинка)</td><td>Экстракторная чистка</td><td>300 ₽</td></tr>
+          </tbody>
+        </table>
+        <div class="text-center mt-4">
+          <button class="btn btn-red rounded-pill" data-bs-toggle="modal" data-bs-target="#callbackModal" data-bs-dismiss="modal"><i class="bi bi-calendar-check"></i> Заказать химчистку</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalDisinsection" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-red text-white">
+        <h5 class="modal-title">Дезинсекция</h5>
+        <button type="button" class="close-modal-btn" data-bs-dismiss="modal"><i class="bi bi-x-lg"></i></button>
+      </div>
+      <div class="modal-body">
+        <p class="mb-4">Эффективное уничтожение насекомых (тараканы, клопы, муравьи, комары). Используем сертифицированные препараты, безопасные для людей и животных.</p>
+        <table class="service-table">
+          <thead><tr><th>Тип помещения</th><th>Стоимость (от)</th><th>Гарантия</th></tr></thead>
+          <tbody>
+            <tr><td>1-комнатная квартира</td><td>2500 ₽</td><td>6 месяцев</td></tr>
+            <tr><td>2-комнатная квартира</td><td>3000 ₽</td><td>6 месяцев</td></tr>
+            <tr><td>3-комнатная квартира</td><td>3500 ₽</td><td>6 месяцев</td></tr>
+            <tr><td>Офис / Коммерческое помещение</td><td>от 3500 ₽</td><td>По договору</td></tr>
+          </tbody>
+        </table>
+        <div class="text-center mt-4">
+          <button class="btn btn-red rounded-pill" data-bs-toggle="modal" data-bs-target="#callbackModal" data-bs-dismiss="modal"><i class="bi bi-bug"></i> Заказать дезинсекцию</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalOffice" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-red text-white">
+        <h5 class="modal-title">Уборка ЖК, офисов, ТЦ</h5>
+        <button type="button" class="close-modal-btn" data-bs-dismiss="modal"><i class="bi bi-x-lg"></i></button>
+      </div>
+      <div class="modal-body">
+        <p class="mb-4">Обеспечиваем чистоту и порядок в ваших бизнес-пространствах. Гибкий график работы, не мешающий рабочему процессу.</p>
+        <table class="service-table">
+          <thead><tr><th>Тип помещения</th><th>Периодичность</th><th>Цена (от)</th></tr></thead>
+          <tbody>
+            <tr><td>Офис (до 100 м²)</td><td>Ежедневная/Поддерживающая</td><td>120 ₽/м²</td></tr>
+            <tr><td>Офис (более 100 м²)</td><td>Генеральная</td><td>По договору</td></tr>
+            <tr><td>Торговый центр</td><td>Поддерживающая/Ночная</td><td>По договору</td></tr>
+            <tr><td>Уборка после мероприятий</td><td>Единоразовая</td><td>от 5000 ₽</td></tr>
+          </tbody>
+        </table>
+        <div class="text-center mt-4">
+          <button class="btn btn-red rounded-pill" data-bs-toggle="modal" data-bs-target="#callbackModal" data-bs-dismiss="modal"><i class="bi bi-building"></i> Оставить заявку</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalIndustry" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-red text-white">
+        <h5 class="modal-title">Уборка производственных помещений</h5>
+        <button type="button" class="close-modal-btn" data-bs-dismiss="modal"><i class="bi bi-x-lg"></i></button>
+      </div>
+      <div class="modal-body">
+        <p class="mb-4">Специализированная уборка цехов, складов и промышленных зон. Опыт работы с технологическим оборудованием и удалением сложных загрязнений.</p>
+        <table class="service-table">
+          <thead><tr><th>Тип помещения</th><th>Специфика</th><th>Цена (от)</th></tr></thead>
+          <tbody>
+            <tr><td>Производственный цех</td><td>Удаление ГСМ, пыли, мытье полов</td><td>По договору</td></tr>
+            <tr><td>Склад</td><td>Уборка стеллажей, полов</td><td>По договору</td></tr>
+            <tr><td>Технические помещения</td><td>Генеральная уборка</td><td>По договору</td></tr>
+          </tbody>
+        </table>
+        <div class="text-center mt-4">
+          <button class="btn btn-red rounded-pill" data-bs-toggle="modal" data-bs-target="#callbackModal" data-bs-dismiss="modal"><i class="bi bi-file-text"></i> Получить коммерческое предложение</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Модальное окно обратной связи (Formspree) -->
 <div class="modal fade" id="callbackModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content rounded-4 border-0 shadow-lg">
@@ -759,6 +869,9 @@
     padding: 2rem;
     box-shadow: var(--shadow-sm);
     border-left: 5px solid var(--red-main);
+  }
+  .bg-red {
+    background-color: var(--red-main);
   }
 </style>
 </body>
