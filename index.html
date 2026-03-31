@@ -417,7 +417,7 @@
   </div>
 </section>
 
-<!-- ==================== УСЛУГИ (продающие карточки с модалками) ==================== -->
+<!-- ==================== УСЛУГИ (6 карточек с модалками) ==================== -->
 <section id="services" class="py-5 bg-light">
   <div class="container">
     <div class="text-center mb-5 fade-up">
@@ -467,6 +467,15 @@
           <div class="service-icon"><i class="bi bi-building-gear"></i></div>
           <h5 class="fw-bold mt-3">Производственные помещения</h5>
           <p class="small">Складские цеха, промзоны. Профессиональное оборудование. Договорная цена.</p>
+          <button class="btn btn-sm btn-outline-red mt-auto w-100">Подробнее →</button>
+        </div>
+      </div>
+      <!-- Услуга 6: Мойка окон и фасадов -->
+      <div class="col-md-6 col-lg-4 fade-up">
+        <div class="service-card card p-4 text-center h-100" data-bs-toggle="modal" data-bs-target="#modalWindows">
+          <div class="service-icon"><i class="bi bi-window"></i></div>
+          <h5 class="fw-bold mt-3">Мойка окон и фасадов</h5>
+          <p class="small">Окна любой сложности, витрины, фасады зданий. Промышленный альпинизм.</p>
           <button class="btn btn-sm btn-outline-red mt-auto w-100">Подробнее →</button>
         </div>
       </div>
@@ -628,7 +637,7 @@
   </div>
 </footer>
 
-<!-- ==================== МОДАЛЬНЫЕ ОКНА УСЛУГ (стилизованные под красный акцент) ==================== -->
+<!-- ==================== МОДАЛЬНЫЕ ОКНА УСЛУГ ==================== -->
 <div class="modal fade" id="modalFlat" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
@@ -752,6 +761,33 @@
         </table>
         <div class="text-center mt-4">
           <button class="btn btn-red rounded-pill" data-bs-toggle="modal" data-bs-target="#callbackModal" data-bs-dismiss="modal"><i class="bi bi-file-text"></i> Получить коммерческое предложение</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Модальное окно для мойки окон и фасадов -->
+<div class="modal fade" id="modalWindows" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-red text-white">
+        <h5 class="modal-title">Мойка окон и фасадов</h5>
+        <button type="button" class="close-modal-btn" data-bs-dismiss="modal"><i class="bi bi-x-lg"></i></button>
+      </div>
+      <div class="modal-body">
+        <p class="mb-4">Профессиональная мойка окон любой сложности, витрин, фасадов зданий. Используем промышленный альпинизм и специализированное оборудование.</p>
+        <table class="service-table">
+          <thead><tr><th>Тип объекта</th><th>Стоимость (от)</th><th>Примечание</th></tr></thead>
+          <tbody>
+            <tr><td>Стандартное окно (до 2 м²)</td><td>350 ₽/створка</td><td>Внутренняя и наружная мойка</td></tr>
+            <tr><td>Остекление балкона/лоджии</td><td>от 1000 ₽</td><td>Зависит от количества створок</td></tr>
+            <tr><td>Витрины магазинов</td><td>от 200 ₽/м²</td><td>Высотные работы</td></tr>
+            <tr><td>Фасады зданий</td><td>по договору</td><td>Промышленный альпинизм</td></tr>
+          </tbody>
+        </table>
+        <div class="text-center mt-4">
+          <button class="btn btn-red rounded-pill" data-bs-toggle="modal" data-bs-target="#callbackModal" data-bs-dismiss="modal"><i class="bi bi-window"></i> Заказать мойку окон</button>
         </div>
       </div>
     </div>
