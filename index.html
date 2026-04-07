@@ -6,14 +6,13 @@
   <title>Комбинат чистоты — клининг в Тюмени | Уборка квартир, офисов, производств</title>
   <meta name="description" content="Профессиональная уборка в Тюмени от «Комбинат чистоты». Химчистка, клининг квартир, домов, офисов, ЖК и производств. Рассчитайте стоимость онлайн. Гарантия чистоты!">
   
-  <!-- Preconnect для быстрой загрузки внешних ресурсов -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://cdn.jsdelivr.net">
-  
+  <!-- Альтернативные CDN (рабочие) вместо заблокированных -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+  <!-- Google Fonts (возможно, тоже блокируется, но оставим) -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Bootstrap JS (альтернативный) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js" defer></script>
   
   <style>
     /* ---------- ГЛОБАЛЬНЫЕ СТИЛИ + ГЕОМЕТРИЧЕСКИЙ ДИЗАЙН ---------- */
@@ -210,6 +209,7 @@
       background-size: cover;
       background-position: center;
     }
+    /* Заменяем фоновое изображение на другую ссылку с рабочим SSL (или убираем) */
     .hero-bg::after {
       content: '';
       position: absolute;
@@ -224,6 +224,7 @@
       z-index: -1;
       pointer-events: none;
     }
+    /* Если сертификат Pexels всё равно не работает, закомментируйте строку выше и используйте цвет */
 
     .messenger-btn {
       display: inline-flex;
@@ -417,7 +418,7 @@
   </div>
 </section>
 
-<!-- ==================== УСЛУГИ (6 карточек с модалками) ==================== -->
+<!-- ==================== УСЛУГИ ==================== -->
 <section id="services" class="py-5 bg-light">
   <div class="container">
     <div class="text-center mb-5 fade-up">
@@ -475,7 +476,7 @@
         <div class="service-card card p-4 text-center h-100" data-bs-toggle="modal" data-bs-target="#modalWindows">
           <div class="service-icon"><i class="bi bi-window"></i></div>
           <h5 class="fw-bold mt-3">Мойка окон и фасадов</h5>
-          <p class="small">Окна любой сложности, витрины, фасады зданий. </p>
+          <p class="small">Окна любой сложности, витрины, фасады зданий. Промышленный альпинизм.</p>
           <button class="btn btn-sm btn-outline-red mt-auto w-100">Подробнее →</button>
         </div>
       </div>
@@ -529,7 +530,7 @@
   </div>
 </section>
 
-<!-- ==================== ПОРТФОЛИО — СЛАЙДЕР С ФОТОГРАФИЯМИ КОМАНДЫ ==================== -->
+<!-- ==================== ПОРТФОЛИО — СЛАЙДЕР ==================== -->
 <section id="portfolio" class="py-5 position-relative overflow-hidden">
   <div class="geo-shape top-0 start-0 mt-5 ms-5 opacity-25"><div class="hexagon"></div></div>
   <div class="geo-shape bottom-0 end-0 mb-5 me-5 opacity-25"><div class="triangle" style="transform: rotate(180deg);"></div></div>
@@ -552,16 +553,17 @@
         <button type="button" data-bs-target="#teamSlider" data-bs-slide-to="9" aria-label="Слайд 10"></button>
       </div>
       <div class="carousel-inner">
-        <div class="carousel-item active"><div class="portfolio-image-wrapper"><img src="https://epstejnv-lang.github.io/-----/images/1.паркинг.jpg" class="d-block w-100" alt="Команда клининга" loading="lazy"></div></div>
-        <div class="carousel-item"><div class="portfolio-image-wrapper"><img src="https://epstejnv-lang.github.io/-----/images/0Hn-WVN4Z52dW6w9XX-HQc7lCVhLrHJ6cDqYOoDMv-hpDtunnZgg4icDkI2RGBCVvtIFeBqsOACUox8wF5qeViG6.jpg" class="d-block w-100" alt="Уборка квартиры" loading="lazy"></div></div>
-        <div class="carousel-item"><div class="portfolio-image-wrapper"><img src="https://epstejnv-lang.github.io/-----/images/снег.jpg" class="d-block w-100" alt="Чистота в деталях" loading="lazy"></div></div>
-        <div class="carousel-item"><div class="portfolio-image-wrapper"><img src="https://epstejnv-lang.github.io/-----/images/косилка.png" class="d-block w-100" alt="Химчистка ковров" loading="lazy"></div></div>
-        <div class="carousel-item"><div class="portfolio-image-wrapper"><img src="https://epstejnv-lang.github.io/-----/images/ремонт.png" class="d-block w-100" alt="Уборка офиса" loading="lazy"></div></div>
-        <div class="carousel-item"><div class="portfolio-image-wrapper"><img src="https://epstejnv-lang.github.io/-----/images/яхта.jpg" class="d-block w-100" alt="Чистый диван" loading="lazy"></div></div>
-        <div class="carousel-item"><div class="portfolio-image-wrapper"><img src="https://epstejnv-lang.github.io/-----/images/тц.jpg" class="d-block w-100" alt="Профессиональное оборудование" loading="lazy"></div></div>
-        <div class="carousel-item"><div class="portfolio-image-wrapper"><img src="https://epstejnv-lang.github.io/-----/images/okna.jpeg" class="d-block w-100" alt="Сертифицированные средства" loading="lazy"></div></div>
+        <!-- Замените пути на латиницу. Пример: 1_parking.jpg вместо 1.паркинг.jpg -->
+        <div class="carousel-item active"><div class="portfolio-image-wrapper"><img src="https://epstejnv-lang.github.io/-----/images/1_parking.jpg" class="d-block w-100" alt="Команда клининга" loading="lazy"></div></div>
+        <div class="carousel-item"><div class="portfolio-image-wrapper"><img src="https://epstejnv-lang.github.io/-----/images/cleaning.jpg" class="d-block w-100" alt="Уборка квартиры" loading="lazy"></div></div>
+        <div class="carousel-item"><div class="portfolio-image-wrapper"><img src="https://epstejnv-lang.github.io/-----/images/snow.jpg" class="d-block w-100" alt="Чистота в деталях" loading="lazy"></div></div>
+        <div class="carousel-item"><div class="portfolio-image-wrapper"><img src="https://epstejnv-lang.github.io/-----/images/kosilka.png" class="d-block w-100" alt="Химчистка ковров" loading="lazy"></div></div>
+        <div class="carousel-item"><div class="portfolio-image-wrapper"><img src="https://epstejnv-lang.github.io/-----/images/remont.png" class="d-block w-100" alt="Уборка офиса" loading="lazy"></div></div>
+        <div class="carousel-item"><div class="portfolio-image-wrapper"><img src="https://epstejnv-lang.github.io/-----/images/yacht.jpg" class="d-block w-100" alt="Чистый диван" loading="lazy"></div></div>
+        <div class="carousel-item"><div class="portfolio-image-wrapper"><img src="https://epstejnv-lang.github.io/-----/images/tc.jpg" class="d-block w-100" alt="Профессиональное оборудование" loading="lazy"></div></div>
+        <div class="carousel-item"><div class="portfolio-image-wrapper"><img src="https://epstejnv-lang.github.io/-----/images/windows.jpg" class="d-block w-100" alt="Сертифицированные средства" loading="lazy"></div></div>
         <div class="carousel-item"><div class="portfolio-image-wrapper"><img src="https://epstejnv-lang.github.io/-----/images/kover.jpg" class="d-block w-100" alt="Команда профессионалов" loading="lazy"></div></div>
-        <div class="carousel-item"><div class="portfolio-image-wrapper"><img src="https://epstejnv-lang.github.io/-----/images/дезинсекция.png" class="d-block w-100" alt="Результат работы" loading="lazy"></div></div>
+        <div class="carousel-item"><div class="portfolio-image-wrapper"><img src="https://epstejnv-lang.github.io/-----/images/disinsection.png" class="d-block w-100" alt="Результат работы" loading="lazy"></div></div>
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#teamSlider" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Предыдущий</span></button>
       <button class="carousel-control-next" type="button" data-bs-target="#teamSlider" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Следующий</span></button>
@@ -767,7 +769,6 @@
   </div>
 </div>
 
-<!-- Модальное окно для мойки окон и фасадов -->
 <div class="modal fade" id="modalWindows" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
@@ -783,7 +784,7 @@
             <tr><td>Стандартное окно (до 2 м²)</td><td>350 ₽/створка</td><td>Внутренняя и наружная мойка</td></tr>
             <tr><td>Остекление балкона/лоджии</td><td>от 1000 ₽</td><td>Зависит от количества створок</td></tr>
             <tr><td>Витрины магазинов</td><td>от 200 ₽/м²</td><td>Высотные работы</td></tr>
-            <tr><td>Фасады зданий</td><td>по договору</td><td></td>Высотные работы</tr>
+            <tr><td>Фасады зданий</td><td>по договору</td><td>Промышленный альпинизм</td></tr>
           </tbody>
         </table>
         <div class="text-center mt-4">
@@ -817,7 +818,6 @@
   </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" defer></script>
 <script>
   // Анимация появления при скролле (Intersection Observer)
   const fadeElements = document.querySelectorAll('.fade-up');
