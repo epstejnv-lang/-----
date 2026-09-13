@@ -2,353 +2,923 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#e03a3a">
   <title>Комбинат чистоты — клининг в Тюмени | Уборка квартир, офисов, производств</title>
   <meta name="description" content="Профессиональная уборка в Тюмени от «Комбинат чистоты». Химчистка, клининг квартир, домов, офисов, ЖК и производств. Рассчитайте стоимость онлайн. Гарантия чистоты!">
-  
-  <!-- Альтернативные CDN (рабочие) вместо заблокированных -->
+
+  <!-- Preconnect для скорости -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
-  <!-- Google Fonts (возможно, тоже блокируется, но оставим) -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-  <!-- Bootstrap JS (альтернативный) -->
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js" defer></script>
-  
+
   <style>
-    /* ---------- ГЛОБАЛЬНЫЕ СТИЛИ + ГЕОМЕТРИЧЕСКИЙ ДИЗАЙН ---------- */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    /* ============ DESIGN TOKENS ============ */
+    :root {
+      --red-50:  #fff1f1;
+      --red-100: #ffe0e0;
+      --red-300: #ff9a9a;
+      --red-500: #e03a3a;
+      --red-600: #c42a2a;
+      --red-700: #a01f1f;
+      --ink-900: #0f1220;
+      --ink-700: #2a2f45;
+      --ink-500: #5a5f75;
+      --ink-300: #8b90a5;
+      --bg:      #ffffff;
+      --bg-soft: #f7f8fc;
+      --bg-mute: #eef1f7;
+      --line:    #e6e9f2;
+
+      --radius-sm: 12px;
+      --radius-md: 18px;
+      --radius-lg: 28px;
+      --radius-pill: 999px;
+
+      --shadow-xs: 0 1px 2px rgba(15,18,32,.05);
+      --shadow-sm: 0 6px 18px -8px rgba(15,18,32,.12);
+      --shadow-md: 0 18px 40px -18px rgba(15,18,32,.18);
+      --shadow-lg: 0 30px 60px -25px rgba(15,18,32,.28);
+      --shadow-red: 0 14px 30px -12px rgba(224,58,58,.55);
+
+      --ease: cubic-bezier(.22,.9,.31,1);
+      --dur: .45s;
+
+      --container-pad: clamp(1rem, 4vw, 2rem);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg:      #0e1018;
+        --bg-soft: #14171f;
+        --bg-mute: #1a1e29;
+        --line:    #262a38;
+        --ink-900: #f5f6fa;
+        --ink-700: #d3d6e2;
+        --ink-500: #9ea3b8;
+        --ink-300: #6f7488;
+      }
+    }
+
+    /* ============ RESET & BASE ============ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
     }
 
     body {
-      font-family: 'Inter', sans-serif;
-      background-color: #ffffff;
-      color: #1e1e2a;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--ink-900);
+      line-height: 1.6;
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
 
-    :root {
-      --red-deep: #c42a2a;
-      --red-main: #e03a3a;
-      --red-soft: #ff6b6b;
-      --red-pale: #ffe5e5;
-      --gray-light: #f8f9fc;
-      --gray-mid: #eef2f6;
-      --shadow-sm: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+    h1, h2, h3, h4, h5 {
+      font-family: 'Manrope', 'Inter', sans-serif;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: var(--ink-900);
     }
 
-    .geo-shape {
-      position: absolute;
-      z-index: 0;
+    h1 { font-size: clamp(2.2rem, 5vw + 1rem, 4.5rem); font-weight: 800; }
+    h2 { font-size: clamp(1.8rem, 3vw + 1rem, 2.75rem); font-weight: 800; }
+    h3 { font-size: clamp(1.4rem, 2vw + .5rem, 1.85rem); font-weight: 700; }
+
+    p  { color: var(--ink-500); }
+
+    a  { color: inherit; }
+
+    img { max-width: 100%; height: auto; display: block; }
+
+    section { position: relative; }
+    section[hidden] { display: none; }
+
+    .section-pad { padding: clamp(3rem, 8vw, 6rem) 0; }
+
+    .text-danger { color: var(--red-500) !important; }
+    .text-muted   { color: var(--ink-500) !important; }
+
+    /* ============ SCROLL PROGRESS ============ */
+    .scroll-progress {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      z-index: 2000;
+      background: transparent;
       pointer-events: none;
     }
-    .triangle {
-      width: 0;
-      height: 0;
-      border-left: 40px solid transparent;
-      border-right: 40px solid transparent;
-      border-bottom: 70px solid rgba(224, 58, 58, 0.08);
-    }
-    .hexagon {
-      width: 60px;
-      height: 34.64px;
-      background: rgba(224, 58, 58, 0.1);
-      clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-    }
-
-    section {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .btn-red {
-      background-color: var(--red-main);
-      border: none;
-      color: white;
-      padding: 12px 28px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 12px rgba(192, 46, 46, 0.25);
-    }
-    .btn-red:hover {
-      background-color: var(--red-deep);
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px -5px rgba(192, 46, 46, 0.4);
-    }
-    .btn-outline-red {
-      border: 2px solid var(--red-main);
-      background: transparent;
-      color: var(--red-main);
-      font-weight: 600;
-      transition: 0.2s;
-    }
-    .btn-outline-red:hover {
-      background-color: var(--red-main);
-      color: white;
-      transform: scale(1.02);
-    }
-
-    .service-card {
-      border: none;
-      border-radius: 24px;
-      background: white;
-      transition: all 0.3s ease;
-      box-shadow: var(--shadow-sm);
+    .scroll-progress__bar {
       height: 100%;
-      cursor: pointer;
-    }
-    .service-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.1);
-    }
-    .service-icon {
-      font-size: 2.5rem;
-      color: var(--red-main);
+      width: 0%;
+      background: linear-gradient(90deg, var(--red-500), var(--red-600));
+      transition: width .1s linear;
+      box-shadow: 0 0 12px rgba(224,58,58,.6);
     }
 
-    .fade-up {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.6s ease;
-    }
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Стили для слайдера портфолио */
-    .portfolio-slider {
-      max-width: 1200px;
-      margin: 0 auto;
-      border-radius: 32px;
-      overflow: hidden;
-      box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.15);
-      background: #fff;
-      position: relative;
-    }
-    .portfolio-image-wrapper {
-      background: #f5f5f5;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .portfolio-image-wrapper img {
-      width: 100%;
-      height: auto;
-      max-height: 620px;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-    .carousel-item:hover .portfolio-image-wrapper img {
-      transform: scale(1.02);
-    }
-    .carousel-control-prev-icon,
-    .carousel-control-next-icon {
-      background-color: var(--red-main);
-      border-radius: 50%;
-      padding: 1.2rem;
-      background-size: 50%;
-      transition: all 0.2s ease;
-      opacity: 0.9;
-    }
-    .carousel-control-prev-icon:hover,
-    .carousel-control-next-icon:hover {
-      background-color: var(--red-deep);
-      transform: scale(1.05);
-      opacity: 1;
-    }
-    .carousel-indicators {
-      bottom: 20px;
-    }
-    .carousel-indicators button {
-      background-color: #fff;
-      background-color: rgba(255, 255, 255, 0.6);
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      margin: 0 6px;
-      border: none;
-      transition: all 0.2s;
-    }
-    .carousel-indicators .active {
-      background-color: var(--red-main);
-      transform: scale(1.2);
-    }
-    @media (max-width: 768px) {
-      .portfolio-image-wrapper img {
-        max-height: 400px;
-      }
-      .carousel-control-prev-icon,
-      .carousel-control-next-icon {
-        padding: 0.8rem;
-      }
-      .carousel-indicators button {
-        width: 8px;
-        height: 8px;
-      }
-    }
-
+    /* ============ NAVBAR ============ */
     .navbar {
-      background: rgba(255,255,255,0.96);
-      backdrop-filter: blur(4px);
-      box-shadow: 0 2px 20px rgba(0,0,0,0.02);
+      background: color-mix(in srgb, var(--bg) 82%, transparent);
+      -webkit-backdrop-filter: saturate(180%) blur(14px);
+      backdrop-filter: saturate(180%) blur(14px);
+      border-bottom: 1px solid color-mix(in srgb, var(--line) 60%, transparent);
+      transition: padding .3s var(--ease), box-shadow .3s var(--ease);
+      padding: .65rem 0;
     }
+    .navbar.scrolled { box-shadow: var(--shadow-sm); padding: .4rem 0; }
+
+    .navbar-brand { display: flex; align-items: center; gap: .6rem; }
+
     .logo-text {
+      font-family: 'Manrope', sans-serif;
       font-weight: 800;
-      font-size: 1.6rem;
-      background: linear-gradient(135deg, var(--red-deep), #b91c1c);
+      font-size: clamp(1.05rem, 2vw, 1.35rem);
+      background: linear-gradient(120deg, var(--red-500), var(--red-700));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
+      white-space: nowrap;
     }
 
-    .hero-bg {
-      background: linear-gradient(107deg, rgba(255,255,255,0.92) 0%, rgba(255,245,245,0.85) 100%), #f5f0f0;
-      background-size: cover;
-      background-position: center;
+    .badge-city {
+      font-size: .72rem;
+      background: linear-gradient(135deg, var(--red-500), var(--red-600));
+      color: #fff;
+      padding: .3rem .7rem;
+      border-radius: var(--radius-pill);
+      font-weight: 600;
+      letter-spacing: .02em;
     }
-    /* Заменяем фоновое изображение на другую ссылку с рабочим SSL (или убираем) */
-    .hero-bg::after {
+
+    .navbar-nav .nav-link {
+      font-weight: 500;
+      color: var(--ink-700);
+      padding: .5rem .9rem;
+      border-radius: var(--radius-pill);
+      transition: background .25s var(--ease), color .25s var(--ease);
+      position: relative;
+    }
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link:focus-visible {
+      color: var(--red-500);
+      background: var(--red-50);
+    }
+    @media (prefers-color-scheme: dark) {
+      .navbar-nav .nav-link:hover { background: rgba(224,58,58,.12); }
+    }
+
+    .navbar-toggler {
+      border: none;
+      padding: .4rem .5rem;
+      border-radius: 10px;
+    }
+    .navbar-toggler:focus-visible {
+      box-shadow: 0 0 0 3px rgba(224,58,58,.3);
+      outline: none;
+    }
+
+    /* ============ BUTTONS ============ */
+    .btn { font-weight: 600; transition: all .3s var(--ease); border-radius: var(--radius-pill); }
+
+    .btn-red {
+      background: linear-gradient(135deg, var(--red-500), var(--red-600));
+      color: #fff;
+      border: none;
+      padding: .8rem 1.75rem;
+      box-shadow: var(--shadow-red);
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .btn-red::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url('https://images.pexels.com/photos/4107283/pexels-photo-4107283.jpeg?auto=compress&cs=tinysrgb&w=1200&fit=crop');
-      background-size: cover;
-      background-position: center;
-      opacity: 0.3;
+      inset: 0;
+      background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,.35) 50%, transparent 70%);
+      transform: translateX(-120%);
+      transition: transform .7s var(--ease);
       z-index: -1;
-      pointer-events: none;
     }
-    /* Если сертификат Pexels всё равно не работает, закомментируйте строку выше и используйте цвет */
+    .btn-red:hover {
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 20px 40px -14px rgba(224,58,58,.7);
+    }
+    .btn-red:hover::before { transform: translateX(120%); }
+    .btn-red:active { transform: translateY(0); }
+    .btn-red:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(224,58,58,.3), var(--shadow-red);
+    }
 
+    .btn-outline-red {
+      border: 1.5px solid var(--red-500);
+      color: var(--red-500);
+      background: transparent;
+      padding: .8rem 1.6rem;
+    }
+    .btn-outline-red:hover {
+      background: var(--red-500);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-red);
+    }
+    .btn-outline-red:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(224,58,58,.25);
+    }
+
+    /* ============ MESSENGER BUTTONS ============ */
     .messenger-btn {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      background: #f0f2f5;
-      padding: 8px 16px;
-      border-radius: 40px;
-      font-weight: 500;
-      transition: 0.2s;
+      gap: .45rem;
+      padding: .5rem .95rem;
+      border-radius: var(--radius-pill);
+      font-weight: 600;
+      font-size: .9rem;
       text-decoration: none;
-      color: #1e1e2a;
+      color: var(--ink-700);
+      background: var(--bg-soft);
+      transition: all .25s var(--ease);
+      white-space: nowrap;
     }
-    .messenger-btn.tg { background: #e6f0ff; }
-    .messenger-btn.max { background: #fff0e6; }
-    .messenger-btn:hover {
-      transform: translateY(-2px);
-      filter: brightness(0.96);
+    .messenger-btn:hover { transform: translateY(-2px); filter: brightness(.97); color: var(--ink-900); }
+    .messenger-btn.tg  { background: #e8f1ff; color: #1a73e8; }
+    .messenger-btn.max { background: #fff0e6; color: #c2410c; }
+    @media (prefers-color-scheme: dark) {
+      .messenger-btn { background: var(--bg-mute); }
+      .messenger-btn.tg  { background: rgba(26,115,232,.15); }
+      .messenger-btn.max { background: rgba(194,65,12,.15); }
     }
 
+    /* ============ HERO ============ */
+    .hero {
+      padding: clamp(3rem, 8vw, 6rem) 0 clamp(4rem, 10vw, 7rem);
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 10% 0%, rgba(224,58,58,.18), transparent 70%),
+        radial-gradient(ellipse 50% 60% at 90% 100%, rgba(224,58,58,.14), transparent 70%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
+      z-index: -2;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -180px; right: -180px;
+      width: 480px; height: 480px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(224,58,58,.35), transparent 65%);
+      filter: blur(60px);
+      z-index: -1;
+      animation: floatBlob 14s ease-in-out infinite;
+    }
+    @keyframes floatBlob {
+      0%, 100% { transform: translate(0,0) scale(1); }
+      50%      { transform: translate(-40px, 40px) scale(1.1); }
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: rgba(224,58,58,.1);
+      color: var(--red-600);
+      padding: .4rem .9rem;
+      border-radius: var(--radius-pill);
+      font-size: .85rem;
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+    }
+    .hero-badge .dot {
+      width: 8px; height: 8px;
+      background: var(--red-500);
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px rgba(224,58,58,.25);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(224,58,58,.5); }
+      50%      { box-shadow: 0 0 0 8px rgba(224,58,58,0); }
+    }
+
+    .hero h1 .accent {
+      background: linear-gradient(135deg, var(--red-500), var(--red-700));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero-features { display: flex; flex-wrap: wrap; gap: 1rem 1.5rem; color: var(--ink-500); font-size: .95rem; }
+    .hero-features span { display: inline-flex; align-items: center; gap: .4rem; }
+    .hero-features i { color: var(--red-500); }
+
+    .hero-image-card {
+      background: var(--bg);
+      padding: .75rem;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      transform: perspective(1200px) rotateY(-6deg) rotateX(3deg);
+      transition: transform .6s var(--ease);
+    }
+    .hero-image-card:hover { transform: perspective(1200px) rotateY(0deg) rotateX(0deg); }
+    .hero-image-card img { border-radius: calc(var(--radius-lg) - 8px); }
+
+    .hero-float-badge {
+      position: absolute;
+      background: var(--bg);
+      box-shadow: var(--shadow-md);
+      padding: .85rem 1.1rem;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      font-size: .85rem;
+      font-weight: 600;
+      animation: floatY 5s ease-in-out infinite;
+    }
+    .hero-float-badge i { color: var(--red-500); font-size: 1.4rem; }
+    .hero-float-badge--tl { top: 10%; left: -8%; animation-delay: -1s; }
+    .hero-float-badge--br { bottom: 12%; right: -6%; animation-delay: -2.5s; }
+    @keyframes floatY {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-10px); }
+    }
+
+    /* ============ CARDS ============ */
+    .surface-card {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-xs);
+      transition: all var(--dur) var(--ease);
+      height: 100%;
+    }
+
+    .service-card {
+      position: relative;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      cursor: pointer;
+      overflow: hidden;
+      isolation: isolate;
+      display: flex;
+      flex-direction: column;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1.5px;
+      background: linear-gradient(135deg, var(--red-500), transparent 40%, transparent 60%, var(--red-500));
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+              mask-composite: exclude;
+      opacity: 0;
+      transition: opacity var(--dur) var(--ease);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+      border-color: transparent;
+    }
+    .service-card:hover::before { opacity: 1; }
+    .service-card:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(224,58,58,.35), var(--shadow-lg);
+      transform: translateY(-4px);
+    }
+
+    .service-icon {
+      width: 68px;
+      height: 68px;
+      border-radius: 20px;
+      display: grid;
+      place-items: center;
+      font-size: 1.9rem;
+      color: var(--red-500);
+      background: linear-gradient(135deg, var(--red-50), rgba(224,58,58,.05));
+      margin: 0 auto 1.25rem;
+      transition: transform var(--dur) var(--ease);
+    }
+    .service-card:hover .service-icon {
+      transform: scale(1.1) rotate(-4deg);
+      background: linear-gradient(135deg, var(--red-500), var(--red-600));
+      color: #fff;
+    }
+
+    .service-card h5 {
+      font-weight: 700;
+      margin-bottom: .6rem;
+      font-size: 1.15rem;
+    }
+    .service-card p { font-size: .92rem; margin-bottom: 1.25rem; flex-grow: 1; }
+
+    .service-card .btn-more {
+      align-self: stretch;
+      background: transparent;
+      border: 1.5px solid var(--line);
+      color: var(--ink-700);
+      font-weight: 600;
+      padding: .55rem 1rem;
+      font-size: .9rem;
+      transition: all .3s var(--ease);
+      margin-top: auto;
+    }
+    .service-card:hover .btn-more {
+      background: var(--red-500);
+      border-color: var(--red-500);
+      color: #fff;
+    }
+
+    /* ============ CALCULATOR ============ */
     .calc-card {
-      background: white;
-      border-radius: 32px;
-      box-shadow: var(--shadow-sm);
-      padding: 2rem;
+      background: var(--bg);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      padding: clamp(1.5rem, 4vw, 2.75rem);
+      border: 1px solid var(--line);
+      position: relative;
+      overflow: hidden;
+    }
+    .calc-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, var(--red-500), var(--red-600));
     }
 
-    footer a {
-      text-decoration: none;
-      color: #5a5a6e;
-    }
-    footer a:hover { color: var(--red-main); }
+    .form-label { font-weight: 600; color: var(--ink-700); font-size: .9rem; margin-bottom: .5rem; }
 
-    @media (max-width: 768px) {
-      .hero-title { font-size: 2.2rem; }
-      .service-card { margin-bottom: 1rem; }
-      .messenger-btn span { display: none; }
-      .messenger-btn { padding: 8px 12px; }
+    .form-control, .form-select {
+      background: var(--bg-soft);
+      border: 1.5px solid var(--line);
+      color: var(--ink-900);
+      padding: .75rem 1rem;
+      border-radius: var(--radius-md);
+      font-size: 1rem;
+      transition: all .25s var(--ease);
+    }
+    .form-control:focus, .form-select:focus {
+      background: var(--bg);
+      border-color: var(--red-500);
+      box-shadow: 0 0 0 4px rgba(224,58,58,.15);
+      color: var(--ink-900);
+      outline: none;
     }
 
-    /* Стили для модальных окон (таблицы, адаптация под красный акцент) */
-    .modal-content {
-      border-radius: 28px;
+    .range-input {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 6px;
+      background: linear-gradient(90deg, var(--red-500) 0%, var(--red-500) var(--val, 40%), var(--line) var(--val, 40%), var(--line) 100%);
+      border-radius: 999px;
+      outline: none;
+      margin-top: .75rem;
+    }
+    .range-input::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      background: #fff;
+      border: 3px solid var(--red-500);
+      box-shadow: var(--shadow-red);
+      cursor: pointer;
+      transition: transform .2s var(--ease);
+    }
+    .range-input::-webkit-slider-thumb:hover { transform: scale(1.15); }
+    .range-input::-moz-range-thumb {
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      background: #fff;
+      border: 3px solid var(--red-500);
+      cursor: pointer;
+    }
+
+    .result-price {
+      font-family: 'Manrope', sans-serif;
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--red-500), var(--red-700));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      line-height: 1;
+      transition: transform .3s var(--ease);
+    }
+    .result-price.bump { transform: scale(1.06); }
+
+    /* ============ FEATURES ============ */
+    .feature-item {
+      padding: 1.75rem 1.5rem;
+      background: var(--bg);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      height: 100%;
+      transition: all var(--dur) var(--ease);
+    }
+    .feature-item:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+      border-color: transparent;
+    }
+    .feature-item i {
+      font-size: 1.75rem;
+      color: var(--red-500);
+      width: 56px; height: 56px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--red-50), rgba(224,58,58,.05));
+      border-radius: 16px;
+      margin-bottom: 1rem;
+      transition: transform var(--dur) var(--ease);
+    }
+    .feature-item:hover i { transform: rotate(-6deg) scale(1.08); }
+    .feature-item h5 { font-size: 1.05rem; font-weight: 700; margin-bottom: .35rem; }
+    .feature-item p  { font-size: .9rem; margin: 0; }
+
+    /* ============ CAROUSEL ============ */
+    .carousel-shell {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      background: var(--bg);
+      position: relative;
+    }
+    .carousel-item img {
+      width: 100%;
+      height: clamp(260px, 55vw, 620px);
+      object-fit: cover;
+      transition: transform 1.2s var(--ease);
+    }
+    .carousel-item.active img { transform: scale(1.03); }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background-color: rgba(255,255,255,.92);
+      background-size: 45%;
+      box-shadow: var(--shadow-md);
+      transition: all .25s var(--ease);
+      /* Иконки через SVG с красным цветом */
+      filter: invert(26%) sepia(90%) saturate(4000%) hue-rotate(345deg);
+    }
+    .carousel-control-prev-icon:hover,
+    .carousel-control-next-icon:hover {
+      transform: scale(1.08);
+      background-color: #fff;
+    }
+
+    .carousel-indicators { margin-bottom: 1rem; }
+    .carousel-indicators button {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background-color: rgba(255,255,255,.55);
       border: none;
+      margin: 0 5px;
+      transition: all .3s var(--ease);
+    }
+    .carousel-indicators .active {
+      background-color: var(--red-500);
+      width: 28px;
+      border-radius: 999px;
+    }
+
+    /* ============ PROCESS ============ */
+    .process-step {
+      position: relative;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .process-step .num {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 1rem;
+      font-family: 'Manrope', sans-serif;
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--red-600);
+      background: linear-gradient(135deg, var(--red-50), rgba(224,58,58,.08));
+      border: 2px solid rgba(224,58,58,.2);
+      position: relative;
+      transition: all var(--dur) var(--ease);
+    }
+    .process-step:hover .num {
+      background: linear-gradient(135deg, var(--red-500), var(--red-600));
+      color: #fff;
+      border-color: transparent;
+      transform: scale(1.08);
+      box-shadow: var(--shadow-red);
+    }
+    .process-step h5 { font-weight: 700; margin-bottom: .35rem; font-size: 1.05rem; }
+    .process-step p  { font-size: .9rem; margin: 0; }
+
+    /* ============ REVIEWS ============ */
+    .review-card {
+      background: var(--bg);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      border-left: 4px solid var(--red-500);
+      max-width: 720px;
+      margin: 0 auto;
+      position: relative;
+      transition: transform var(--dur) var(--ease);
+    }
+    .review-card:hover { transform: translateY(-4px); }
+    .review-card .quote-icon {
+      font-size: 1.75rem;
+      color: var(--red-500);
+      opacity: .5;
+      margin-bottom: .5rem;
+    }
+    .review-card p {
+      font-size: 1.05rem;
+      color: var(--ink-700);
+      line-height: 1.7;
+    }
+    .review-card h6 { font-weight: 700; margin: 1rem 0 .3rem; }
+    .review-badge {
+      display: inline-block;
+      background: var(--bg-mute);
+      color: var(--ink-500);
+      font-size: .72rem;
+      font-weight: 600;
+      padding: .25rem .7rem;
+      border-radius: var(--radius-pill);
+      letter-spacing: .02em;
+      text-transform: uppercase;
+    }
+
+    /* ============ CONTACTS ============ */
+    .contact-list { list-style: none; padding: 0; margin: 1.5rem 0 0; }
+    .contact-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: .85rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 1rem;
+      color: var(--ink-700);
+    }
+    .contact-list li:last-child { border-bottom: none; }
+    .contact-list i {
+      color: var(--red-500);
+      font-size: 1.15rem;
+      margin-top: .15rem;
+      flex-shrink: 0;
+    }
+    .contact-list a { color: inherit; text-decoration: none; transition: color .2s; }
+    .contact-list a:hover { color: var(--red-500); }
+
+    .map-wrap {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      height: 100%;
+      min-height: 340px;
+      border: 1px solid var(--line);
+    }
+    .map-wrap iframe { display: block; width: 100%; height: 100%; min-height: 340px; border: 0; }
+
+    /* ============ FOOTER ============ */
+    footer {
+      background: var(--ink-900);
+      color: rgba(255,255,255,.6);
+      padding: 2rem 0;
+      text-align: center;
+      font-size: .9rem;
+    }
+    @media (prefers-color-scheme: dark) {
+      footer { background: #06070c; }
+    }
+    footer a { color: rgba(255,255,255,.7); text-decoration: none; transition: color .2s; }
+    footer a:hover { color: var(--red-300); }
+
+    /* ============ MODALS ============ */
+    .modal-content {
+      border-radius: var(--radius-lg);
+      border: none;
+      box-shadow: var(--shadow-lg);
+      background: var(--bg);
+      color: var(--ink-900);
     }
     .modal-header {
-      border-bottom: none;
-      border-radius: 28px 28px 0 0;
+      border: none;
+      padding: 1.5rem 1.75rem 1rem;
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
     }
     .modal-header.bg-red {
-      background-color: var(--red-main);
+      background: linear-gradient(135deg, var(--red-500), var(--red-600));
+      color: #fff;
+      padding: 1.4rem 1.75rem;
     }
-    .modal-title {
-      font-weight: 700;
-    }
-    .modal-body {
-      padding: 1.8rem;
-      max-height: 70vh;
-      overflow-y: auto;
-    }
+    .modal-title { font-weight: 700; font-size: 1.2rem; }
+    .modal-body { padding: 1.75rem; }
+
+    .btn-close { filter: brightness(0) invert(1); opacity: .85; }
+    .btn-close:hover { opacity: 1; }
+
     .service-table {
       width: 100%;
-      border-collapse: collapse;
-      font-size: 0.9rem;
+      border-collapse: separate;
+      border-spacing: 0;
+      font-size: .9rem;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--line);
     }
-    .service-table th,
-    .service-table td {
-      padding: 12px 10px;
-      border-bottom: 1px solid #e5e7eb;
+    .service-table th, .service-table td {
+      padding: .9rem 1rem;
       text-align: left;
+      border-bottom: 1px solid var(--line);
+      color: var(--ink-700);
     }
     .service-table th {
-      background-color: #fef2f2;
-      font-weight: 600;
-      color: var(--red-deep);
+      background: linear-gradient(135deg, var(--red-50), rgba(224,58,58,.04));
+      font-weight: 700;
+      color: var(--red-700);
+      font-size: .82rem;
+      text-transform: uppercase;
+      letter-spacing: .03em;
     }
-    .service-table tr:last-child td {
-      border-bottom: none;
+    .service-table tr:last-child td { border-bottom: none; }
+    .service-table tbody tr { transition: background .2s; }
+    .service-table tbody tr:hover { background: var(--bg-soft); }
+    @media (prefers-color-scheme: dark) {
+      .service-table th { background: rgba(224,58,58,.1); }
     }
-    .modal-body .btn-red {
-      padding: 10px 20px;
-      font-size: 0.9rem;
+
+    /* ============ FLOATING CTA (mobile) ============ */
+    .mobile-cta {
+      position: fixed;
+      left: 1rem; right: 1rem; bottom: 1rem;
+      display: none;
+      gap: .5rem;
+      z-index: 1050;
+      padding: .5rem;
+      background: color-mix(in srgb, var(--bg) 85%, transparent);
+      -webkit-backdrop-filter: blur(14px);
+      backdrop-filter: blur(14px);
+      border-radius: var(--radius-pill);
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--line);
     }
-    .modal-body .btn-red i {
-      margin-right: 6px;
+    .mobile-cta .btn { flex: 1; padding: .7rem 1rem; font-size: .9rem; }
+    @media (max-width: 991px) {
+      .mobile-cta { display: flex; }
+      body { padding-bottom: 90px; }
     }
-    .close-modal-btn {
-      background: none;
+
+    /* ============ BACK TO TOP ============ */
+    .back-to-top {
+      position: fixed;
+      right: 1.25rem; bottom: 1.25rem;
+      width: 48px; height: 48px;
+      border-radius: 50%;
       border: none;
-      font-size: 1.4rem;
-      line-height: 1;
+      background: linear-gradient(135deg, var(--red-500), var(--red-600));
       color: #fff;
-      opacity: 0.8;
-      transition: opacity 0.2s;
+      font-size: 1.15rem;
+      box-shadow: var(--shadow-red);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: all .35s var(--ease);
+      z-index: 1040;
+      cursor: pointer;
     }
-    .close-modal-btn:hover {
-      opacity: 1;
+    .back-to-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+    .back-to-top:hover { transform: translateY(-3px) scale(1.05); }
+    @media (max-width: 991px) {
+      .back-to-top { bottom: 100px; }
+    }
+
+    /* ============ REVEAL ANIMATIONS ============ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .8s var(--ease), transform .8s var(--ease);
+      will-change: opacity, transform;
+    }
+    .reveal.is-visible { opacity: 1; transform: none; }
+
+    /* Stagger через inline --d */
+    .reveal { transition-delay: var(--d, 0s); }
+
+    /* ============ TOAST ============ */
+    .toast-stack {
+      position: fixed;
+      top: 1.25rem; right: 1.25rem;
+      z-index: 3000;
+      display: flex;
+      flex-direction: column;
+      gap: .6rem;
+      max-width: min(360px, calc(100vw - 2rem));
+    }
+    .toast-msg {
+      background: var(--bg);
+      color: var(--ink-900);
+      padding: .9rem 1.1rem;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-lg);
+      border-left: 4px solid var(--red-500);
+      font-size: .92rem;
+      animation: slideIn .35s var(--ease);
+      display: flex;
+      align-items: flex-start;
+      gap: .6rem;
+    }
+    .toast-msg.success { border-left-color: #10b981; }
+    .toast-msg i { font-size: 1.1rem; margin-top: .1rem; }
+    .toast-msg.success i { color: #10b981; }
+    .toast-msg.error i   { color: var(--red-500); }
+    @keyframes slideIn {
+      from { transform: translateX(120%); opacity: 0; }
+      to   { transform: translateX(0); opacity: 1; }
+    }
+
+    /* ============ UTILITIES ============ */
+    .section-label {
+      display: inline-block;
+      background: rgba(224,58,58,.1);
+      color: var(--red-600);
+      padding: .4rem 1rem;
+      border-radius: var(--radius-pill);
+      font-size: .82rem;
+      font-weight: 700;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .lead { font-size: clamp(1rem, 1.2vw + .5rem, 1.15rem); color: var(--ink-500); }
+
+    .container { padding-inline: var(--container-pad); }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 991px) {
+      .hero-image-card { transform: none; margin-top: 2rem; }
+      .hero-float-badge { display: none; }
+      .messenger-btn span { display: none; }
+      .messenger-btn { padding: .55rem .7rem; }
     }
     @media (max-width: 576px) {
-      .modal-body {
-        padding: 1.2rem;
-      }
-      .service-table th,
-      .service-table td {
-        padding: 8px 6px;
-        font-size: 0.8rem;
-      }
+      .modal-body { padding: 1.25rem; }
+      .service-table th, .service-table td { padding: .6rem .7rem; font-size: .82rem; }
+      .review-card { padding: 1.5rem; }
     }
   </style>
 </head>
 <body>
 
+<!-- Прогресс прокрутки -->
+<div class="scroll-progress" aria-hidden="true"><div class="scroll-progress__bar" id="scrollBar"></div></div>
+
 <!-- ==================== HEADER ==================== -->
-<nav class="navbar navbar-expand-lg sticky-top py-2">
+<nav class="navbar navbar-expand-lg sticky-top" id="mainNav">
   <div class="container">
-    <a class="navbar-brand fw-bold" href="#">
+    <a class="navbar-brand" href="#" aria-label="Комбинат чистоты — на главную">
       <span class="logo-text">Комбинат чистоты</span>
-      <span class="badge bg-danger ms-2 fs-6">Тюмень</span>
+      <span class="badge-city">Тюмень</span>
     </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Открыть меню">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarMain">
-      <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-2">
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
         <li class="nav-item"><a class="nav-link" href="#about">О нас</a></li>
         <li class="nav-item"><a class="nav-link" href="#services">Услуги</a></li>
         <li class="nav-item"><a class="nav-link" href="#calculator">Калькулятор</a></li>
@@ -356,37 +926,52 @@
         <li class="nav-item"><a class="nav-link" href="#reviews">Отзывы</a></li>
         <li class="nav-item"><a class="nav-link" href="#contacts">Контакты</a></li>
       </ul>
-      <div class="d-flex gap-2 align-items-center">
-        <a href="https://t.me/melnikov_r_v" class="messenger-btn tg" target="_blank"><i class="bi bi-telegram fs-5"></i><span>Telegram</span></a>
-        <a href="https://max.ru/u/f9LHodD0cOJq2rUiDlPWyLBGxZzy4i9XJseB6TeuPytKMlZr6HdakUOhUFE" class="messenger-btn max" target="_blank"><i class="bi bi-chat-dots fs-5"></i><span>MAX</span></a>
-        <button class="btn btn-sm btn-red rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#callbackModal">Заявка</button>
+      <div class="d-flex gap-2 align-items-center flex-wrap">
+        <a href="https://t.me/melnikov_r_v" class="messenger-btn tg" target="_blank" rel="noopener" aria-label="Telegram">
+          <i class="bi bi-telegram" aria-hidden="true"></i><span>Telegram</span>
+        </a>
+        <a href="https://max.ru/u/f9LHodD0cOJq2rUiDlPWyLBGxZzy4i9XJseB6TeuPytKMlZr6HdakUOhUFE" class="messenger-btn max" target="_blank" rel="noopener" aria-label="MAX">
+          <i class="bi bi-chat-dots" aria-hidden="true"></i><span>MAX</span>
+        </a>
+        <button class="btn btn-red btn-sm px-4" data-bs-toggle="modal" data-bs-target="#callbackModal">Заявка</button>
       </div>
     </div>
   </div>
 </nav>
 
 <!-- ==================== HERO ==================== -->
-<section class="hero-bg py-5 position-relative" id="hero">
-  <div class="geo-shape top-0 end-0 mt-5 me-5"><div class="triangle" style="transform: rotate(90deg);"></div></div>
-  <div class="geo-shape bottom-0 start-0 mb-5 ms-5"><div class="hexagon"></div></div>
-  <div class="container py-5">
+<section class="hero" id="hero">
+  <div class="container">
     <div class="row align-items-center g-5">
-      <div class="col-lg-7 fade-up">
-        <h1 class="display-3 fw-bold mb-3 hero-title">Чистота, которая <span class="text-danger">вдохновляет</span></h1>
-        <p class="lead fs-4 text-secondary">Уборка квартир, офисов, ЖК и производств в Тюмени. Гарантия идеального результата — 100%.</p>
-        <div class="d-flex flex-wrap gap-3 mt-4">
-          <button class="btn btn-red btn-lg rounded-pill px-5" data-bs-toggle="modal" data-bs-target="#callbackModal">Получить консультацию</button>
-          <a href="#calculator" class="btn btn-outline-red btn-lg rounded-pill px-4">Рассчитать стоимость</a>
+      <div class="col-lg-7 reveal">
+        <span class="hero-badge"><span class="dot"></span> Работаем по всей Тюмени · 24/7</span>
+        <h1>Чистота, которая <span class="accent">вдохновляет</span></h1>
+        <p class="lead mt-3 mb-4">Уборка квартир, офисов, ЖК и производств в Тюмени. Гарантия идеального результата — 100%.</p>
+        <div class="d-flex flex-wrap gap-3">
+          <button class="btn btn-red btn-lg" data-bs-toggle="modal" data-bs-target="#callbackModal">
+            <i class="bi bi-calendar-check me-2"></i>Получить консультацию
+          </button>
+          <a href="#calculator" class="btn btn-outline-red btn-lg">Рассчитать стоимость</a>
         </div>
-        <div class="mt-4 d-flex gap-3 small text-secondary">
-          <span><i class="bi bi-check-circle-fill text-danger"></i> Опыт 8+ лет</span>
-          <span><i class="bi bi-check-circle-fill text-danger"></i> Эко-средства</span>
-          <span><i class="bi bi-check-circle-fill text-danger"></i> 100% гарантия</span>
+        <div class="hero-features mt-4">
+          <span><i class="bi bi-check-circle-fill"></i> Опыт 8+ лет</span>
+          <span><i class="bi bi-check-circle-fill"></i> Эко-средства</span>
+          <span><i class="bi bi-check-circle-fill"></i> 100% гарантия</span>
         </div>
       </div>
-      <div class="col-lg-5 d-none d-lg-block fade-up">
-        <div class="bg-white p-3 rounded-4 shadow-lg">
-          <img src="https://epstejnv-lang.github.io/-----/images/lkzcfqnf.png" alt="Команда клининга" class="img-fluid rounded-4" loading="lazy" width="600" height="400">
+      <div class="col-lg-5 d-none d-lg-block reveal" style="--d:.15s">
+        <div class="position-relative">
+          <div class="hero-image-card">
+            <img src="https://epstejnv-lang.github.io/-----/images/lkzcfqnf.png" alt="Команда клининга" width="600" height="400" loading="eager">
+          </div>
+          <div class="hero-float-badge hero-float-badge--tl">
+            <i class="bi bi-trophy-fill"></i>
+            <div>2500+<br><small class="text-muted">клиентов</small></div>
+          </div>
+          <div class="hero-float-badge hero-float-badge--br">
+            <i class="bi bi-star-fill"></i>
+            <div>4.9 / 5<br><small class="text-muted">рейтинг</small></div>
+          </div>
         </div>
       </div>
     </div>
@@ -394,104 +979,90 @@
 </section>
 
 <!-- ==================== О КОМПАНИИ ==================== -->
-<section id="about" class="py-5 bg-white">
+<section id="about" class="section-pad" style="background:var(--bg)">
   <div class="container">
     <div class="row g-5 align-items-center">
-      <div class="col-md-6 fade-up">
-        <span class="badge bg-danger bg-opacity-10 text-danger px-3 py-2 rounded-pill">Кто мы</span>
-        <h2 class="mt-3 fw-bold">«Комбинат чистоты» — эксперты безупречной уборки</h2>
+      <div class="col-md-6 reveal">
+        <span class="section-label">Кто мы</span>
+        <h2>«Комбинат чистоты» — эксперты безупречной уборки</h2>
         <p class="mt-3">Более 8 лет профессионального клининга в Тюмени. Работаем с частными лицами и бизнесом: ЖК, ТЦ, офисы, производства. Имеем сертификаты и безопасные средства европейского уровня. Наша команда — это обученные мастера с опытом от 3 лет.</p>
-        <div class="row mt-4">
-          <div class="col-6"><i class="bi bi-trophy-fill text-danger"></i> 2500+ довольных клиентов</div>
-          <div class="col-6"><i class="bi bi-shield-check text-danger"></i> Сертифицированы ISO</div>
-          <div class="col-6 mt-2"><i class="bi bi-people-fill text-danger"></i> 35 профи-клинеров</div>
-          <div class="col-6 mt-2"><i class="bi bi-tree-fill text-danger"></i> Эко-стандарты</div>
+        <div class="row g-3 mt-4">
+          <div class="col-6"><i class="bi bi-trophy-fill text-danger me-2"></i>2500+ довольных клиентов</div>
+          <div class="col-6"><i class="bi bi-shield-check text-danger me-2"></i>Сертифицированы ISO</div>
+          <div class="col-6"><i class="bi bi-people-fill text-danger me-2"></i>35 профи-клинеров</div>
+          <div class="col-6"><i class="bi bi-tree-fill text-danger me-2"></i>Эко-стандарты</div>
         </div>
       </div>
-      <div class="col-md-6 fade-up">
-        <div class="position-relative">
-          <img src="https://epstejnv-lang.github.io/-----/images/8d820193-2d75-4d4f-b02a-42931c981023.jpg" alt="Сертификаты" class="img-fluid rounded-4 shadow" loading="lazy" width="600" height="400">
-          <div class="geo-shape" style="bottom: -20px; right: -20px;"><div class="hexagon"></div></div>
-        </div>
+      <div class="col-md-6 reveal" style="--d:.15s">
+        <img src="https://epstejnv-lang.github.io/-----/images/8d820193-2d75-4d4f-b02a-42931c981023.jpg"
+             alt="Сертификаты" class="img-fluid" width="600" height="400" loading="lazy"
+             style="border-radius:var(--radius-lg); box-shadow:var(--shadow-lg);">
       </div>
     </div>
   </div>
 </section>
 
 <!-- ==================== УСЛУГИ ==================== -->
-<section id="services" class="py-5 bg-light">
+<section id="services" class="section-pad" style="background:var(--bg-soft)">
   <div class="container">
-    <div class="text-center mb-5 fade-up">
-      <h2 class="fw-bold">Наши <span class="text-danger">услуги</span></h2>
-      <p class="lead text-secondary">Выберите идеальный вариант для вашего объекта</p>
+    <div class="text-center mb-5 reveal">
+      <span class="section-label">Услуги</span>
+      <h2>Наши <span class="text-danger">услуги</span></h2>
+      <p class="lead">Выберите идеальный вариант для вашего объекта</p>
     </div>
     <div class="row g-4">
-      <!-- Услуга 1: Уборка квартир и домов -->
-      <div class="col-md-6 col-lg-4 fade-up">
-        <div class="service-card card p-4 text-center h-100" data-bs-toggle="modal" data-bs-target="#modalFlat">
-          <div class="service-icon"><i class="bi bi-house-door-fill"></i></div>
-          <h5 class="fw-bold mt-3">Уборка квартир и домов</h5>
-          <p class="small">Генеральная, поддерживающая, после ремонта. Идеальный порядок.</p>
-          <button class="btn btn-sm btn-outline-red mt-auto w-100">Подробнее →</button>
-        </div>
-      </div>
-      <!-- Услуга 2: Химчистка -->
-      <div class="col-md-6 col-lg-4 fade-up">
-        <div class="service-card card p-4 text-center h-100" data-bs-toggle="modal" data-bs-target="#modalChem">
-          <div class="service-icon"><i class="bi bi-droplet-fill"></i></div>
-          <h5 class="fw-bold mt-3">Химчистка</h5>
-          <p class="small">Ковры, диваны, кресла, шторы. Выведение пятен, освежение цвета.</p>
-          <button class="btn btn-sm btn-outline-red mt-auto w-100">Подробнее →</button>
-        </div>
-      </div>
-      <!-- Услуга 3: Дезинсекция -->
-      <div class="col-md-6 col-lg-4 fade-up">
-        <div class="service-card card p-4 text-center h-100" data-bs-toggle="modal" data-bs-target="#modalDisinsection">
-          <div class="service-icon"><i class="bi bi-bug-fill"></i></div>
-          <h5 class="fw-bold mt-3">Дезинсекция</h5>
-          <p class="small">Уничтожение насекомых (тараканы, клопы, муравьи). Безопасно для людей и животных.</p>
-          <button class="btn btn-sm btn-outline-red mt-auto w-100">Подробнее →</button>
-        </div>
-      </div>
-      <!-- Услуга 4: Уборка ЖК, офисов, ТЦ -->
-      <div class="col-md-6 col-lg-4 fade-up">
-        <div class="service-card card p-4 text-center h-100" data-bs-toggle="modal" data-bs-target="#modalOffice">
-          <div class="service-icon"><i class="bi bi-building"></i></div>
-          <h5 class="fw-bold mt-3">Уборка ЖК, офисов, ТЦ</h5>
-          <p class="small">Регулярное обслуживание коммерческих объектов. Индивидуальный прайс.</p>
-          <button class="btn btn-sm btn-outline-red mt-auto w-100">Подробнее →</button>
-        </div>
-      </div>
-      <!-- Услуга 5: Производственные помещения -->
-      <div class="col-md-6 col-lg-4 fade-up">
-        <div class="service-card card p-4 text-center h-100" data-bs-toggle="modal" data-bs-target="#modalIndustry">
-          <div class="service-icon"><i class="bi bi-building-gear"></i></div>
-          <h5 class="fw-bold mt-3">Производственные помещения</h5>
-          <p class="small">Складские цеха, промзоны. Профессиональное оборудование. Договорная цена.</p>
-          <button class="btn btn-sm btn-outline-red mt-auto w-100">Подробнее →</button>
-        </div>
-      </div>
-      <!-- Услуга 6: Мойка окон и фасадов -->
-      <div class="col-md-6 col-lg-4 fade-up">
-        <div class="service-card card p-4 text-center h-100" data-bs-toggle="modal" data-bs-target="#modalWindows">
-          <div class="service-icon"><i class="bi bi-window"></i></div>
-          <h5 class="fw-bold mt-3">Мойка окон и фасадов</h5>
-          <p class="small">Окна любой сложности, витрины, фасады зданий. Промышленный альпинизм.</p>
-          <button class="btn btn-sm btn-outline-red mt-auto w-100">Подробнее →</button>
-        </div>
-      </div>
+      <div class="col-md-6 col-lg-4 reveal"><article class="surface-card service-card" role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#modalFlat">
+        <div class="service-icon"><i class="bi bi-house-door-fill" aria-hidden="true"></i></div>
+        <h5>Уборка квартир и домов</h5>
+        <p>Генеральная, поддерживающая, после ремонта. Идеальный порядок.</p>
+        <span class="btn btn-more">Подробнее →</span>
+      </article></div>
+      <div class="col-md-6 col-lg-4 reveal" style="--d:.05s"><article class="surface-card service-card" role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#modalChem">
+        <div class="service-icon"><i class="bi bi-droplet-fill" aria-hidden="true"></i></div>
+        <h5>Химчистка</h5>
+        <p>Ковры, диваны, кресла, шторы. Выведение пятен, освежение цвета.</p>
+        <span class="btn btn-more">Подробнее →</span>
+      </article></div>
+      <div class="col-md-6 col-lg-4 reveal" style="--d:.1s"><article class="surface-card service-card" role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#modalDisinsection">
+        <div class="service-icon"><i class="bi bi-bug-fill" aria-hidden="true"></i></div>
+        <h5>Дезинсекция</h5>
+        <p>Уничтожение насекомых. Безопасно для людей и животных.</p>
+        <span class="btn btn-more">Подробнее →</span>
+      </article></div>
+      <div class="col-md-6 col-lg-4 reveal" style="--d:.15s"><article class="surface-card service-card" role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#modalOffice">
+        <div class="service-icon"><i class="bi bi-building" aria-hidden="true"></i></div>
+        <h5>Уборка ЖК, офисов, ТЦ</h5>
+        <p>Регулярное обслуживание коммерческих объектов. Индивидуальный прайс.</p>
+        <span class="btn btn-more">Подробнее →</span>
+      </article></div>
+      <div class="col-md-6 col-lg-4 reveal" style="--d:.2s"><article class="surface-card service-card" role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#modalIndustry">
+        <div class="service-icon"><i class="bi bi-gear-wide-connected" aria-hidden="true"></i></div>
+        <h5>Производственные помещения</h5>
+        <p>Складские цеха, промзоны. Профессиональное оборудование.</p>
+        <span class="btn btn-more">Подробнее →</span>
+      </article></div>
+      <div class="col-md-6 col-lg-4 reveal" style="--d:.25s"><article class="surface-card service-card" role="button" tabindex="0" data-bs-toggle="modal" data-bs-target="#modalWindows">
+        <div class="service-icon"><i class="bi bi-window" aria-hidden="true"></i></div>
+        <h5>Мойка окон и фасадов</h5>
+        <p>Окна любой сложности, витрины, фасады. Промышленный альпинизм.</p>
+        <span class="btn btn-more">Подробнее →</span>
+      </article></div>
     </div>
   </div>
 </section>
 
-<!-- ==================== КАЛЬКУЛЯТОР СТОИМОСТИ ==================== -->
-<section id="calculator" class="py-5 bg-white">
+<!-- ==================== КАЛЬКУЛЯТОР ==================== -->
+<section id="calculator" class="section-pad" style="background:var(--bg)">
   <div class="container">
-    <div class="calc-card mx-auto" style="max-width: 800px;">
-      <h3 class="fw-bold text-center mb-4">🧮 Калькулятор стоимости уборки</h3>
-      <div class="row g-3">
+    <div class="calc-card mx-auto reveal" style="max-width: 820px;">
+      <div class="text-center mb-4">
+        <span class="section-label">Калькулятор</span>
+        <h2 class="mb-2">Стоимость уборки</h2>
+        <p class="mb-0">Мгновенный расчёт — двигайте ползунок</p>
+      </div>
+      <div class="row g-4 align-items-end">
         <div class="col-md-6">
-          <label class="form-label fw-semibold">Тип услуги</label>
+          <label for="serviceType" class="form-label">Тип услуги</label>
           <select id="serviceType" class="form-select">
             <option value="flat">Уборка квартиры/дома</option>
             <option value="chem">Химчистка (мебель/ковры)</option>
@@ -500,46 +1071,77 @@
           </select>
         </div>
         <div class="col-md-6">
-          <label class="form-label fw-semibold">Площадь (м²)</label>
-          <input type="number" id="area" class="form-control" value="50" min="10">
+          <label for="area" class="form-label">
+            Площадь: <strong id="areaValue" class="text-danger">50</strong> м²
+          </label>
+          <input type="range" id="area" class="range-input" min="10" max="500" step="5" value="50"
+                 aria-label="Площадь в квадратных метрах">
         </div>
-        <div class="col-12 mt-3">
-          <button id="calcPriceBtn" class="btn btn-red w-100 py-2 rounded-pill">Рассчитать примерную стоимость</button>
-        </div>
-        <div class="col-12 text-center mt-3">
-          <h4 id="resultPrice" class="fw-bold text-danger">~ от 2 500 ₽</h4>
-          <p class="small text-muted">*точная цена после оценки специалистом</p>
-        </div>
+      </div>
+      <div class="text-center mt-5">
+        <div class="result-price" id="resultPrice" aria-live="polite">~ от 9 500 ₽</div>
+        <p class="small text-muted mt-2 mb-0">*точная цена после оценки специалистом</p>
+      </div>
+      <div class="text-center mt-4">
+        <button class="btn btn-red btn-lg px-5" data-bs-toggle="modal" data-bs-target="#callbackModal">
+          <i class="bi bi-send me-2"></i>Оставить заявку
+        </button>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ==================== ПРЕИМУЩЕСТВА ==================== -->
-<section class="py-5 bg-light">
+<section class="section-pad" style="background:var(--bg-soft)">
   <div class="container">
-    <div class="text-center mb-5"><h2 class="fw-bold">Почему выбирают нас</h2></div>
-    <div class="row g-4 text-center">
-      <div class="col-md-4 fade-up"><i class="bi bi-shield-check fs-1 text-danger"></i><h5 class="mt-2">Гарантия качества</h5><p>При недовольстве — переуборка за наш счёт</p></div>
-      <div class="col-md-4 fade-up"><i class="bi bi-flower1 fs-1 text-danger"></i><h5 class="mt-2">Эко-средства</h5><p>Гипоаллергенные препараты</p></div>
-      <div class="col-md-4 fade-up"><i class="bi bi-person-workspace fs-1 text-danger"></i><h5 class="mt-2">Обученный персонал</h5><p>Регулярные тренинги и контроль качества</p></div>
-      <div class="col-md-4 fade-up"><i class="bi bi-calculator fs-1 text-danger"></i><h5 class="mt-2">Прозрачная цена</h5><p>Без скрытых доплат, договор онлайн</p></div>
-      <div class="col-md-4 fade-up"><i class="bi bi-briefcase fs-1 text-danger"></i><h5 class="mt-2">Корпоративным клиентам</h5><p>Индивидуальные договоры и скидки</p></div>
-      <div class="col-md-4 fade-up"><i class="bi bi-emoji-smile fs-1 text-danger"></i><h5 class="mt-2">Оперативность</h5><p>Выезд в день заявки</p></div>
+    <div class="text-center mb-5 reveal">
+      <span class="section-label">Преимущества</span>
+      <h2>Почему выбирают нас</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4 reveal"><div class="feature-item">
+        <i class="bi bi-shield-check" aria-hidden="true"></i>
+        <h5>Гарантия качества</h5>
+        <p>При недовольстве — переуборка за наш счёт</p>
+      </div></div>
+      <div class="col-md-6 col-lg-4 reveal" style="--d:.05s"><div class="feature-item">
+        <i class="bi bi-flower1" aria-hidden="true"></i>
+        <h5>Эко-средства</h5>
+        <p>Гипоаллергенные препараты</p>
+      </div></div>
+      <div class="col-md-6 col-lg-4 reveal" style="--d:.1s"><div class="feature-item">
+        <i class="bi bi-person-workspace" aria-hidden="true"></i>
+        <h5>Обученный персонал</h5>
+        <p>Регулярные тренинги и контроль качества</p>
+      </div></div>
+      <div class="col-md-6 col-lg-4 reveal" style="--d:.15s"><div class="feature-item">
+        <i class="bi bi-calculator" aria-hidden="true"></i>
+        <h5>Прозрачная цена</h5>
+        <p>Без скрытых доплат, договор онлайн</p>
+      </div></div>
+      <div class="col-md-6 col-lg-4 reveal" style="--d:.2s"><div class="feature-item">
+        <i class="bi bi-briefcase" aria-hidden="true"></i>
+        <h5>Корпоративным клиентам</h5>
+        <p>Индивидуальные договоры и скидки</p>
+      </div></div>
+      <div class="col-md-6 col-lg-4 reveal" style="--d:.25s"><div class="feature-item">
+        <i class="bi bi-lightning-charge" aria-hidden="true"></i>
+        <h5>Оперативность</h5>
+        <p>Выезд в день заявки</p>
+      </div></div>
     </div>
   </div>
 </section>
 
-<!-- ==================== ПОРТФОЛИО — СЛАЙДЕР ==================== -->
-<section id="portfolio" class="py-5 position-relative overflow-hidden">
-  <div class="geo-shape top-0 start-0 mt-5 ms-5 opacity-25"><div class="hexagon"></div></div>
-  <div class="geo-shape bottom-0 end-0 mb-5 me-5 opacity-25"><div class="triangle" style="transform: rotate(180deg);"></div></div>
+<!-- ==================== ПОРТФОЛИО ==================== -->
+<section id="portfolio" class="section-pad" style="background:var(--bg)">
   <div class="container">
-    <div class="text-center mb-5 fade-up">
-      <h2 class="fw-bold">Наша <span class="text-danger">команда в работе</span></h2>
-      <p class="lead text-secondary">Профессионализм и внимание к каждой детали</p>
+    <div class="text-center mb-5 reveal">
+      <span class="section-label">Портфолио</span>
+      <h2>Наша <span class="text-danger">команда в работе</span></h2>
+      <p class="lead">Профессионализм и внимание к каждой детали</p>
     </div>
-    <div id="teamSlider" class="carousel slide portfolio-slider" data-bs-ride="carousel">
+    <div id="teamSlider" class="carousel slide carousel-shell reveal" data-bs-ride="carousel">
       <div class="carousel-indicators">
         <button type="button" data-bs-target="#teamSlider" data-bs-slide-to="0" class="active" aria-label="Слайд 1"></button>
         <button type="button" data-bs-target="#teamSlider" data-bs-slide-to="1" aria-label="Слайд 2"></button>
@@ -553,106 +1155,176 @@
         <button type="button" data-bs-target="#teamSlider" data-bs-slide-to="9" aria-label="Слайд 10"></button>
       </div>
       <div class="carousel-inner">
-        <!-- Замените пути на латиницу. Пример: 1_parking.jpg вместо 1.паркинг.jpg -->
-        <div class="carousel-item active"><div class="portfolio-image-wrapper"><img src="https://epstejnv-lang.github.io/-----/images/1_parking.jpg" class="d-block w-100" alt="Команда клининга" loading="lazy"></div></div>
-        <div class="carousel-item"><div class="portfolio-image-wrapper"><img src="https://epstejnv-lang.github.io/-----/images/cleaning.jpg" class="d-block w-100" alt="Уборка квартиры" loading="lazy"></div></div>
-        <div class="carousel-item"><div class="portfolio-image-wrapper"><img src="https://epstejnv-lang.github.io/-----/images/snow.jpg" class="d-block w-100" alt="Чистота в деталях" loading="lazy"></div></div>
-        <div class="carousel-item"><div class="portfolio-image-wrapper"><img src="https://epstejnv-lang.github.io/-----/images/kosilka.png" class="d-block w-100" alt="Химчистка ковров" loading="lazy"></div></div>
-        <div class="carousel-item"><div class="portfolio-image-wrapper"><img src="https://epstejnv-lang.github.io/-----/images/remont.png" class="d-block w-100" alt="Уборка офиса" loading="lazy"></div></div>
-        <div class="carousel-item"><div class="portfolio-image-wrapper"><img src="https://epstejnv-lang.github.io/-----/images/yacht.jpg" class="d-block w-100" alt="Чистый диван" loading="lazy"></div></div>
-        <div class="carousel-item"><div class="portfolio-image-wrapper"><img src="https://epstejnv-lang.github.io/-----/images/tc.jpg" class="d-block w-100" alt="Профессиональное оборудование" loading="lazy"></div></div>
-        <div class="carousel-item"><div class="portfolio-image-wrapper"><img src="https://epstejnv-lang.github.io/-----/images/windows.jpg" class="d-block w-100" alt="Сертифицированные средства" loading="lazy"></div></div>
-        <div class="carousel-item"><div class="portfolio-image-wrapper"><img src="https://epstejnv-lang.github.io/-----/images/kover.jpg" class="d-block w-100" alt="Команда профессионалов" loading="lazy"></div></div>
-        <div class="carousel-item"><div class="portfolio-image-wrapper"><img src="https://epstejnv-lang.github.io/-----/images/disinsection.png" class="d-block w-100" alt="Результат работы" loading="lazy"></div></div>
+        <div class="carousel-item active"><img src="https://epstejnv-lang.github.io/-----/images/1_parking.jpg" alt="Команда клининга" loading="lazy"></div>
+        <div class="carousel-item"><img src="https://epstejnv-lang.github.io/-----/images/cleaning.jpg" alt="Уборка квартиры" loading="lazy"></div>
+        <div class="carousel-item"><img src="https://epstejnv-lang.github.io/-----/images/snow.jpg" alt="Чистота в деталях" loading="lazy"></div>
+        <div class="carousel-item"><img src="https://epstejnv-lang.github.io/-----/images/kosilka.png" alt="Химчистка ковров" loading="lazy"></div>
+        <div class="carousel-item"><img src="https://epstejnv-lang.github.io/-----/images/remont.png" alt="Уборка офиса" loading="lazy"></div>
+        <div class="carousel-item"><img src="https://epstejnv-lang.github.io/-----/images/yacht.jpg" alt="Чистый диван" loading="lazy"></div>
+        <div class="carousel-item"><img src="https://epstejnv-lang.github.io/-----/images/tc.jpg" alt="Профессиональное оборудование" loading="lazy"></div>
+        <div class="carousel-item"><img src="https://epstejnv-lang.github.io/-----/images/windows.jpg" alt="Сертифицированные средства" loading="lazy"></div>
+        <div class="carousel-item"><img src="https://epstejnv-lang.github.io/-----/images/kover.jpg" alt="Команда профессионалов" loading="lazy"></div>
+        <div class="carousel-item"><img src="https://epstejnv-lang.github.io/-----/images/disinsection.png" alt="Результат работы" loading="lazy"></div>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#teamSlider" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Предыдущий</span></button>
-      <button class="carousel-control-next" type="button" data-bs-target="#teamSlider" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Следующий</span></button>
+      <button class="carousel-control-prev" type="button" data-bs-target="#teamSlider" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Предыдущий</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#teamSlider" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Следующий</span>
+      </button>
     </div>
-    <div class="text-center mt-5 fade-up"><button class="btn btn-red rounded-pill px-5 py-3" data-bs-toggle="modal" data-bs-target="#callbackModal">Доверьте чистоту профессионалам →</button></div>
+    <div class="text-center mt-5 reveal">
+      <button class="btn btn-red btn-lg px-5" data-bs-toggle="modal" data-bs-target="#callbackModal">
+        Доверьте чистоту профессионалам →
+      </button>
+    </div>
   </div>
 </section>
 
-<!-- ==================== КАК МЫ РАБОТАЕМ ==================== -->
-<section class="py-5 bg-white">
+<!-- ==================== ПРОЦЕСС ==================== -->
+<section class="section-pad" style="background:var(--bg-soft)">
   <div class="container">
-    <h2 class="fw-bold text-center mb-5">Процесс работы</h2>
-    <div class="row g-4 text-center">
-      <div class="col-md-3 fade-up"><div class="bg-danger bg-opacity-10 rounded-circle p-3 d-inline-block mb-3"><i class="bi bi-chat-text fs-1 text-danger"></i></div><h5>1. Заявка</h5><p>Звонок или заявка на сайте</p></div>
-      <div class="col-md-3 fade-up"><div class="bg-danger bg-opacity-10 rounded-circle p-3 d-inline-block mb-3"><i class="bi bi-rulers fs-1 text-danger"></i></div><h5>2. Оценка</h5><p>Выезд оценщика, замер, согласование цены</p></div>
-      <div class="col-md-3 fade-up"><div class="bg-danger bg-opacity-10 rounded-circle p-3 d-inline-block mb-3"><i class="bi bi-brush fs-1 text-danger"></i></div><h5>3. Уборка</h5><p>Приезд бригады, работа по чек-листу</p></div>
-      <div class="col-md-3 fade-up"><div class="bg-danger bg-opacity-10 rounded-circle p-3 d-inline-block mb-3"><i class="bi bi-credit-card fs-1 text-danger"></i></div><h5>4. Оплата</h5><p>По факту после приёмки результата</p></div>
+    <div class="text-center mb-5 reveal">
+      <span class="section-label">Как мы работаем</span>
+      <h2>Процесс работы</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3 reveal"><div class="process-step">
+        <div class="num">1</div><h5>Заявка</h5><p>Звонок или заявка на сайте</p>
+      </div></div>
+      <div class="col-md-6 col-lg-3 reveal" style="--d:.1s"><div class="process-step">
+        <div class="num">2</div><h5>Оценка</h5><p>Выезд оценщика, замер, согласование цены</p>
+      </div></div>
+      <div class="col-md-6 col-lg-3 reveal" style="--d:.2s"><div class="process-step">
+        <div class="num">3</div><h5>Уборка</h5><p>Приезд бригады, работа по чек-листу</p>
+      </div></div>
+      <div class="col-md-6 col-lg-3 reveal" style="--d:.3s"><div class="process-step">
+        <div class="num">4</div><h5>Оплата</h5><p>По факту после приёмки результата</p>
+      </div></div>
     </div>
   </div>
 </section>
 
 <!-- ==================== ОТЗЫВЫ ==================== -->
-<section id="reviews" class="py-5 bg-light">
+<section id="reviews" class="section-pad" style="background:var(--bg)">
   <div class="container">
-    <h2 class="fw-bold text-center mb-4">Клиенты о нас</h2>
-    <div id="reviewCarousel" class="carousel slide review-carousel" data-bs-ride="carousel">
+    <div class="text-center mb-5 reveal">
+      <span class="section-label">Отзывы</span>
+      <h2>Клиенты о нас</h2>
+    </div>
+    <div id="reviewCarousel" class="carousel slide reveal" data-bs-ride="carousel">
       <div class="carousel-inner">
-        <div class="carousel-item active"><div class="review-card mx-auto" style="max-width: 700px;"><i class="bi bi-chat-quote fs-1 text-danger opacity-50"></i><p class="mt-2 fs-5">«Заказали уборку ЖК — все чисто, без запаха, оперативно. Отдельное спасибо за вежливость!»</p><h6 class="fw-bold mt-3">Анна С., УК «Центральный»</h6><span class="badge bg-secondary">корпоративный клиент</span></div></div>
-        <div class="carousel-item"><div class="review-card mx-auto" style="max-width: 700px;"><i class="bi bi-chat-quote fs-1 text-danger opacity-50"></i><p class="mt-2 fs-5">«Химчистка дивана — как новый! Пятна вывели идеально. Рекомендую комбинат чистоты».</p><h6 class="fw-bold mt-3">Дмитрий В.</h6><span class="badge bg-secondary">частный клиент</span></div></div>
-        <div class="carousel-item"><div class="review-card mx-auto" style="max-width: 700px;"><i class="bi bi-chat-quote fs-1 text-danger opacity-50"></i><p class="mt-2 fs-5">«Убирают офис раз в неделю. Всегда вовремя, качественно, приятные цены для юр. лиц».</p><h6 class="fw-bold mt-3">ООО «Технолайн»</h6><span class="badge bg-secondary">бизнес</span></div></div>
-        <div class="carousel-item"><div class="review-card mx-auto" style="max-width: 700px;"><i class="bi bi-chat-quote fs-1 text-danger opacity-50"></i><p class="mt-2 fs-5">«Заказывали уборку коттеджа после стройки — справились за 4 часа. Результат безупречный!»</p><h6 class="fw-bold mt-3">Елена К., частный дом</h6><span class="badge bg-secondary">частный клиент</span></div></div>
-        <div class="carousel-item"><div class="review-card mx-auto" style="max-width: 700px;"><i class="bi bi-chat-quote fs-1 text-danger opacity-50"></i><p class="mt-2 fs-5">«Профессиональный подход к уборке ТЦ. График соблюдается, персонал вежливый. Рекомендуем как надёжного партнёра.»</p><h6 class="fw-bold mt-3">УК «Гранд-Молл»</h6><span class="badge bg-secondary">корпоративный клиент</span></div></div>
-        <div class="carousel-item"><div class="review-card mx-auto" style="max-width: 700px;"><i class="bi bi-chat-quote fs-1 text-danger opacity-50"></i><p class="mt-2 fs-5">«Быстро, качественно, использовали экосредства — для нашей аллергика дочки это важно. Спасибо!»</p><h6 class="fw-bold mt-3">Алексей П.</h6><span class="badge bg-secondary">частный клиент</span></div></div>
+        <div class="carousel-item active"><div class="review-card">
+          <i class="bi bi-chat-quote quote-icon" aria-hidden="true"></i>
+          <p>«Заказали уборку ЖК — все чисто, без запаха, оперативно. Отдельное спасибо за вежливость!»</p>
+          <h6>Анна С., УК «Центральный»</h6>
+          <span class="review-badge">корпоративный клиент</span>
+        </div></div>
+        <div class="carousel-item"><div class="review-card">
+          <i class="bi bi-chat-quote quote-icon" aria-hidden="true"></i>
+          <p>«Химчистка дивана — как новый! Пятна вывели идеально. Рекомендую комбинат чистоты».</p>
+          <h6>Дмитрий В.</h6>
+          <span class="review-badge">частный клиент</span>
+        </div></div>
+        <div class="carousel-item"><div class="review-card">
+          <i class="bi bi-chat-quote quote-icon" aria-hidden="true"></i>
+          <p>«Убирают офис раз в неделю. Всегда вовремя, качественно, приятные цены для юр. лиц».</p>
+          <h6>ООО «Технолайн»</h6>
+          <span class="review-badge">бизнес</span>
+        </div></div>
+        <div class="carousel-item"><div class="review-card">
+          <i class="bi bi-chat-quote quote-icon" aria-hidden="true"></i>
+          <p>«Заказывали уборку коттеджа после стройки — справились за 4 часа. Результат безупречный!»</p>
+          <h6>Елена К., частный дом</h6>
+          <span class="review-badge">частный клиент</span>
+        </div></div>
+        <div class="carousel-item"><div class="review-card">
+          <i class="bi bi-chat-quote quote-icon" aria-hidden="true"></i>
+          <p>«Профессиональный подход к уборке ТЦ. График соблюдается, персонал вежливый. Рекомендуем как надёжного партнёра.»</p>
+          <h6>УК «Гранд-Молл»</h6>
+          <span class="review-badge">корпоративный клиент</span>
+        </div></div>
+        <div class="carousel-item"><div class="review-card">
+          <i class="bi bi-chat-quote quote-icon" aria-hidden="true"></i>
+          <p>«Быстро, качественно, использовали экосредства — для нашей аллергика дочки это важно. Спасибо!»</p>
+          <h6>Алексей П.</h6>
+          <span class="review-badge">частный клиент</span>
+        </div></div>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#reviewCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon bg-danger rounded-circle p-3" aria-hidden="true"></span></button>
-      <button class="carousel-control-next" type="button" data-bs-target="#reviewCarousel" data-bs-slide="next"><span class="carousel-control-next-icon bg-danger rounded-circle p-3" aria-hidden="true"></span></button>
+      <button class="carousel-control-prev" type="button" data-bs-target="#reviewCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Предыдущий отзыв</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#reviewCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Следующий отзыв</span>
+      </button>
     </div>
   </div>
 </section>
 
-<!-- ==================== КОНТАКТЫ И КАРТА ==================== -->
-<section id="contacts" class="py-5 bg-light">
+<!-- ==================== КОНТАКТЫ ==================== -->
+<section id="contacts" class="section-pad" style="background:var(--bg-soft)">
   <div class="container">
     <div class="row g-5">
-      <div class="col-md-5 fade-up">
-        <h2 class="fw-bold">Контакты</h2>
-        <ul class="list-unstyled mt-4">
-          <li class="mb-3"><i class="bi bi-geo-alt-fill text-danger me-2"></i> г. Тюмень, ул. Станислава Карнацевича, 14, корп. 2</li>
-          <li class="mb-3"><i class="bi bi-telephone-fill text-danger me-2"></i> +7 (904) 496-35-03 </li>
-          <li class="mb-3"><i class="bi bi-envelope-fill text-danger me-2"></i> k-h.roman@mail.ru </li>
-          <li class="mb-3"><i class="bi bi-telegram text-danger me-2"></i> <a href="#" class="text-decoration-none">@combat_clean</a>  |  <i class="bi bi-chat-dots"></i> MAX: @combat_max</li>
+      <div class="col-lg-5 reveal">
+        <span class="section-label">Контакты</span>
+        <h2>Свяжитесь с нами</h2>
+        <ul class="contact-list">
+          <li><i class="bi bi-geo-alt-fill"></i><span>г. Тюмень, ул. Станислава Карнацевича, 14, корп. 2</span></li>
+          <li><i class="bi bi-telephone-fill"></i><a href="tel:+79044963503">+7 (904) 496-35-03</a></li>
+          <li><i class="bi bi-envelope-fill"></i><a href="mailto:k-h.roman@mail.ru">k-h.roman@mail.ru</a></li>
+          <li><i class="bi bi-telegram"></i><a href="https://t.me/melnikov_r_v" target="_blank" rel="noopener">@combat_clean</a></li>
         </ul>
-        <div class="mt-4 d-flex gap-3">
-          <a href="https://t.me/melnikov_r_v" class="btn btn-outline-red rounded-pill"><i class="bi bi-telegram"></i> Telegram</a>
-          <a href="https://max.ru/u/f9LHodD0cOJq2rUiDlPWyLBGxZzy4i9XJseB6TeuPytKMlZr6HdakUOhUFE" class="btn btn-outline-red rounded-pill"><i class="bi bi-chat-dots"></i> MAX</a>
-          <button class="btn btn-red rounded-pill" data-bs-toggle="modal" data-bs-target="#callbackModal">Заказать звонок</button>
+        <div class="d-flex gap-2 flex-wrap mt-4">
+          <a href="https://t.me/melnikov_r_v" class="btn btn-outline-red" target="_blank" rel="noopener">
+            <i class="bi bi-telegram me-2"></i>Telegram
+          </a>
+          <button class="btn btn-red" data-bs-toggle="modal" data-bs-target="#callbackModal">
+            Заказать звонок
+          </button>
         </div>
       </div>
-      <div class="col-md-7 fade-up">
-        <div class="rounded-4 overflow-hidden shadow">
-          <div class="rounded-4 overflow-hidden shadow" style="height: 280px;">
-  <iframe src="https://yandex.ru/map-widget/v1/?z=12&ol=biz&oid=1568223186" 
-          width="100%" 
-          height="100%" 
-          frameborder="0" 
-          loading="lazy"
-          style="border: 0; display: block;">
-  </iframe>
-</div>
+      <div class="col-lg-7 reveal" style="--d:.15s">
+        <div class="map-wrap">
+          <iframe src="https://yandex.ru/map-widget/v1/?z=12&ol=biz&oid=1568223186"
+                  title="Карта — Комбинат чистоты в Тюмени"
+                  loading="lazy" allowfullscreen></iframe>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ==================== ФУТЕР ==================== -->
-<footer class="bg-dark text-white-50 py-4">
-  <div class="container text-center">
+<footer>
+  <div class="container">
     <p class="mb-1">© 2025 «Комбинат чистоты» — клининг в Тюмени. Все права защищены.</p>
-    <a href="#" class="text-white-50 small text-decoration-none">Политика конфиденциальности</a>
+    <a href="#" aria-label="Политика конфиденциальности">Политика конфиденциальности</a>
   </div>
 </footer>
 
+<!-- ==================== FLOATING CTA (mobile) ==================== -->
+<div class="mobile-cta" aria-label="Быстрые действия">
+  <a href="tel:+79044963503" class="btn btn-outline-red"><i class="bi bi-telephone-fill"></i> Позвонить</a>
+  <button class="btn btn-red" data-bs-toggle="modal" data-bs-target="#callbackModal"><i class="bi bi-send"></i> Заявка</button>
+</div>
+
+<!-- Кнопка "наверх" -->
+<button class="back-to-top" id="backToTop" aria-label="Наверх"><i class="bi bi-arrow-up"></i></button>
+
+<!-- ==================== TOAST STACK ==================== -->
+<div class="toast-stack" id="toastStack" aria-live="polite" aria-atomic="true"></div>
+
 <!-- ==================== МОДАЛЬНЫЕ ОКНА УСЛУГ ==================== -->
-<div class="modal fade" id="modalFlat" tabindex="-1" aria-hidden="true">
+<div class="modal fade" id="modalFlat" tabindex="-1" aria-hidden="true" aria-labelledby="modalFlatTitle">
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
       <div class="modal-header bg-red text-white">
-        <h5 class="modal-title">Уборка квартир и домов</h5>
-        <button type="button" class="close-modal-btn" data-bs-dismiss="modal" aria-label="Закрыть"><i class="bi bi-x-lg"></i></button>
+        <h5 class="modal-title" id="modalFlatTitle">Уборка квартир и домов</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
       </div>
       <div class="modal-body">
         <p class="mb-4">Мы предлагаем полный спектр услуг по уборке жилых помещений. Используем профессиональное оборудование и гипоаллергенные средства.</p>
@@ -666,7 +1338,9 @@
           </tbody>
         </table>
         <div class="text-center mt-4">
-          <button class="btn btn-red rounded-pill" data-bs-toggle="modal" data-bs-target="#callbackModal" data-bs-dismiss="modal"><i class="bi bi-calendar-check"></i> Заказать уборку</button>
+          <button class="btn btn-red" data-bs-toggle="modal" data-bs-target="#callbackModal" data-bs-dismiss="modal">
+            <i class="bi bi-calendar-check me-2"></i>Заказать уборку
+          </button>
         </div>
       </div>
     </div>
@@ -678,7 +1352,7 @@
     <div class="modal-content">
       <div class="modal-header bg-red text-white">
         <h5 class="modal-title">Химчистка мягкой мебели и ковров</h5>
-        <button type="button" class="close-modal-btn" data-bs-dismiss="modal"><i class="bi bi-x-lg"></i></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
       </div>
       <div class="modal-body">
         <p class="mb-4">Возвращаем первозданный вид вашей мебели и коврам. Удаляем пятна, запахи и пылевых клещей.</p>
@@ -692,7 +1366,9 @@
           </tbody>
         </table>
         <div class="text-center mt-4">
-          <button class="btn btn-red rounded-pill" data-bs-toggle="modal" data-bs-target="#callbackModal" data-bs-dismiss="modal"><i class="bi bi-calendar-check"></i> Заказать химчистку</button>
+          <button class="btn btn-red" data-bs-toggle="modal" data-bs-target="#callbackModal" data-bs-dismiss="modal">
+            <i class="bi bi-calendar-check me-2"></i>Заказать химчистку
+          </button>
         </div>
       </div>
     </div>
@@ -704,10 +1380,10 @@
     <div class="modal-content">
       <div class="modal-header bg-red text-white">
         <h5 class="modal-title">Дезинсекция</h5>
-        <button type="button" class="close-modal-btn" data-bs-dismiss="modal"><i class="bi bi-x-lg"></i></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
       </div>
       <div class="modal-body">
-        <p class="mb-4">Эффективное уничтожение насекомых (тараканы, клопы, муравьи, комары). Используем сертифицированные препараты, безопасные для людей и животных.</p>
+        <p class="mb-4">Эффективное уничтожение насекомых. Используем сертифицированные препараты, безопасные для людей и животных.</p>
         <table class="service-table">
           <thead><tr><th>Тип помещения</th><th>Стоимость (от)</th><th>Гарантия</th></tr></thead>
           <tbody>
@@ -718,7 +1394,9 @@
           </tbody>
         </table>
         <div class="text-center mt-4">
-          <button class="btn btn-red rounded-pill" data-bs-toggle="modal" data-bs-target="#callbackModal" data-bs-dismiss="modal"><i class="bi bi-bug"></i> Заказать дезинсекцию</button>
+          <button class="btn btn-red" data-bs-toggle="modal" data-bs-target="#callbackModal" data-bs-dismiss="modal">
+            <i class="bi bi-bug me-2"></i>Заказать дезинсекцию
+          </button>
         </div>
       </div>
     </div>
@@ -730,10 +1408,10 @@
     <div class="modal-content">
       <div class="modal-header bg-red text-white">
         <h5 class="modal-title">Уборка ЖК, офисов, ТЦ</h5>
-        <button type="button" class="close-modal-btn" data-bs-dismiss="modal"><i class="bi bi-x-lg"></i></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
       </div>
       <div class="modal-body">
-        <p class="mb-4">Обеспечиваем чистоту и порядок в ваших бизнес-пространствах. Гибкий график работы, не мешающий рабочему процессу.</p>
+        <p class="mb-4">Обеспечиваем чистоту и порядок в ваших бизнес-пространствах. Гибкий график работы.</p>
         <table class="service-table">
           <thead><tr><th>Тип помещения</th><th>Периодичность</th><th>Цена (от)</th></tr></thead>
           <tbody>
@@ -744,7 +1422,9 @@
           </tbody>
         </table>
         <div class="text-center mt-4">
-          <button class="btn btn-red rounded-pill" data-bs-toggle="modal" data-bs-target="#callbackModal" data-bs-dismiss="modal"><i class="bi bi-building"></i> Оставить заявку</button>
+          <button class="btn btn-red" data-bs-toggle="modal" data-bs-target="#callbackModal" data-bs-dismiss="modal">
+            <i class="bi bi-building me-2"></i>Оставить заявку
+          </button>
         </div>
       </div>
     </div>
@@ -756,10 +1436,10 @@
     <div class="modal-content">
       <div class="modal-header bg-red text-white">
         <h5 class="modal-title">Уборка производственных помещений</h5>
-        <button type="button" class="close-modal-btn" data-bs-dismiss="modal"><i class="bi bi-x-lg"></i></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
       </div>
       <div class="modal-body">
-        <p class="mb-4">Специализированная уборка цехов, складов и промышленных зон. Опыт работы с технологическим оборудованием и удалением сложных загрязнений.</p>
+        <p class="mb-4">Специализированная уборка цехов, складов и промышленных зон.</p>
         <table class="service-table">
           <thead><tr><th>Тип помещения</th><th>Специфика</th><th>Цена (от)</th></tr></thead>
           <tbody>
@@ -769,7 +1449,9 @@
           </tbody>
         </table>
         <div class="text-center mt-4">
-          <button class="btn btn-red rounded-pill" data-bs-toggle="modal" data-bs-target="#callbackModal" data-bs-dismiss="modal"><i class="bi bi-file-text"></i> Получить коммерческое предложение</button>
+          <button class="btn btn-red" data-bs-toggle="modal" data-bs-target="#callbackModal" data-bs-dismiss="modal">
+            <i class="bi bi-file-text me-2"></i>Получить коммерческое предложение
+          </button>
         </div>
       </div>
     </div>
@@ -781,10 +1463,10 @@
     <div class="modal-content">
       <div class="modal-header bg-red text-white">
         <h5 class="modal-title">Мойка окон и фасадов</h5>
-        <button type="button" class="close-modal-btn" data-bs-dismiss="modal"><i class="bi bi-x-lg"></i></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
       </div>
       <div class="modal-body">
-        <p class="mb-4">Профессиональная мойка окон любой сложности, витрин, фасадов зданий. Используем промышленный альпинизм и специализированное оборудование.</p>
+        <p class="mb-4">Профессиональная мойка окон любой сложности, витрин, фасадов зданий.</p>
         <table class="service-table">
           <thead><tr><th>Тип объекта</th><th>Стоимость (от)</th><th>Примечание</th></tr></thead>
           <tbody>
@@ -795,30 +1477,45 @@
           </tbody>
         </table>
         <div class="text-center mt-4">
-          <button class="btn btn-red rounded-pill" data-bs-toggle="modal" data-bs-target="#callbackModal" data-bs-dismiss="modal"><i class="bi bi-window"></i> Заказать мойку окон</button>
+          <button class="btn btn-red" data-bs-toggle="modal" data-bs-target="#callbackModal" data-bs-dismiss="modal">
+            <i class="bi bi-window me-2"></i>Заказать мойку окон
+          </button>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Модальное окно обратной связи (Formspree) -->
-<div class="modal fade" id="callbackModal" tabindex="-1" aria-hidden="true">
+<!-- ==================== МОДАЛЬНОЕ ОКНО ЗАЯВКИ ==================== -->
+<div class="modal fade" id="callbackModal" tabindex="-1" aria-hidden="true" aria-labelledby="callbackTitle">
   <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content rounded-4 border-0 shadow-lg">
-      <div class="modal-header border-0 bg-danger text-white rounded-top-4">
-        <h5 class="modal-title">Оставить заявку</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+    <div class="modal-content">
+      <div class="modal-header bg-red text-white">
+        <h5 class="modal-title" id="callbackTitle">Оставить заявку</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
       </div>
       <div class="modal-body">
-        <form id="callbackForm" action="https://formspree.io/f/maqljyaj" method="POST">
-          <input type="text" class="form-control mb-3" name="name" placeholder="Ваше имя" required>
-          <input type="tel" class="form-control mb-3" name="phone" placeholder="Номер телефона" required>
-          <textarea class="form-control mb-3" name="message" rows="2" placeholder="Комментарий / услуга"></textarea>
+        <form id="callbackForm" action="https://formspree.io/f/maqljyaj" method="POST" novalidate>
+          <div class="mb-3">
+            <label for="cbName" class="form-label visually-hidden">Ваше имя</label>
+            <input type="text" class="form-control" id="cbName" name="name" placeholder="Ваше имя" required autocomplete="name">
+          </div>
+          <div class="mb-3">
+            <label for="cbPhone" class="form-label visually-hidden">Номер телефона</label>
+            <input type="tel" class="form-control" id="cbPhone" name="phone" placeholder="Номер телефона" required autocomplete="tel">
+          </div>
+          <div class="mb-3">
+            <label for="cbMessage" class="form-label visually-hidden">Комментарий</label>
+            <textarea class="form-control" id="cbMessage" name="message" rows="3" placeholder="Комментарий / услуга"></textarea>
+          </div>
           <input type="hidden" name="_subject" value="Новая заявка с сайта Комбинат чистоты">
           <input type="hidden" name="_captcha" value="false">
-          <button type="submit" class="btn btn-red w-100 rounded-pill">Отправить заявку</button>
-          <p class="small text-muted mt-2">Наш менеджер свяжется с вами в течение 15 минут</p>
+          <button type="submit" class="btn btn-red w-100">
+            <i class="bi bi-send me-2"></i><span class="btn-text">Отправить заявку</span>
+          </button>
+          <p class="small text-muted mt-3 mb-0 text-center">
+            <i class="bi bi-clock me-1"></i>Менеджер свяжется с вами в течение 15 минут
+          </p>
         </form>
       </div>
     </div>
@@ -826,96 +1523,179 @@
 </div>
 
 <script>
-  // Анимация появления при скролле (Intersection Observer)
-  const fadeElements = document.querySelectorAll('.fade-up');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.15 });
-  fadeElements.forEach(el => observer.observe(el));
+/* =============================================================
+   Комбинат чистоты — современный JS
+   ============================================================= */
+(() => {
+  'use strict';
 
-  // Калькулятор стоимости
-  const calcBtn = document.getElementById('calcPriceBtn');
-  const serviceSelect = document.getElementById('serviceType');
-  const areaInput = document.getElementById('area');
-  const resultSpan = document.getElementById('resultPrice');
+  /* ---------- Утилиты ---------- */
+  const $  = (sel, ctx = document) => ctx.querySelector(sel);
+  const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
+  const fmt = n => new Intl.NumberFormat('ru-RU').format(Math.floor(n));
 
-  function calcPrice() {
-    let service = serviceSelect.value;
-    let area = parseFloat(areaInput.value);
-    if (isNaN(area) || area < 10) area = 10;
-    let price = 0;
-    switch(service) {
-      case 'flat': price = area * 190; if(area < 40) price = Math.max(price, 1900); break;
-      case 'chem': price = 1800 + area * 70; break;
-      case 'office': price = area * 165; if(area < 60) price = Math.max(price, 2800); break;
-      case 'industry': price = area * 210; break;
-      default: price = 2500;
-    }
-    resultSpan.innerText = `~ от ${Math.floor(price).toLocaleString()} ₽`;
-  }
-  calcBtn.addEventListener('click', calcPrice);
-  calcPrice();
+  /* ---------- Toast-уведомления ---------- */
+  const toastStack = $('#toastStack');
+  const toast = (msg, type = 'success') => {
+    const el = document.createElement('div');
+    el.className = `toast-msg ${type}`;
+    el.innerHTML = `<i class="bi ${type === 'success' ? 'bi-check-circle-fill' : 'bi-exclamation-triangle-fill'}" aria-hidden="true"></i><span>${msg}</span>`;
+    toastStack.appendChild(el);
+    setTimeout(() => {
+      el.style.transition = 'opacity .3s, transform .3s';
+      el.style.opacity = '0';
+      el.style.transform = 'translateX(120%)';
+      setTimeout(() => el.remove(), 320);
+    }, 4500);
+  };
 
-  // Обработка формы обратной связи через Formspree (асинхронно)
-  const formModal = document.getElementById('callbackForm');
-  if (formModal) {
-    formModal.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const formData = new FormData(formModal);
-      const submitButton = formModal.querySelector('button[type="submit"]');
-      const originalText = submitButton.innerHTML;
-      submitButton.innerHTML = 'Отправка...';
-      submitButton.disabled = true;
-      try {
-        const response = await fetch(formModal.action, {
-          method: 'POST',
-          body: formData,
-          headers: { 'Accept': 'application/json' }
-        });
-        if (response.ok) {
-          alert('Спасибо! Наш специалист свяжется с вами в ближайшее время.');
-          const modal = bootstrap.Modal.getInstance(document.getElementById('callbackModal'));
-          modal.hide();
-          formModal.reset();
-        } else {
-          const errorData = await response.json();
-          alert('Ошибка при отправке: ' + (errorData.error || 'попробуйте позже.'));
+  /* ---------- Navbar: shadow при скролле ---------- */
+  const nav = $('#mainNav');
+  const onScrollNav = () => nav.classList.toggle('scrolled', window.scrollY > 20);
+  onScrollNav();
+  window.addEventListener('scroll', onScrollNav, { passive: true });
+
+  /* ---------- Прогресс прокрутки ---------- */
+  const bar = $('#scrollBar');
+  const onScrollBar = () => {
+    const h = document.documentElement;
+    const p = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+    bar.style.width = p + '%';
+  };
+  onScrollBar();
+  window.addEventListener('scroll', onScrollBar, { passive: true });
+
+  /* ---------- Back to top ---------- */
+  const toTop = $('#backToTop');
+  const onScrollTop = () => toTop.classList.toggle('visible', window.scrollY > 500);
+  onScrollTop();
+  window.addEventListener('scroll', onScrollTop, { passive: true });
+  toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  /* ---------- Reveal animations (stagger) ---------- */
+  const revealEls = $$('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries, obs) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-visible');
+          obs.unobserve(e.target);
         }
-      } catch (error) {
-        console.error('Ошибка сети:', error);
-        alert('Не удалось отправить заявку. Проверьте соединение с интернетом и попробуйте ещё раз.');
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('is-visible'));
+  }
+
+  /* ---------- Калькулятор со слайдером ---------- */
+  const serviceEl = $('#serviceType');
+  const areaEl    = $('#area');
+  const areaOut   = $('#areaValue');
+  const priceEl   = $('#resultPrice');
+
+  const PRICES = {
+    flat:     { min: 40,  base: 190, minSum: 1900 },
+    chem:     { min: 10,  base: 70,  fixed: 1800 },
+    office:   { min: 30,  base: 165, minSum: 2800 },
+    industry: { min: 50,  base: 210, minSum: 3500 },
+  };
+
+  function updateRangeFill() {
+    const min = +areaEl.min, max = +areaEl.max, val = +areaEl.value;
+    const pct = ((val - min) / (max - min)) * 100;
+    areaEl.style.setProperty('--val', pct + '%');
+  }
+
+  function calcPrice(animate = true) {
+    const s = serviceEl.value;
+    const area = Math.max(+areaEl.value, PRICES[s].min);
+    const cfg = PRICES[s];
+    let price;
+    if (cfg.fixed) price = cfg.fixed + area * cfg.base;
+    else price = Math.max(area * cfg.base, cfg.minSum);
+    priceEl.textContent = `~ от ${fmt(price)} ₽`;
+    if (animate) {
+      priceEl.classList.add('bump');
+      setTimeout(() => priceEl.classList.remove('bump'), 220);
+    }
+    areaOut.textContent = area;
+    updateRangeFill();
+  }
+
+  let rafId;
+  const debouncedCalc = () => {
+    cancelAnimationFrame(rafId);
+    rafId = requestAnimationFrame(() => calcPrice(true));
+  };
+
+  if (serviceEl && areaEl) {
+    areaEl.addEventListener('input', debouncedCalc);
+    serviceEl.addEventListener('change', debouncedCalc);
+    calcPrice(false);
+  }
+
+  /* ---------- Форма обратной связи ---------- */
+  const form = $('#callbackForm');
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Простая валидация
+      const name = form.name.value.trim();
+      const phone = form.phone.value.trim();
+      if (name.length < 2) { toast('Укажите имя (мин. 2 символа)', 'error'); form.name.focus(); return; }
+      if (phone.replace(/\D/g, '').length < 10) { toast('Укажите корректный телефон', 'error'); form.phone.focus(); return; }
+
+      const btn = form.querySelector('button[type="submit"]');
+      const txt = btn.querySelector('.btn-text');
+      const original = txt.textContent;
+      btn.disabled = true;
+      txt.textContent = 'Отправка...';
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' },
+        });
+        if (res.ok) {
+          toast('Спасибо! Специалист свяжется с вами в течение 15 минут.', 'success');
+          bootstrap.Modal.getInstance($('#callbackModal'))?.hide();
+          form.reset();
+        } else {
+          const data = await res.json().catch(() => ({}));
+          toast('Ошибка: ' + (data.error || 'попробуйте позже'), 'error');
+        }
+      } catch {
+        toast('Не удалось отправить. Проверьте соединение.', 'error');
       } finally {
-        submitButton.innerHTML = originalText;
-        submitButton.disabled = false;
+        btn.disabled = false;
+        txt.textContent = original;
       }
     });
   }
-</script>
 
-<style>
-  .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.6s ease; }
-  .fade-up.visible { opacity: 1; transform: translateY(0); }
-  .carousel-control-prev-icon, .carousel-control-next-icon { background-size: 60% 60%; }
-  .carousel-control-prev, .carousel-control-next { width: 5%; }
-  @media (max-width: 768px) {
-    .carousel-control-prev, .carousel-control-next { width: 10%; }
-  }
-  .service-card .btn-outline-red { border-radius: 40px; }
-  .review-card {
-    background: var(--gray-light);
-    border-radius: 32px;
-    padding: 2rem;
-    box-shadow: var(--shadow-sm);
-    border-left: 5px solid var(--red-main);
-  }
-  .bg-red {
-    background-color: var(--red-main);
-  }
-</style>
+  /* ---------- Автозакрытие меню при клике на ссылку ---------- */
+  const navCollapse = $('#navbarMain');
+  $$('#navbarMain a.nav-link').forEach(a => {
+    a.addEventListener('click', () => {
+      if (navCollapse.classList.contains('show')) {
+        bootstrap.Collapse.getInstance(navCollapse)?.hide();
+      }
+    });
+  });
+
+  /* ---------- Открытие модалок услуг с клавиатуры ---------- */
+  $$('.service-card').forEach(card => {
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        card.click();
+      }
+    });
+  });
+})();
+</script>
 </body>
 </html>
